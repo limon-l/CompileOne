@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "src/ast/ast.h"
+#include "src/semantic/semantic.h"
+#include "src/semantic/semantic.h"
+#include "src/codegen/tac.h"
 
 extern int line_num;
 extern int yylex();
@@ -138,15 +141,25 @@ int main(int argc, char **argv) {
     }
 
     printf("===========================================\n");
-    printf("     Abstract Syntax Tree (AST) Generation \n");
+    printf("        Compiler Execution Pipeline        \n");
     printf("===========================================\n");
 
     if (yyparse() == 0 && ast_root != NULL) {
-        printf("\n[SUCCESS] Generated Abstract Syntax Tree:\n\n");
-        print_ast(ast_root, 0);
+        printf("\n[1] Syntax Analysis Passed. AST Built Successfully.\n");
+
+        if (analyze_semantics(ast_root)) {
+            printf("\n[2] Semantic Checks Passed. Proceeding to Code Generation...\n");
+            
+            generate_tac(ast_root);
+            
+            printf("\n[SUCCESS] Intermediate Code Generation Completed!\n");
+        } else {
+            printf("\n[STOP] Compilation Halted due to Semantic Errors.\n");
+        }
+
         free_ast(ast_root);
     } else {
-        printf("\n[FAILURE] Failed to build AST due to syntax errors.\n");
+        printf("\n[STOP] Compilation Halted due to Syntax Errors.\n");
     }
 
     return 0;

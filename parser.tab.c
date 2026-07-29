@@ -72,6 +72,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "src/ast/ast.h"
+#include "src/semantic/semantic.h"
+#include "src/semantic/semantic.h"
+#include "src/codegen/tac.h"
 
 extern int line_num;
 extern int yylex();
@@ -83,7 +86,7 @@ ASTNode *ast_root = NULL; // Root pointer for generated AST
 
 
 /* Line 189 of yacc.c  */
-#line 87 "parser.tab.c"
+#line 90 "parser.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -153,7 +156,7 @@ typedef union YYSTYPE
 {
 
 /* Line 214 of yacc.c  */
-#line 16 "src/parser/parser.y"
+#line 19 "src/parser/parser.y"
 
     int int_val;
     float float_val;
@@ -163,7 +166,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 167 "parser.tab.c"
+#line 170 "parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -175,7 +178,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 179 "parser.tab.c"
+#line 182 "parser.tab.c"
 
 #ifdef short
 # undef short
@@ -477,11 +480,11 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    53,    53,    57,    58,    62,    63,    64,    65,    66,
-      67,    71,    72,    73,    77,    81,    85,    86,    90,    94,
-      98,   102,   103,   104,   105,   106,   107,   108,   109,   110,
-     111,   112,   113,   114,   115,   116,   117,   118,   119,   120,
-     121
+       0,    56,    56,    60,    61,    65,    66,    67,    68,    69,
+      70,    74,    75,    76,    80,    84,    88,    89,    93,    97,
+     101,   105,   106,   107,   108,   109,   110,   111,   112,   113,
+     114,   115,   116,   117,   118,   119,   120,   121,   122,   123,
+     124
 };
 #endif
 
@@ -1464,280 +1467,280 @@ yyreduce:
         case 2:
 
 /* Line 1464 of yacc.c  */
-#line 53 "src/parser/parser.y"
+#line 56 "src/parser/parser.y"
     { ast_root = (yyvsp[(1) - (1)].node); ;}
     break;
 
   case 3:
 
 /* Line 1464 of yacc.c  */
-#line 57 "src/parser/parser.y"
+#line 60 "src/parser/parser.y"
     { (yyval.node) = append_stmt((yyvsp[(1) - (2)].node), (yyvsp[(2) - (2)].node)); ;}
     break;
 
   case 4:
 
 /* Line 1464 of yacc.c  */
-#line 58 "src/parser/parser.y"
+#line 61 "src/parser/parser.y"
     { (yyval.node) = NULL; ;}
     break;
 
   case 5:
 
 /* Line 1464 of yacc.c  */
-#line 62 "src/parser/parser.y"
+#line 65 "src/parser/parser.y"
     { (yyval.node) = (yyvsp[(1) - (1)].node); ;}
     break;
 
   case 6:
 
 /* Line 1464 of yacc.c  */
-#line 63 "src/parser/parser.y"
+#line 66 "src/parser/parser.y"
     { (yyval.node) = (yyvsp[(1) - (1)].node); ;}
     break;
 
   case 7:
 
 /* Line 1464 of yacc.c  */
-#line 64 "src/parser/parser.y"
+#line 67 "src/parser/parser.y"
     { (yyval.node) = (yyvsp[(1) - (1)].node); ;}
     break;
 
   case 8:
 
 /* Line 1464 of yacc.c  */
-#line 65 "src/parser/parser.y"
+#line 68 "src/parser/parser.y"
     { (yyval.node) = (yyvsp[(1) - (1)].node); ;}
     break;
 
   case 9:
 
 /* Line 1464 of yacc.c  */
-#line 66 "src/parser/parser.y"
+#line 69 "src/parser/parser.y"
     { (yyval.node) = (yyvsp[(1) - (1)].node); ;}
     break;
 
   case 10:
 
 /* Line 1464 of yacc.c  */
-#line 67 "src/parser/parser.y"
+#line 70 "src/parser/parser.y"
     { (yyval.node) = (yyvsp[(1) - (1)].node); ;}
     break;
 
   case 11:
 
 /* Line 1464 of yacc.c  */
-#line 71 "src/parser/parser.y"
+#line 74 "src/parser/parser.y"
     { (yyval.str_val) = "int"; ;}
     break;
 
   case 12:
 
 /* Line 1464 of yacc.c  */
-#line 72 "src/parser/parser.y"
+#line 75 "src/parser/parser.y"
     { (yyval.str_val) = "float"; ;}
     break;
 
   case 13:
 
 /* Line 1464 of yacc.c  */
-#line 73 "src/parser/parser.y"
+#line 76 "src/parser/parser.y"
     { (yyval.str_val) = "bool"; ;}
     break;
 
   case 14:
 
 /* Line 1464 of yacc.c  */
-#line 77 "src/parser/parser.y"
+#line 80 "src/parser/parser.y"
     { (yyval.node) = create_var_decl_node((yyvsp[(1) - (3)].str_val), (yyvsp[(2) - (3)].str_val)); ;}
     break;
 
   case 15:
 
 /* Line 1464 of yacc.c  */
-#line 81 "src/parser/parser.y"
+#line 84 "src/parser/parser.y"
     { (yyval.node) = create_assign_node((yyvsp[(1) - (4)].str_val), (yyvsp[(3) - (4)].node)); ;}
     break;
 
   case 16:
 
 /* Line 1464 of yacc.c  */
-#line 85 "src/parser/parser.y"
+#line 88 "src/parser/parser.y"
     { (yyval.node) = create_if_node((yyvsp[(3) - (5)].node), (yyvsp[(5) - (5)].node), NULL); ;}
     break;
 
   case 17:
 
 /* Line 1464 of yacc.c  */
-#line 86 "src/parser/parser.y"
+#line 89 "src/parser/parser.y"
     { (yyval.node) = create_if_node((yyvsp[(3) - (7)].node), (yyvsp[(5) - (7)].node), (yyvsp[(7) - (7)].node)); ;}
     break;
 
   case 18:
 
 /* Line 1464 of yacc.c  */
-#line 90 "src/parser/parser.y"
+#line 93 "src/parser/parser.y"
     { (yyval.node) = create_while_node((yyvsp[(3) - (5)].node), (yyvsp[(5) - (5)].node)); ;}
     break;
 
   case 19:
 
 /* Line 1464 of yacc.c  */
-#line 94 "src/parser/parser.y"
+#line 97 "src/parser/parser.y"
     { (yyval.node) = create_print_node((yyvsp[(2) - (3)].node)); ;}
     break;
 
   case 20:
 
 /* Line 1464 of yacc.c  */
-#line 98 "src/parser/parser.y"
+#line 101 "src/parser/parser.y"
     { (yyval.node) = create_block_node((yyvsp[(2) - (3)].node)); ;}
     break;
 
   case 21:
 
 /* Line 1464 of yacc.c  */
-#line 102 "src/parser/parser.y"
+#line 105 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("+", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 22:
 
 /* Line 1464 of yacc.c  */
-#line 103 "src/parser/parser.y"
+#line 106 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("-", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 23:
 
 /* Line 1464 of yacc.c  */
-#line 104 "src/parser/parser.y"
+#line 107 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("*", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 24:
 
 /* Line 1464 of yacc.c  */
-#line 105 "src/parser/parser.y"
+#line 108 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("/", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 25:
 
 /* Line 1464 of yacc.c  */
-#line 106 "src/parser/parser.y"
+#line 109 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("%", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 26:
 
 /* Line 1464 of yacc.c  */
-#line 107 "src/parser/parser.y"
+#line 110 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("==", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 27:
 
 /* Line 1464 of yacc.c  */
-#line 108 "src/parser/parser.y"
+#line 111 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("!=", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 28:
 
 /* Line 1464 of yacc.c  */
-#line 109 "src/parser/parser.y"
+#line 112 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("<", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 29:
 
 /* Line 1464 of yacc.c  */
-#line 110 "src/parser/parser.y"
+#line 113 "src/parser/parser.y"
     { (yyval.node) = create_binary_node(">", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 30:
 
 /* Line 1464 of yacc.c  */
-#line 111 "src/parser/parser.y"
+#line 114 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("<=", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 31:
 
 /* Line 1464 of yacc.c  */
-#line 112 "src/parser/parser.y"
+#line 115 "src/parser/parser.y"
     { (yyval.node) = create_binary_node(">=", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 32:
 
 /* Line 1464 of yacc.c  */
-#line 113 "src/parser/parser.y"
+#line 116 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("&&", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 33:
 
 /* Line 1464 of yacc.c  */
-#line 114 "src/parser/parser.y"
+#line 117 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("||", (yyvsp[(1) - (3)].node), (yyvsp[(3) - (3)].node)); ;}
     break;
 
   case 34:
 
 /* Line 1464 of yacc.c  */
-#line 115 "src/parser/parser.y"
+#line 118 "src/parser/parser.y"
     { (yyval.node) = create_binary_node("!", (yyvsp[(2) - (2)].node), NULL); ;}
     break;
 
   case 35:
 
 /* Line 1464 of yacc.c  */
-#line 116 "src/parser/parser.y"
+#line 119 "src/parser/parser.y"
     { (yyval.node) = (yyvsp[(2) - (3)].node); ;}
     break;
 
   case 36:
 
 /* Line 1464 of yacc.c  */
-#line 117 "src/parser/parser.y"
+#line 120 "src/parser/parser.y"
     { (yyval.node) = create_id_node((yyvsp[(1) - (1)].str_val)); ;}
     break;
 
   case 37:
 
 /* Line 1464 of yacc.c  */
-#line 118 "src/parser/parser.y"
+#line 121 "src/parser/parser.y"
     { (yyval.node) = create_int_node((yyvsp[(1) - (1)].int_val)); ;}
     break;
 
   case 38:
 
 /* Line 1464 of yacc.c  */
-#line 119 "src/parser/parser.y"
+#line 122 "src/parser/parser.y"
     { (yyval.node) = create_float_node((yyvsp[(1) - (1)].float_val)); ;}
     break;
 
   case 39:
 
 /* Line 1464 of yacc.c  */
-#line 120 "src/parser/parser.y"
+#line 123 "src/parser/parser.y"
     { (yyval.node) = create_bool_node(1); ;}
     break;
 
   case 40:
 
 /* Line 1464 of yacc.c  */
-#line 121 "src/parser/parser.y"
+#line 124 "src/parser/parser.y"
     { (yyval.node) = create_bool_node(0); ;}
     break;
 
 
 
 /* Line 1464 of yacc.c  */
-#line 1741 "parser.tab.c"
+#line 1744 "parser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1949,7 +1952,7 @@ yyreturn:
 
 
 /* Line 1684 of yacc.c  */
-#line 124 "src/parser/parser.y"
+#line 127 "src/parser/parser.y"
 
 
 void yyerror(const char *s) {
@@ -1967,15 +1970,25 @@ int main(int argc, char **argv) {
     }
 
     printf("===========================================\n");
-    printf("     Abstract Syntax Tree (AST) Generation \n");
+    printf("        Compiler Execution Pipeline        \n");
     printf("===========================================\n");
 
     if (yyparse() == 0 && ast_root != NULL) {
-        printf("\n[SUCCESS] Generated Abstract Syntax Tree:\n\n");
-        print_ast(ast_root, 0);
+        printf("\n[1] Syntax Analysis Passed. AST Built Successfully.\n");
+
+        if (analyze_semantics(ast_root)) {
+            printf("\n[2] Semantic Checks Passed. Proceeding to Code Generation...\n");
+            
+            generate_tac(ast_root);
+            
+            printf("\n[SUCCESS] Intermediate Code Generation Completed!\n");
+        } else {
+            printf("\n[STOP] Compilation Halted due to Semantic Errors.\n");
+        }
+
         free_ast(ast_root);
     } else {
-        printf("\n[FAILURE] Failed to build AST due to syntax errors.\n");
+        printf("\n[STOP] Compilation Halted due to Syntax Errors.\n");
     }
 
     return 0;
