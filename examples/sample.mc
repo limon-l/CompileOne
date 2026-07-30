@@ -7,9 +7,9 @@ flag = true;
 while (x > 0) {
     y = y + x;
     x = x - 1;
-    if (flag == true) {
-        print y;
-    } else {
-        print x;
-    }
+}
+if (flag == true) {
+    print y;
+} else {
+    print x;
 }
