@@ -91,7 +91,7 @@ typedef union YYSTYPE
 
 
 /* Line 1685 of yacc.c  */
-#line 95 "parser.tab.h"
+#line 95 "src/parser/parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

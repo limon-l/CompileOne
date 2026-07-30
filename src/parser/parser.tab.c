@@ -86,7 +86,7 @@ ASTNode *ast_root = NULL; // Root pointer for generated AST
 
 
 /* Line 189 of yacc.c  */
-#line 90 "parser.tab.c"
+#line 90 "src/parser/parser.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -166,7 +166,7 @@ typedef union YYSTYPE
 
 
 /* Line 214 of yacc.c  */
-#line 170 "parser.tab.c"
+#line 170 "src/parser/parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -178,7 +178,7 @@ typedef union YYSTYPE
 
 
 /* Line 264 of yacc.c  */
-#line 182 "parser.tab.c"
+#line 182 "src/parser/parser.tab.c"
 
 #ifdef short
 # undef short
@@ -1740,7 +1740,7 @@ yyreduce:
 
 
 /* Line 1464 of yacc.c  */
-#line 1744 "parser.tab.c"
+#line 1744 "src/parser/parser.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
