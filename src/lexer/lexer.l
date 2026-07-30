@@ -9,6 +9,8 @@ int line_num = 1;
 %}
 
 %option noyywrap
+%option noinput
+%option nounput
 
 DIGIT       [0-9]
 LETTER      [a-zA-Z_]
