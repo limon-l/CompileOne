@@ -1,0 +1,12 @@
+{
+  "phase": "execution",
+  "language": "mini-c",
+  "status": "ok",
+  "exit_code": 0,
+  "steps": 2,
+  "output": [
+    "7",
+    "9"
+  ],
+  "errors": []
+}

@@ -1,0 +1,15 @@
+{
+  "phase": "execution",
+  "language": "mini-c",
+  "status": "runtime-error",
+  "exit_code": 1,
+  "steps": 6,
+  "output": [],
+  "errors": [
+    {
+      "line": 11,
+      "column": 5,
+      "message": "cannot assign to const variable 'MAX'"
+    }
+  ]
+}

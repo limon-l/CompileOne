@@ -1,0 +1,20 @@
+{
+  "phase": "execution",
+  "language": "mini-c",
+  "status": "lex-error",
+  "exit_code": 1,
+  "steps": 0,
+  "output": [],
+  "errors": [
+    {
+      "line": 4,
+      "column": 7,
+      "message": "Unknown character"
+    },
+    {
+      "line": 5,
+      "column": 7,
+      "message": "Unterminated string literal"
+    }
+  ]
+}

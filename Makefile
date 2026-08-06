@@ -1,68 +1,94 @@
-# ====================================================================
-#  Robust Makefile for Compiler Construction Project (Flex + Bison + C)
-# ====================================================================
+# ============================================================
+#  CompileOne — top-level build (backend + tests + GUI)
+#  Relative paths only, so the build is safe inside a parent
+#  path that contains spaces (e.g. OneDrive).
+# ============================================================
 
-# Compiler Tools
-CC      = gcc
-FLEX    = flex
-BISON   = bison
+CC        := gcc
+FLEX      := flex
 
-# Include directories: Gives GCC access to parser.tab.h and all C headers
-INCLUDES = -I. -Isrc/parser -Isrc/ast -Isrc/symbol_table -Isrc/semantic -Isrc/codegen
-CFLAGS   = -Wall -Wextra $(INCLUDES)
+BUILD_DIR := Build
+GEN_DIR   := backend/build
 
-# Target executable name
-TARGET   = compiler.exe
+TARGET    := $(BUILD_DIR)/compileone.exe
 
-# Source Files Specification
-PARSER_Y = src/parser/parser.y
-PARSER_C = src/parser/parser.tab.c
-PARSER_H = src/parser/parser.tab.h
+LEXER_L   := backend/src/lexer/lexer.l
+LEXER_C   := $(GEN_DIR)/lex.yy.c
 
-LEXER_L  = src/lexer/lexer.l
-LEXER_C  = src/lexer/lex.yy.c
+BACKEND_INCS := -Ibackend/include
+CFLAGS       := -Wall -O2 -std=gnu99 $(BACKEND_INCS) -D__USE_MINGW_ANSI_STDIO
 
-MODULES  = src/ast/ast.c \
-           src/symbol_table/symbol_table.c \
-           src/semantic/semantic.c \
-           src/codegen/tac.c
+# Backend object files (basenames are unique => no collisions)
+OBJS := $(BUILD_DIR)/compileone.o \
+        $(BUILD_DIR)/lex.yy.o \
+        $(BUILD_DIR)/token.o \
+        $(BUILD_DIR)/strbuf.o \
+        $(BUILD_DIR)/json_writer.o \
+        $(BUILD_DIR)/interp.o
 
-OBJS     = $(PARSER_C) $(LEXER_C) $(MODULES)
+# ------------------------------------------------------------
+# Default target
+# ------------------------------------------------------------
+all: build_dirs $(TARGET)
 
-# Default Rule
-all: $(TARGET)
-
-# Rule 1: Generate Parser C and Header files using Bison first
-$(PARSER_C) $(PARSER_H): $(PARSER_Y)
-	@echo "[1/3] Generating Bison Parser files..."
-	$(BISON) -d -o $(PARSER_C) $(PARSER_Y)
-
-# Rule 2: Generate Lexer C file using Flex (Explicitly depends on parser.tab.h)
-$(LEXER_C): $(LEXER_L) $(PARSER_H)
-	@echo "[2/3] Generating Flex Lexer files..."
+# ------------------------------------------------------------
+# Flex: generate the scanner from lexer.l
+# ------------------------------------------------------------
+$(LEXER_C): $(LEXER_L) | build_dirs
+	@echo "[flex] $(LEXER_L)"
 	$(FLEX) -o $(LEXER_C) $(LEXER_L)
 
-# Rule 3: Compile all C source files into compiler.exe
-$(TARGET): $(PARSER_C) $(LEXER_C) $(MODULES)
-	@echo "[3/3] Compiling complete project with GCC..."
-	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
-	@echo "--------------------------------------------------------"
-	@echo " BUILD SUCCESSFUL: $(TARGET) is ready!"
-	@echo "--------------------------------------------------------"
+$(BUILD_DIR)/lex.yy.o: $(LEXER_C) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $(LEXER_C) -o $@
 
-# Run sample input test
-test: $(TARGET)
-	./$(TARGET) examples/sample.mc
+# ------------------------------------------------------------
+# C sources: pattern rules per source directory
+# ------------------------------------------------------------
+$(BUILD_DIR)/%.o: backend/src/driver/%.c | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Launch Python Modern IDE GUI
-gui: $(TARGET)
-	python gui.py
+$(BUILD_DIR)/%.o: backend/src/util/%.c | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Universal Clean Command (Safe for PowerShell, CMD, and Git Bash)
+$(BUILD_DIR)/%.o: backend/src/json/%.c | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: backend/src/exec/%.c | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# ------------------------------------------------------------
+# Link
+# ------------------------------------------------------------
+$(TARGET): $(OBJS)
+	@echo "[link] $@"
+	$(CC) $(OBJS) -o $@
+
+build_dirs:
+	@mkdir -p $(BUILD_DIR) $(GEN_DIR) Output Temp
+
+# ------------------------------------------------------------
+# Convenience targets
+# ------------------------------------------------------------
+.PHONY: all build_dirs test pytest gui clean
+
+# Backend smoke test + full frontend test suite
+test: all
+	python -m pytest tests/frontend tests/integration -q
+
+pytest:
+	python -m pytest tests/frontend tests/integration -q
+
+gui: all
+	python app/main.py
+
 clean:
-	@echo "Cleaning temporary build files..."
-	-@rm -f $(PARSER_C) $(PARSER_H) $(LEXER_C) $(TARGET) temp_input.mc *.o 2>NUL || true
-	-@del /f /q src\parser\parser.tab.c src\parser\parser.tab.h src\lexer\lex.yy.c $(TARGET) temp_input.mc *.o 2>NUL || true
+	@echo "[clean] removing build artifacts..."
+	-@rm -rf $(BUILD_DIR) $(GEN_DIR) 2>NUL || true
+	-@rmdir /s /q $(BUILD_DIR) 2>NUL || true
+	-@rmdir /s /q $(GEN_DIR) 2>NUL || true
 	@echo "Clean complete."
-
-.PHONY: all test gui clean

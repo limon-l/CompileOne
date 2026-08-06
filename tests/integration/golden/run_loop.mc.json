@@ -1,0 +1,14 @@
+{
+  "phase": "execution",
+  "language": "mini-c",
+  "status": "ok",
+  "exit_code": 0,
+  "steps": 37,
+  "output": [
+    "five reached: ",
+    "5",
+    "total = ",
+    "55"
+  ],
+  "errors": []
+}
