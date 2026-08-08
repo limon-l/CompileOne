@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import (
     QAction,
     QComboBox,
@@ -39,11 +39,13 @@ from app.ui.panels.console import ConsolePanel
 from app.ui.panels.problems import ProblemsPanel
 from app.ui.panels.run_output import RunOutputPanel
 from app.ui.views.ast_view import ASTView
+from app.ui.views.assembly_view import AssemblyView
 from app.ui.views.cst_view import CSTView
+from app.ui.views.ir_view import IRView
+from app.ui.views.optimization_view import OptimizationView
+from app.ui.views.semantic_view import SemanticView
 from app.ui.views.token_view import TokenTableView
-
-DEFAULT_SOURCE = EXAMPLES_DIR / "study" / "hello.cpp"
-WORKING_COPY = TEMP_DIR / "compileone_source.mc"
+DEFAULT_SOURCE = EXAMPLES_DIR / "study" / "hello.mc"
 
 
 class MainWindow(QMainWindow):
@@ -64,7 +66,7 @@ class MainWindow(QMainWindow):
             toolchain=self._toolchain,
         )
         
-        self._session = CompileSession(source_path=WORKING_COPY, language="mini-c", mode="study")
+        self._session = CompileSession(source_path=TEMP_DIR / "compileone_source.mc", language="mini-c", mode="study")
         self._current_path: Path | None = None
 
         self.setWindowTitle("CompileOne")
@@ -77,9 +79,17 @@ class MainWindow(QMainWindow):
 
         self._build_menu()
         self._build_toolbar()
+
+        # Debounced live recompile while the user types.
+        self._loading = False
+        self._auto_compile_timer = QTimer(self)
+        self._auto_compile_timer.setSingleShot(True)
+        self._auto_compile_timer.setInterval(600)
+        self._auto_compile_timer.timeout.connect(self.compile)
+
         self._connect_signals()
 
-        self._load_file(DEFAULT_SOURCE)
+        self._load_example(DEFAULT_SOURCE)
 
     # ------------------------------------------------------ UI construction
 
@@ -106,14 +116,19 @@ class MainWindow(QMainWindow):
         self.token_view = TokenTableView()
         self.cst_view = CSTView()
         self.ast_view = ASTView()
+        self.semantic_view = SemanticView()
+        self.ir_view = IRView()
+        self.optimization_view = OptimizationView()
+        self.assembly_view = AssemblyView()
         
         right_tabs = QTabWidget()
         right_tabs.addTab(self.token_view, "Lexical Analysis")
         right_tabs.addTab(self.cst_view, "Parse Tree (CST)")
         right_tabs.addTab(self.ast_view, "Syntax Tree (AST)")
-        right_tabs.addTab(QLabel("Semantic (Not Implemented)"), "Semantic Analysis")
-        right_tabs.addTab(QLabel("IR (Not Implemented)"), "IR / Optimization")
-        right_tabs.addTab(QLabel("Target (Not Implemented)"), "Target Assembly")
+        right_tabs.addTab(self.semantic_view, "Semantic Analysis")
+        right_tabs.addTab(self.ir_view, "IR (TAC)")
+        right_tabs.addTab(self.optimization_view, "Optimization")
+        right_tabs.addTab(self.assembly_view, "Target Assembly")
 
         # --- Main Layout ---
         main_splitter = QSplitter(Qt.Horizontal)
@@ -187,10 +202,31 @@ class MainWindow(QMainWindow):
 
     def _connect_signals(self) -> None:
         self.editor.cursorMoved.connect(self._on_cursor_moved)
+        self.editor.textChanged.connect(self._on_editor_text_changed)
         self.token_view.tokenActivated.connect(self._on_token_activated)
         self.problems.diagnosticActivated.connect(self._on_diagnostic_activated)
 
     # ------------------------------------------------------ file handling
+
+    def _load_example(self, path: Path) -> None:
+        """Load a built-in example through a temp copy.
+
+        Editing the default demo must never modify the example file on disk,
+        so the working buffer is a throwaway copy under Temp/.
+        """
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError as exc:
+            QMessageBox.critical(self, "Open failed", f"Cannot read {path}:\n{exc}")
+            return
+        ext = path.suffix.lower() or ".mc"
+        copy = TEMP_DIR / f"example_copy{ext}"
+        try:
+            copy.write_text(text, encoding="utf-8")
+        except OSError as exc:
+            QMessageBox.critical(self, "Open failed", f"Cannot stage {path}:\n{exc}")
+            return
+        self._load_file(copy)
 
     def _load_file(self, path: Path) -> None:
         try:
@@ -204,8 +240,10 @@ class MainWindow(QMainWindow):
         self._session.source_text = text
         self._session.source_path = path
         self._set_language_from_path(path)
-        
+
+        self._loading = True
         self.editor.setPlainText(text)
+        self._loading = False
         self.setWindowTitle(f"CompileOne — {path.name}")
         self.compile()
 
@@ -249,7 +287,9 @@ class MainWindow(QMainWindow):
         self._session.source_path = path
         self._session.source_text = text
         self.editor.set_language(language)
+        self._loading = True
         self.editor.setPlainText(text)
+        self._loading = False
         self._mode_label.setText(f"Study · {language}")
         self.setWindowTitle(f"CompileOne — {path.name}")
         self.compile()
@@ -277,17 +317,27 @@ class MainWindow(QMainWindow):
 
     # ------------------------------------------------------ compilation & execution
 
-    def compile(self) -> None:
-        """Runs the artifact-generation pipeline (lex, parse, etc.)."""
-        self._save_working_copy()
-        self.statusBar().showMessage("Compiling…")
+    def compile(self, silent: bool = False) -> None:
+        """Runs the artifact-generation pipeline (lex, parse, etc.).
+
+        Always compiles the *current editor content*: the editor is written
+        to a fresh working copy which becomes the session's source.
+        `silent` suppresses status-bar/dialog noise (used by auto-recompile).
+        """
+        if not self._save_working_copy():
+            return
+        if not silent:
+            self.statusBar().showMessage("Compiling…")
         try:
             self._orchestrator.compile_all(self._session)
         except Exception as exc:  # noqa: BLE001 — surface unexpected failures in the UI
-            QMessageBox.critical(self, "Compile failed", str(exc))
+            if not silent:
+                QMessageBox.critical(self, "Compile failed", str(exc))
             return
         finally:
             self._refresh_views()
+        if not silent:
+            self.statusBar().showMessage("Ready", 2000)
 
     def run(self) -> None:
         """Compiles and runs the current file."""
@@ -368,16 +418,27 @@ class MainWindow(QMainWindow):
         )
 
     def _save_working_copy(self) -> bool:
-        """Saves the editor content to a temporary file for the backend."""
+        """Saves the editor content to a temporary file for the backend.
+
+        The session's source path is pointed at this working copy so every
+        phase (lex, parse, ast, semantic, run) consumes the *current editor
+        content* rather than the demo/opened file on disk.
+        """
         text = self.editor.toPlainText()
         self._session.source_text = text
+        path = self._working_copy_path()
         try:
-            WORKING_COPY.parent.mkdir(parents=True, exist_ok=True)
-            WORKING_COPY.write_text(text, encoding="utf-8")
-            return True
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text, encoding="utf-8")
         except OSError as exc:
             QMessageBox.critical(self, "Error", f"Could not write working copy:\n{exc}")
             return False
+        self._session.source_path = path
+        return True
+
+    def _working_copy_path(self) -> Path:
+        ext = EXTENSIONS.get(self._session.language, ".mc")
+        return TEMP_DIR / f"compileone_source{ext}"
 
     def _refresh_views(self) -> None:
         # Update token stream
@@ -389,6 +450,21 @@ class MainWindow(QMainWindow):
         cst = self._orchestrator.cst_of(self._session)
         self.cst_view.set_tree(cst)
 
+        # Update AST view
+        ast = self._orchestrator.ast_of(self._session)
+        self.ast_view.set_tree(ast)
+
+        # Update semantic view
+        semantic = self._orchestrator.semantic_of(self._session)
+        self.semantic_view.set_semantic(semantic)
+
+        # Update IR / optimization / assembly views
+        self.ir_view.set_ir(self._orchestrator.ir_of(self._session))
+        self.optimization_view.set_optimization(
+            self._orchestrator.optimization_of(self._session)
+        )
+        self.assembly_view.set_assembly(self._orchestrator.assembly_of(self._session))
+
         # Update problems view
         self.problems.set_diagnostics(self._session.diagnostics)
         self.editor.set_diagnostics(self._session.diagnostics)
@@ -397,6 +473,12 @@ class MainWindow(QMainWindow):
 
     def _on_cursor_moved(self, line: int, column: int) -> None:
         self._cursor_label.setText(f"Ln {line}, Col {column}")
+
+    def _on_editor_text_changed(self) -> None:
+        """Debounced live recompile so lexical/parse/AST/semantic views follow edits."""
+        if self._loading or not self._backend_runner.available():
+            return
+        self._auto_compile_timer.start()
         
     def _on_token_activated(self, token: Token) -> None:
         if token:

@@ -48,6 +48,8 @@ static const TokenInfo kTokenInfo[] = {
      "Return-from-function keyword"},
     {TOK_PRINT,  "KW_PRINT",  CAT_KEYWORD,   "output",         "#569cd6",
      "Output statement keyword (educational)"},
+    {TOK_READ,   "KW_READ",   CAT_KEYWORD,   "input",          "#569cd6",
+     "Input statement keyword: reads a value from stdin into a variable"},
     {TOK_TRUE,   "BOOL_TRUE", CAT_LITERAL,   "boolean",        "#569cd6",
      "Boolean literal true"},
     {TOK_FALSE,  "BOOL_FALSE", CAT_LITERAL,  "boolean",        "#569cd6",
@@ -159,6 +161,15 @@ static const TokenInfo *find_info(TokenKind kind) {
 
 const char *token_name(TokenKind kind) {
     return find_info(kind)->name;
+}
+
+TokenKind token_from_name(const char *name) {
+    for (size_t i = 0; i < kTokenInfoCount; i++) {
+        if (strcmp(kTokenInfo[i].name, name) == 0) {
+            return kTokenInfo[i].kind;
+        }
+    }
+    return TOK_LEX_ERROR;
 }
 
 TokenCategory token_category(TokenKind kind) {

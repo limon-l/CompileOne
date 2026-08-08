@@ -9,7 +9,13 @@ from app.application.orchestrator import Orchestrator
 from app.application.pipeline import PhaseStatus, Pipeline
 from app.infrastructure.artifact_store import ArtifactStore
 from app.infrastructure.tool_detector import Toolchain
-from tests.conftest import make_execution_data, make_token_stream_data
+from tests.conftest import (
+    make_assembly_data,
+    make_execution_data,
+    make_ir_data,
+    make_optimization_data,
+    make_token_stream_data,
+)
 
 
 def _session(tmp_path, runner):
@@ -58,6 +64,27 @@ def test_compile_all_surfaces_lexical_errors(tmp_path):
     assert diag.phase == "lexical"
 
 
+def test_compile_all_surfaces_semantic_diagnostics(tmp_path):
+    runner = _Runner(make_token_stream_data(), semantic_diagnostics=[
+        {"severity": "error", "code": "SEM003", "line": 8, "column": 1,
+         "message": "cannot assign to const variable 'b'"},
+        {"severity": "warning", "code": "SEM009", "line": 12, "column": 1,
+         "message": "variable 'x' is declared but never used"},
+    ])
+    session, store, _ = _session(tmp_path, runner)
+    orchestrator = _orchestrator(runner, store)
+    orchestrator.compile_all(session)
+
+    errors = [d for d in session.diagnostics if d.severity_name == "error"]
+    warnings = [d for d in session.diagnostics if d.severity_name == "warning"]
+    assert len(errors) == 1
+    assert errors[0].code == "SEM003"
+    assert errors[0].phase == "semantic"
+    assert errors[0].line == 8
+    assert len(warnings) == 1
+    assert warnings[0].code == "SEM009"
+
+
 def test_inspect_unknown_phase_raises(fake_runner, tmp_path):
     session, store, runner = _session(tmp_path, fake_runner)
     orchestrator = _orchestrator(runner, store)
@@ -84,7 +111,7 @@ def test_execute_runs_program_and_exposes_output(tmp_path, fake_runner):
 
 
 def test_execute_surfaces_runtime_errors(tmp_path):
-    runner = _Runner(make_execution_data(
+    runner = _Runner(make_token_stream_data(), execution_data=make_execution_data(
         output=["halfway there"],
         status="runtime-error",
         errors=[{"line": 4, "column": 7, "message": "division by zero"}],
@@ -120,11 +147,44 @@ def test_export_tokens_csv(tmp_path, fake_runner):
 
 
 class _Runner:
-    def __init__(self, data):
+    def __init__(self, data, execution_data=None, semantic_diagnostics=None):
         self._data = data
+        self._execution_data = execution_data or make_execution_data()
+        self._semantic_diagnostics = semantic_diagnostics
 
     def available(self):
         return True
 
     def run_phase(self, phase, input_path, output_path, language="mini-c"):
-        return self._data
+        if phase == "lex":
+            return self._data
+        if phase == "parse":
+            return {
+                "schema": "compileone/parse-tree/1.0", "phase": "parse",
+                "language": language, "source_file": str(input_path),
+                "generated_by": "compileone parse", "duration_ms": 0.1,
+                "root": {"rule_name": "program", "children": []}, "errors": [],
+            }
+        if phase == "ast":
+            return {
+                "schema": "compileone/ast/1.0", "phase": "ast",
+                "language": language, "source_file": str(input_path),
+                "generated_by": "compileone ast", "duration_ms": 0.1,
+                "root": {"node_type": "Program", "children": []}, "errors": [],
+            }
+        if phase == "semantic":
+            return {
+                "schema": "compileone/semantic/1.0", "phase": "semantic",
+                "language": language, "source_file": str(input_path),
+                "generated_by": "compileone semantic", "duration_ms": 0.1,
+                "valid": True,
+                "symbols": [],
+                "diagnostics": self._semantic_diagnostics or [],
+            }
+        if phase == "ir":
+            return make_ir_data()
+        if phase == "opt":
+            return make_optimization_data()
+        if phase == "codegen":
+            return make_assembly_data()
+        return self._execution_data

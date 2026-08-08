@@ -28,6 +28,8 @@ void jw_int(JsonWriter *w, long long value);
 void jw_double(JsonWriter *w, double value, int max_decimals);
 void jw_bool(JsonWriter *w, int value);
 void jw_null(JsonWriter *w);
+/* Append a pre-formatted, JSON-ready value verbatim (no escaping). */
+void jw_append_raw(JsonWriter *w, const char *value);
 const char *jw_cstr(JsonWriter *w);
 size_t jw_len(JsonWriter *w);
 

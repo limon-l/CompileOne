@@ -100,6 +100,7 @@ WS         [ \t\r]+
 "for"       { record_token(TOK_FOR); }
 "return"    { record_token(TOK_RETURN); }
 "print"     { record_token(TOK_PRINT); }
+"read"      { record_token(TOK_READ); }
 "true"      { record_token(TOK_TRUE); }
 "false"     { record_token(TOK_FALSE); }
 

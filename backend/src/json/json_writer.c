@@ -107,6 +107,11 @@ void jw_null(JsonWriter *w) {
     strbuf_append(&w->buf, "null");
 }
 
+void jw_append_raw(JsonWriter *w, const char *value) {
+    jw_before_child(w);
+    strbuf_append(&w->buf, value);
+}
+
 const char *jw_cstr(JsonWriter *w) {
     return strbuf_cstr(&w->buf);
 }

@@ -17,14 +17,26 @@ from pathlib import Path
 
 from app.application.compile_session import CompileSession
 from app.application.pipeline import PhaseResult, PhaseStatus, Pipeline
-from app.domain.artifacts import AbstractSyntaxTree, Execution, ParseTree
+from app.domain.artifacts import (
+    AbstractSyntaxTree,
+    AssemblyInfo,
+    Execution,
+    IrInfo,
+    OptInfo,
+    ParseTree,
+    SemanticInfo,
+)
 from app.domain.diagnostics import Diagnostic, Severity
 from app.infrastructure.artifact_store import ArtifactStore
 from app.infrastructure.backend_runner import BackendRunner, PhaseNotImplemented
 from app.infrastructure.json_loader import (
+    parse_assembly,
     parse_ast,
     parse_cst,
     parse_execution,
+    parse_ir,
+    parse_optimization,
+    parse_semantic,
     parse_token_stream,
 )
 from app.infrastructure.tool_detector import Toolchain
@@ -235,6 +247,50 @@ class Orchestrator:
                     )
                 )
 
+        for artifact_id, phase, source, code_prefix in (
+            ("parse_tree", "syntax", "compileone parse", "SYN"),
+            ("ast", "syntax", "compileone ast", "SYN"),
+        ):
+            data = session.artifacts.get(artifact_id)
+            if data is None:
+                continue
+            for error in data.get("errors", []):
+                message = str(error.get("message", "syntax error"))
+                line = int(error.get("line", 1))
+                column = int(error.get("column", 1))
+                session.diagnostics.append(
+                    Diagnostic(
+                        severity=Severity.ERROR,
+                        code=f"{code_prefix}001",
+                        message=message,
+                        line=line,
+                        column=column,
+                        end_line=line,
+                        end_column=column + 1,
+                        phase=phase,
+                        source=source,
+                    )
+                )
+
+        semantic_data = session.artifacts.get("semantic")
+        if semantic_data is not None:
+            semantic = parse_semantic(semantic_data)
+            for diagnostic in semantic.diagnostics:
+                is_error = diagnostic.severity == "error"
+                session.diagnostics.append(
+                    Diagnostic(
+                        severity=Severity.ERROR if is_error else Severity.WARNING,
+                        code=diagnostic.code,
+                        message=diagnostic.message,
+                        line=diagnostic.line,
+                        column=diagnostic.column,
+                        end_line=diagnostic.line,
+                        end_column=diagnostic.column + 1,
+                        phase="semantic",
+                        source="compileone semantic",
+                    )
+                )
+
     # ------------------------------------------------------ session helpers
 
     @staticmethod
@@ -258,6 +314,26 @@ class Orchestrator:
     def execution_of(session: CompileSession) -> Execution | None:
         data = session.artifacts.get("execution")
         return parse_execution(data) if data else None
+
+    @staticmethod
+    def semantic_of(session: CompileSession) -> SemanticInfo | None:
+        data = session.artifacts.get("semantic")
+        return parse_semantic(data) if data else None
+
+    @staticmethod
+    def ir_of(session: CompileSession) -> IrInfo | None:
+        data = session.artifacts.get("ir")
+        return parse_ir(data) if data else None
+
+    @staticmethod
+    def optimization_of(session: CompileSession) -> OptInfo | None:
+        data = session.artifacts.get("optimization")
+        return parse_optimization(data) if data else None
+
+    @staticmethod
+    def assembly_of(session: CompileSession) -> AssemblyInfo | None:
+        data = session.artifacts.get("assembly")
+        return parse_assembly(data) if data else None
 
     def export_tokens_csv(self, session: CompileSession, path: Path) -> None:
         """Export the token stream to a CSV file."""

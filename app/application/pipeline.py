@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from app.infrastructure.backend_runner import PhaseNotImplemented
 from app.infrastructure.json_loader import load_json
 from app.infrastructure.paths import PHASE_ARTIFACTS
 
@@ -22,17 +23,34 @@ class Phase:
     input_kind: str          # "source" for the first phase, "artifact" thereafter
     output_artifact: str
     available: bool          # implemented in the backend yet?
+    input_artifact: str | None = None
+    mini_c_only: bool = False
+    # When True the phase only runs for the mini-c study language
+    # (parse / ast / semantic / run). Native languages (C, C++, ...)
+    # lex through the shared scanner but are compiled/run by their own
+    # external toolchain, not the mini-c front end.
+    # input_artifact: overrides the artifact consumed instead of the
+    # previous phase's output. The parse / ast / semantic phases all
+    # derive from the token stream (the backend front end runs once and
+    # yields CST + AST + symbols in-process), so they share
+    # "token_stream" as their input.
 
 
 STUDY_PHASES: list[Phase] = [
     Phase("lex", "Lexical Analysis", "source", "token_stream", True),
-    Phase("parse", "Parsing (Parse Tree)", "artifact", "parse_tree", False),
-    Phase("ast", "Abstract Syntax Tree", "artifact", "ast", False),
-    Phase("semantic", "Semantic Analysis", "artifact", "semantic", False),
-    Phase("ir", "Intermediate Representation", "artifact", "ir", False),
-    Phase("opt", "Optimization", "artifact", "optimization", False),
-    Phase("codegen", "Code Generation", "artifact", "assembly", False),
-    Phase("run", "Execution", "source", "execution", True),
+    Phase("parse", "Parsing (Parse Tree)", "artifact", "parse_tree", True,
+          input_artifact="token_stream", mini_c_only=True),
+    Phase("ast", "Abstract Syntax Tree", "artifact", "ast", True,
+          input_artifact="token_stream", mini_c_only=True),
+    Phase("semantic", "Semantic Analysis", "artifact", "semantic", True,
+          input_artifact="token_stream", mini_c_only=True),
+    Phase("ir", "Intermediate Representation", "artifact", "ir", True,
+          input_artifact="token_stream", mini_c_only=True),
+    Phase("opt", "Optimization", "artifact", "optimization", True,
+          input_artifact="token_stream", mini_c_only=True),
+    Phase("codegen", "Code Generation", "artifact", "assembly", True,
+          input_artifact="token_stream", mini_c_only=True),
+    Phase("run", "Execution", "source", "execution", True, mini_c_only=True),
 ]
 
 
@@ -98,24 +116,42 @@ class Pipeline:
         results: list[PhaseResult] = []
         halted = False
 
+        def drop_stale(phase: Phase) -> None:
+            """Remove a leftover artifact from a previous run so the UI
+            never shows stale data for a phase that did not execute
+            (e.g. mini-c phases skipped for native languages)."""
+            session_artifacts.pop(phase.output_artifact, None)
+
         for phase in self.phases:
             result = PhaseResult(phase)
             results.append(result)
 
             if halted:
                 result.status = PhaseStatus.SKIPPED
+                drop_stale(phase)
                 continue
             if phase.id in self.breakpoints:
                 halted = True
                 result.status = PhaseStatus.SKIPPED
+                drop_stale(phase)
                 continue
             if not phase.available:
                 result.status = PhaseStatus.UNAVAILABLE
                 result.error = "registered but not implemented yet (roadmap Phase C+)"
+                drop_stale(phase)
+                continue
+            if phase.mini_c_only and language != "mini-c":
+                result.status = PhaseStatus.SKIPPED
+                result.error = (
+                    "mini-c study phase; native languages use their own "
+                    "toolchain instead"
+                )
+                drop_stale(phase)
                 continue
             if phase.id == "run" and language != "mini-c":
                 result.status = PhaseStatus.SKIPPED
                 result.error = "interpreter supports mini-c only; native run used instead"
+                drop_stale(phase)
                 continue
 
             result.status = PhaseStatus.RUNNING
@@ -124,7 +160,9 @@ class Pipeline:
                     input_path = source_path
                 else:
                     prev = self.previous_phase(phase)
-                    input_path = store.artifact_path(prev.output_artifact)
+                    input_path = store.artifact_path(
+                        phase.input_artifact or prev.output_artifact
+                    )
 
                 output_path = store.artifact_path(phase.output_artifact)
                 data = runner.run_phase(
@@ -134,6 +172,10 @@ class Pipeline:
                 store.save(phase.output_artifact, data)
                 session_artifacts[phase.output_artifact] = data
                 result.status = PhaseStatus.OK
+            except PhaseNotImplemented as exc:
+                result.status = PhaseStatus.UNAVAILABLE
+                result.error = str(exc)
+                drop_stale(phase)
             except Exception as exc:  # noqa: BLE001 — surface every failure to the UI
                 result.status = PhaseStatus.ERROR
                 result.error = str(exc)

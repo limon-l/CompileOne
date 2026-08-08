@@ -25,7 +25,14 @@ OBJS := $(BUILD_DIR)/compileone.o \
         $(BUILD_DIR)/token.o \
         $(BUILD_DIR)/strbuf.o \
         $(BUILD_DIR)/json_writer.o \
-        $(BUILD_DIR)/interp.o
+        $(BUILD_DIR)/json_reader.o \
+        $(BUILD_DIR)/artifact_loader.o \
+        $(BUILD_DIR)/parser.o \
+        $(BUILD_DIR)/semantic.o \
+        $(BUILD_DIR)/interp.o \
+        $(BUILD_DIR)/ir.o \
+        $(BUILD_DIR)/optimize.o \
+        $(BUILD_DIR)/codegen.o
 
 # ------------------------------------------------------------
 # Default target
@@ -53,7 +60,27 @@ $(BUILD_DIR)/%.o: backend/src/json/%.c $(BACKEND_HDRS) | build_dirs
 	@echo "[gcc]  $@"
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(BUILD_DIR)/%.o: backend/src/parser/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: backend/src/semantic/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(BUILD_DIR)/%.o: backend/src/exec/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: backend/src/ir/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: backend/src/optimize/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: backend/src/codegen/%.c $(BACKEND_HDRS) | build_dirs
 	@echo "[gcc]  $@"
 	$(CC) $(CFLAGS) -c $< -o $@
 

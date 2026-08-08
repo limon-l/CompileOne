@@ -14,12 +14,21 @@ from typing import Any
 
 from app.domain.artifacts import (
     AbstractSyntaxTree,
+    AsmInstruction,
+    AssemblyInfo,
     ASTNode,
     Execution,
     ExecutionError,
+    IrInfo,
+    IrInstruction,
     LexicalError,
+    OptInfo,
+    OptPass,
     ParseTree,
     ParseTreeNode,
+    SemanticDiagnostic,
+    SemanticInfo,
+    SymbolInfo,
     Token,
     TokenStream,
 )
@@ -205,4 +214,152 @@ def parse_execution(data: dict[str, Any]) -> Execution:
         steps=int(data.get("steps", 0)),
         output=[str(line) for line in data["output"]],
         errors=errors,
+    )
+
+
+def parse_semantic(data: dict[str, Any]) -> SemanticInfo:
+    """Validate and convert a semantic-analysis artifact into a SemanticInfo."""
+    _expect(data, "schema")
+
+    symbols: list[SymbolInfo] = []
+    for raw in data.get("symbols", []):
+        symbols.append(
+            SymbolInfo(
+                name=str(_expect(raw, "name")),
+                type=str(_expect(raw, "type")),
+                scope=str(raw.get("scope", "global")),
+                scope_level=int(raw.get("scope_level", 0)),
+                is_const=bool(raw.get("is_const", False)),
+                line=int(raw.get("line", 1)),
+                column=int(raw.get("column", 1)),
+            )
+        )
+
+    diagnostics: list[SemanticDiagnostic] = []
+    for raw in data.get("diagnostics", []):
+        diagnostics.append(
+            SemanticDiagnostic(
+                severity=str(_expect(raw, "severity")),
+                code=str(_expect(raw, "code")),
+                message=str(_expect(raw, "message")),
+                line=int(raw.get("line", 1)),
+                column=int(raw.get("column", 1)),
+            )
+        )
+
+    return SemanticInfo(
+        schema=str(data.get("schema", "")),
+        phase=str(data.get("phase", "semantic")),
+        language=str(data.get("language", "")),
+        source_file=str(data.get("source_file", "")),
+        generated_by=str(data.get("generated_by", "")),
+        duration_ms=float(data.get("duration_ms", 0.0)),
+        valid=bool(data.get("valid", True)),
+        symbols=symbols,
+        diagnostics=diagnostics,
+    )
+
+
+def _parse_ir_instruction(raw: dict[str, Any]) -> IrInstruction:
+    """Parse one TAC instruction (accepts both the `tac` arg1/arg2/result
+    form and the compact `quadruples` a/b/r form)."""
+    return IrInstruction(
+        index=int(_expect(raw, "index")),
+        op=str(_expect(raw, "op")),
+        arg1=str(raw.get("arg1", raw.get("a", ""))),
+        arg2=str(raw.get("arg2", raw.get("b", ""))),
+        result=str(raw.get("result", raw.get("r", ""))),
+    )
+
+
+def parse_ir(data: dict[str, Any]) -> IrInfo:
+    """Validate and convert an IR artifact into an IrInfo."""
+    _expect(data, "schema")
+
+    tac = [_parse_ir_instruction(raw) for raw in data.get("tac", [])]
+    quadruples = [_parse_ir_instruction(raw) for raw in data.get("quadruples", [])]
+
+    return IrInfo(
+        schema=str(data.get("schema", "")),
+        phase=str(data.get("phase", "ir")),
+        language=str(data.get("language", "")),
+        source_file=str(data.get("source_file", "")),
+        generated_by=str(data.get("generated_by", "")),
+        duration_ms=float(data.get("duration_ms", 0.0)),
+        tac=tac,
+        quadruples=quadruples,
+        temporaries=[str(t) for t in data.get("temporaries", [])],
+        labels=[str(lbl) for lbl in data.get("labels", [])],
+        errors=list(data.get("errors", [])),
+    )
+
+
+def parse_optimization(data: dict[str, Any]) -> OptInfo:
+    """Validate and convert an optimization artifact into an OptInfo."""
+    _expect(data, "schema")
+
+    passes: list[OptPass] = []
+    for raw in data.get("passes", []):
+        passes.append(
+            OptPass(
+                name=str(_expect(raw, "name")),
+                applied=bool(raw.get("applied", False)),
+                explanation=str(raw.get("explanation", "")),
+                instruction_reduction=int(raw.get("instruction_reduction", 0)),
+                removed_instructions=[
+                    _parse_ir_instruction(q)
+                    for q in raw.get("removed_instructions", [])
+                ],
+                before=[str(line) for line in raw.get("before", [])],
+                after=[str(line) for line in raw.get("after", [])],
+            )
+        )
+
+    return OptInfo(
+        schema=str(data.get("schema", "")),
+        phase=str(data.get("phase", "optimization")),
+        language=str(data.get("language", "")),
+        source_file=str(data.get("source_file", "")),
+        generated_by=str(data.get("generated_by", "")),
+        duration_ms=float(data.get("duration_ms", 0.0)),
+        before_instruction_count=int(data.get("before_instruction_count", 0)),
+        after_instruction_count=int(data.get("after_instruction_count", 0)),
+        instruction_reduction_pct=float(data.get("instruction_reduction_pct", 0.0)),
+        passes=passes,
+        errors=list(data.get("errors", [])),
+    )
+
+
+def parse_assembly(data: dict[str, Any]) -> AssemblyInfo:
+    """Validate and convert an assembly artifact into an AssemblyInfo."""
+    _expect(data, "schema")
+
+    instructions: list[AsmInstruction] = []
+    for raw in data.get("instructions", []):
+        instructions.append(
+            AsmInstruction(
+                address=str(raw.get("address", "")),
+                mnemonic=str(_expect(raw, "mnemonic")),
+                operands=[str(op) for op in raw.get("operands", [])],
+                class_name=str(raw.get("class", "")),
+                comment=raw.get("comment"),
+                label=raw.get("label"),
+            )
+        )
+
+    return AssemblyInfo(
+        schema=str(data.get("schema", "")),
+        phase=str(data.get("phase", "codegen")),
+        language=str(data.get("language", "")),
+        source_file=str(data.get("source_file", "")),
+        generated_by=str(data.get("generated_by", "")),
+        duration_ms=float(data.get("duration_ms", 0.0)),
+        arch=str(data.get("arch", "x86_64")),
+        syntax=str(data.get("syntax", "att")),
+        text=str(data.get("text", "")),
+        instructions=instructions,
+        prologue=[str(line) for line in data.get("prologue", [])],
+        epilogue=[str(line) for line in data.get("epilogue", [])],
+        stack_layout=dict(data.get("stack_layout", {})),
+        errors=list(data.get("errors", [])),
     )

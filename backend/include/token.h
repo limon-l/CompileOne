@@ -23,6 +23,7 @@ typedef enum TokenKind {
     TOK_FOR,
     TOK_RETURN,
     TOK_PRINT,
+    TOK_READ,
     TOK_TRUE,
     TOK_FALSE,
 
@@ -124,6 +125,7 @@ const char *token_subtype(TokenKind kind);
 const char *token_color(TokenKind kind);
 const char *token_description(TokenKind kind);
 TokenCategory token_category(TokenKind kind);
+TokenKind token_from_name(const char *name);         /* reverse of token_name() */
 
 /* Build a token that owns a copy of `lexeme`. */
 Token token_make(TokenKind kind, const char *lexeme, size_t len,
