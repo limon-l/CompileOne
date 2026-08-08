@@ -32,6 +32,10 @@ class ArtifactStore:
         """Path of the named artifact (e.g. 'token_stream' -> Output/token_stream.json)."""
         return self.output_dir / f"{artifact_id}.json"
 
+    def workdir(self) -> Path:
+        """Directory used to stage native executables and run them."""
+        return self.output_dir
+
     # ------------------------------------------------------ persistence
 
     def save(self, artifact_id: str, data: dict[str, Any]) -> Path:

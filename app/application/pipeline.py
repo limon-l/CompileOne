@@ -86,6 +86,7 @@ class Pipeline:
         store,
         runner,
         session_artifacts: dict[str, dict],
+        language: str = "mini-c",
         breakpoint_halt=None,
     ) -> list[PhaseResult]:
         """Run the pipeline from its first phase.
@@ -112,6 +113,10 @@ class Pipeline:
                 result.status = PhaseStatus.UNAVAILABLE
                 result.error = "registered but not implemented yet (roadmap Phase C+)"
                 continue
+            if phase.id == "run" and language != "mini-c":
+                result.status = PhaseStatus.SKIPPED
+                result.error = "interpreter supports mini-c only; native run used instead"
+                continue
 
             result.status = PhaseStatus.RUNNING
             try:
@@ -123,7 +128,7 @@ class Pipeline:
 
                 output_path = store.artifact_path(phase.output_artifact)
                 data = runner.run_phase(
-                    phase.id, input_path, output_path, language="mini-c"
+                    phase.id, input_path, output_path, language=language
                 )
                 result.duration_ms = float(data.get("duration_ms", 0.0))
                 store.save(phase.output_artifact, data)

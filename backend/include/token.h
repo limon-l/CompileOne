@@ -61,6 +61,19 @@ typedef enum TokenKind {
     TOK_STRING_LITERAL,
     TOK_IDENTIFIER,
 
+    /* C/C++ & preprocessor extensions (tolerated by the study lexer so
+       real C/C++ sources can be tokenized without spurious errors) */
+    TOK_DOT,         /* . member access / struct field */
+    TOK_COLON,       /* : label / ternary separator */
+    TOK_SCOPE,       /* :: C++ scope resolution */
+    TOK_AMP,         /* & address-of / bitwise AND */
+    TOK_SHL,         /* << left shift / stream out */
+    TOK_SHR,         /* >> right shift / stream in */
+    TOK_ARROW,       /* -> pointer member access */
+    TOK_QUESTION,    /* ? ternary condition */
+    TOK_TILDE,       /* ~ bitwise complement */
+    TOK_PREPROC,     /* # preprocessor directive line */
+
     /* special */
     TOK_COMMENT,
     TOK_LEX_ERROR

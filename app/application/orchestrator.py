@@ -12,15 +12,22 @@ a fake runner and reused by CLI tooling.
 from __future__ import annotations
 
 import logging
+import subprocess
 from pathlib import Path
 
 from app.application.compile_session import CompileSession
 from app.application.pipeline import PhaseResult, PhaseStatus, Pipeline
-from app.domain.artifacts import Execution
+from app.domain.artifacts import AbstractSyntaxTree, Execution, ParseTree
 from app.domain.diagnostics import Diagnostic, Severity
 from app.infrastructure.artifact_store import ArtifactStore
 from app.infrastructure.backend_runner import BackendRunner, PhaseNotImplemented
-from app.infrastructure.json_loader import parse_execution, parse_token_stream
+from app.infrastructure.json_loader import (
+    parse_ast,
+    parse_cst,
+    parse_execution,
+    parse_token_stream,
+)
+from app.infrastructure.tool_detector import Toolchain
 
 logger = logging.getLogger("compileone.orchestrator")
 
@@ -28,13 +35,75 @@ logger = logging.getLogger("compileone.orchestrator")
 class Orchestrator:
     def __init__(
         self,
-        pipeline: Pipeline | None = None,
-        runner: BackendRunner | None = None,
-        store: ArtifactStore | None = None,
+        pipeline: Pipeline,
+        runner: BackendRunner,
+        store: ArtifactStore,
+        toolchain: Toolchain,
     ) -> None:
-        self.pipeline = pipeline or Pipeline()
-        self.runner = runner or BackendRunner()
-        self.store = store or ArtifactStore()
+        self.pipeline = pipeline
+        self.runner = runner
+        self.store = store
+        self.toolchain = toolchain
+
+    # ------------------------------------------------------ Native Compilation
+
+    def compile_c_source(self, session: CompileSession) -> tuple[Path | None, str | None]:
+        """
+        Compiles a C source file using an external compiler (e.g., gcc).
+        Returns a tuple of (output_path, errors).
+        """
+        compiler_tool = self.toolchain.get("gcc") # Or clang, etc.
+        if not compiler_tool or not compiler_tool.available:
+            return None, "C compiler (gcc) not found in toolchain."
+
+        output_path = self.store.workdir() / session.source_path.with_suffix(".exe").name
+        source_path = str(session.source_path)
+        
+        command = [compiler_tool.path, "-o", str(output_path), source_path, "-g"]
+        logger.debug("native compile: %s", " ".join(command))
+        
+        proc = subprocess.run(
+            command, capture_output=True, text=True, check=False,
+            cwd=str(self.store.workdir())
+        )
+
+        if proc.returncode != 0:
+            # Compilation failed, return errors
+            errors = proc.stderr.strip() or "Unknown compilation error."
+            logger.error("native compile failed:\n%s", errors)
+            return None, errors
+        
+        # Compilation succeeded
+        return output_path, None
+
+    def compile_cpp_source(self, session: CompileSession) -> tuple[Path | None, str | None]:
+        """
+        Compiles a C++ source file using an external compiler (e.g., g++).
+        Returns a tuple of (output_path, errors).
+        """
+        compiler_tool = self.toolchain.get("g++") # Or clang++, etc.
+        if not compiler_tool or not compiler_tool.available:
+            return None, "C++ compiler (g++) not found in toolchain."
+
+        output_path = self.store.workdir() / session.source_path.with_suffix(".exe").name
+        source_path = str(session.source_path)
+        
+        command = [compiler_tool.path, "-o", str(output_path), source_path, "-g"]
+        logger.debug("native compile: %s", " ".join(command))
+        
+        proc = subprocess.run(
+            command, capture_output=True, text=True, check=False,
+            cwd=str(self.store.workdir())
+        )
+
+        if proc.returncode != 0:
+            # Compilation failed, return errors
+            errors = proc.stderr.strip() or "Unknown compilation error."
+            logger.error("native compile failed:\n%s", errors)
+            return None, errors
+        
+        # Compilation succeeded
+        return output_path, None
 
     # ------------------------------------------------------ compile flows
 
@@ -45,6 +114,7 @@ class Orchestrator:
             store=self.store,
             runner=self.runner,
             session_artifacts=session.artifacts,
+            language=session.language,
         )
         session.phase_results = results
         session.timings = {
@@ -86,13 +156,7 @@ class Orchestrator:
         return session
 
     def execute(self, session: CompileSession) -> CompileSession:
-        """Run the program through the execution phase and capture stdout.
-
-        The execution phase reads the source file directly (input_kind
-        "source"), so it works without any prior pipeline phases having
-        run. Output lines land in session.artifacts["execution"] and any
-        runtime errors become editor diagnostics.
-        """
+        """Run the program through the internal execution phase (interpreter)."""
         phase = self.pipeline.phase_by_id("run")
         if phase is None or not phase.available:
             raise ValueError("execution phase is not available")
@@ -177,6 +241,18 @@ class Orchestrator:
     def token_stream_of(session: CompileSession):
         data = session.artifacts.get("token_stream")
         return parse_token_stream(data) if data else None
+
+    @staticmethod
+    def cst_of(session: CompileSession) -> ParseTree | None:
+        """Safely retrieves and parses the ParseTree artifact from a session."""
+        data = session.artifacts.get("parse_tree")
+        return parse_cst(data) if data else None
+
+    @staticmethod
+    def ast_of(session: CompileSession) -> AbstractSyntaxTree | None:
+        """Safely retrieves and parses the AbstractSyntaxTree artifact from a session."""
+        data = session.artifacts.get("ast")
+        return parse_ast(data) if data else None
 
     @staticmethod
     def execution_of(session: CompileSession) -> Execution | None:

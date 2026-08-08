@@ -17,6 +17,7 @@ LEXER_C   := $(GEN_DIR)/lex.yy.c
 
 BACKEND_INCS := -Ibackend/include
 CFLAGS       := -Wall -O2 -std=gnu99 $(BACKEND_INCS) -D__USE_MINGW_ANSI_STDIO
+BACKEND_HDRS := $(wildcard backend/include/*.h)
 
 # Backend object files (basenames are unique => no collisions)
 OBJS := $(BUILD_DIR)/compileone.o \
@@ -38,28 +39,27 @@ $(LEXER_C): $(LEXER_L) | build_dirs
 	@echo "[flex] $(LEXER_L)"
 	$(FLEX) -o $(LEXER_C) $(LEXER_L)
 
-$(BUILD_DIR)/lex.yy.o: $(LEXER_C) | build_dirs
+# Object files depend on the headers so a header change (e.g. token.h)
+# triggers a full rebuild instead of linking stale objects.
+$(BUILD_DIR)/%.o: backend/src/driver/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: backend/src/util/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: backend/src/json/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/%.o: backend/src/exec/%.c $(BACKEND_HDRS) | build_dirs
+	@echo "[gcc]  $@"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/lex.yy.o: $(LEXER_C) $(BACKEND_HDRS) | build_dirs
 	@echo "[gcc]  $@"
 	$(CC) $(CFLAGS) -c $(LEXER_C) -o $@
-
-# ------------------------------------------------------------
-# C sources: pattern rules per source directory
-# ------------------------------------------------------------
-$(BUILD_DIR)/%.o: backend/src/driver/%.c | build_dirs
-	@echo "[gcc]  $@"
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(BUILD_DIR)/%.o: backend/src/util/%.c | build_dirs
-	@echo "[gcc]  $@"
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(BUILD_DIR)/%.o: backend/src/json/%.c | build_dirs
-	@echo "[gcc]  $@"
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(BUILD_DIR)/%.o: backend/src/exec/%.c | build_dirs
-	@echo "[gcc]  $@"
-	$(CC) $(CFLAGS) -c $< -o $@
 
 # ------------------------------------------------------------
 # Link

@@ -117,6 +117,28 @@ static const TokenInfo kTokenInfo[] = {
     {TOK_IDENTIFIER,     "IDENTIFIER",     CAT_IDENTIFIER,"user-identifier", "#9cdcfe",
      "User-defined identifier"},
 
+    /* ---- C/C++ & preprocessor extensions ---- */
+    {TOK_DOT,     "OP_DOT",     CAT_OPERATOR,  "member",       "#d4d4d4",
+     "Member/field access operator (C/C++)"},
+    {TOK_COLON,   "OP_COLON",   CAT_OPERATOR,  "label",        "#d4d4d4",
+     "Label / ternary separator (C/C++)"},
+    {TOK_SCOPE,   "OP_SCOPE",   CAT_OPERATOR,  "scope",        "#d4d4d4",
+     "C++ namespace/class scope-resolution operator"},
+    {TOK_AMP,     "OP_AMP",     CAT_OPERATOR,  "bitwise",      "#d4d4d4",
+     "Address-of or bitwise AND operator (C/C++)"},
+    {TOK_SHL,     "OP_SHL",     CAT_OPERATOR,  "shift",        "#d4d4d4",
+     "Left shift / stream-insertion operator"},
+    {TOK_SHR,     "OP_SHR",     CAT_OPERATOR,  "shift",        "#d4d4d4",
+     "Right shift / stream-extraction operator"},
+    {TOK_ARROW,   "OP_ARROW",   CAT_OPERATOR,  "member",       "#d4d4d4",
+     "Pointer member-access operator (C/C++)"},
+    {TOK_QUESTION,"OP_QUESTION",CAT_OPERATOR,  "ternary",      "#d4d4d4",
+     "Ternary conditional operator (C/C++)"},
+    {TOK_TILDE,   "OP_TILDE",   CAT_OPERATOR,  "bitwise",      "#d4d4d4",
+     "Bitwise complement operator (C/C++)"},
+    {TOK_PREPROC, "PREPROC",    CAT_COMMENT,   "preprocessor", "#569cd6",
+     "Preprocessor directive (skipped by the compiler)"},
+
     /* ---- special ---- */
     {TOK_COMMENT,  "COMMENT",  CAT_COMMENT, "comment",  "#6a9955",
      "Source comment (skipped by the parser)"},

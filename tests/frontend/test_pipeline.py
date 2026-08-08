@@ -48,6 +48,25 @@ def test_run_with_fake_runner_runs_lex_and_execution(tmp_path, fake_runner):
     assert (tmp_path / "out" / "execution.json").is_file()
 
 
+def test_run_phase_skipped_for_native_languages(tmp_path, fake_runner):
+    """
+    The mini-c interpreter must not be invoked when lexing/compiling
+    native languages (C/C++/Java); those are run by their own toolchain.
+    """
+    pipeline = Pipeline()
+    store = ArtifactStore(output_dir=tmp_path / "out", cache_dir=tmp_path / "cache")
+    results = pipeline.run(
+        source_path=tmp_path / "hello.cpp",
+        store=store,
+        runner=fake_runner,
+        session_artifacts={},
+        language="c++",
+    )
+    assert fake_runner.calls == ["lex"]
+    assert results[-1].status == PhaseStatus.SKIPPED
+    assert "native" in results[-1].error
+
+
 def test_breakpoint_halts_pipeline(fake_runner, tmp_path):
     pipeline = Pipeline()
     pipeline.breakpoints = {"lex"}

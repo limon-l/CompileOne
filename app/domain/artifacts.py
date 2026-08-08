@@ -8,6 +8,7 @@ models, never on raw dicts.
 
 from __future__ import annotations
 
+import dataclasses
 from dataclasses import dataclass
 from typing import Any
 
@@ -95,9 +96,55 @@ class Execution:
         return self.status == "ok"
 
 
-@dataclass
-class PlaceholderArtifact:
-    """Used for registered-but-not-yet-implemented phases."""
 
+
+@dataclass
+class ParseTreeNode:
+    """A node in the Concrete Syntax Tree (CST)."""
+    
+    rule_name: str | None = None
+    token: Token | None = None
+    children: list[ParseTreeNode] = dataclasses.field(default_factory=list)
+
+    @property
+    def is_terminal(self) -> bool:
+        """A terminal node holds a token and has no children."""
+        return self.token is not None
+
+
+@dataclass
+class ParseTree:
+    """The full parse-tree artifact."""
+
+    schema: str
     phase: str
-    message: str
+    language: str
+    source_file: str
+    generated_by: str
+    duration_ms: float
+    root: ParseTreeNode | None = None
+    errors: list[Any] = dataclasses.field(default_factory=list)  # Placeholder for syntax errors
+
+
+@dataclass
+class ASTNode:
+    """A node in the Abstract Syntax Tree (AST)."""
+    
+    node_type: str
+    token: Token | None = None
+    attributes: dict[str, Any] = dataclasses.field(default_factory=dict)
+    children: list[ASTNode] = dataclasses.field(default_factory=list)
+
+
+@dataclass
+class AbstractSyntaxTree:
+    """The full abstract-syntax-tree artifact."""
+
+    schema: str
+    phase: str
+    language: str
+    source_file: str
+    generated_by: str
+    duration_ms: float
+    root: ASTNode | None = None
+    errors: list[Any] = dataclasses.field(default_factory=list)

@@ -136,7 +136,7 @@ static int write_token_artifact(const char *output_path, const char *input_path,
     return 0;
 }
 
-static int cmd_lex(const char *input, const char *output) {
+static int cmd_lex(const char *input, const char *output, const char *language) {
     clock_t start = clock();
 
     TokenList tokens = {0};
@@ -148,7 +148,7 @@ static int cmd_lex(const char *input, const char *output) {
     }
 
     double duration_ms = ((double)(clock() - start)) * 1000.0 / CLOCKS_PER_SEC;
-    int rc = write_token_artifact(output, input, "mini-c", duration_ms,
+    int rc = write_token_artifact(output, input, language, duration_ms,
                                   &tokens, &errors);
 
     fprintf(stderr, "lex: %lu tokens, %lu errors, %.2f ms -> %s\n",
@@ -378,13 +378,7 @@ int main(int argc, char **argv) {
             fprintf(stderr, "compileone: lex requires --input and --output\n");
             return 1;
         }
-        if (strcmp(language, "mini-c") != 0) {
-            fprintf(stderr,
-                    "compileone: lex phase supports language 'mini-c' only "
-                    "(got '%s')\n", language);
-            return 1;
-        }
-        return cmd_lex(input, output);
+        return cmd_lex(input, output, language);
     }
 
     if (strcmp(phase, "run") == 0) {

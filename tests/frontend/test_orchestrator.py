@@ -6,8 +6,9 @@ import csv
 
 from app.application.compile_session import CompileSession
 from app.application.orchestrator import Orchestrator
-from app.application.pipeline import PhaseStatus
+from app.application.pipeline import PhaseStatus, Pipeline
 from app.infrastructure.artifact_store import ArtifactStore
+from app.infrastructure.tool_detector import Toolchain
 from tests.conftest import make_execution_data, make_token_stream_data
 
 
@@ -19,9 +20,18 @@ def _session(tmp_path, runner):
     ), ArtifactStore(output_dir=tmp_path / "out", cache_dir=tmp_path / "cache"), runner
 
 
+def _orchestrator(runner, store):
+    return Orchestrator(
+        pipeline=Pipeline(),
+        runner=runner,
+        store=store,
+        toolchain=Toolchain(),
+    )
+
+
 def test_compile_all_populates_session(tmp_path, fake_runner):
     session, store, runner = _session(tmp_path, fake_runner)
-    orchestrator = Orchestrator(runner=runner, store=store)
+    orchestrator = _orchestrator(runner, store)
     orchestrator.compile_all(session)
 
     assert session.artifacts["token_stream"] is fake_runner.token_stream_data
@@ -37,7 +47,7 @@ def test_compile_all_surfaces_lexical_errors(tmp_path):
     ])
     runner = _Runner(data)
     session, store, _ = _session(tmp_path, runner)
-    orchestrator = Orchestrator(runner=runner, store=store)
+    orchestrator = _orchestrator(runner, store)
     orchestrator.compile_all(session)
 
     assert session.error_count() == 1
@@ -50,7 +60,7 @@ def test_compile_all_surfaces_lexical_errors(tmp_path):
 
 def test_inspect_unknown_phase_raises(fake_runner, tmp_path):
     session, store, runner = _session(tmp_path, fake_runner)
-    orchestrator = Orchestrator(runner=runner, store=store)
+    orchestrator = _orchestrator(runner, store)
     try:
         orchestrator.inspect_phase(session, "nope")
     except ValueError as exc:
@@ -61,7 +71,7 @@ def test_inspect_unknown_phase_raises(fake_runner, tmp_path):
 
 def test_execute_runs_program_and_exposes_output(tmp_path, fake_runner):
     session, store, runner = _session(tmp_path, fake_runner)
-    orchestrator = Orchestrator(runner=runner, store=store)
+    orchestrator = _orchestrator(runner, store)
     orchestrator.execute(session)
 
     assert fake_runner.calls == ["run"]
@@ -80,7 +90,7 @@ def test_execute_surfaces_runtime_errors(tmp_path):
         errors=[{"line": 4, "column": 7, "message": "division by zero"}],
     ))
     session, store, _ = _session(tmp_path, runner)
-    orchestrator = Orchestrator(runner=runner, store=store)
+    orchestrator = _orchestrator(runner, store)
     orchestrator.execute(session)
 
     execution = orchestrator.execution_of(session)
@@ -97,7 +107,7 @@ def test_execute_surfaces_runtime_errors(tmp_path):
 
 def test_export_tokens_csv(tmp_path, fake_runner):
     session, store, runner = _session(tmp_path, fake_runner)
-    orchestrator = Orchestrator(runner=runner, store=store)
+    orchestrator = _orchestrator(runner, store)
     orchestrator.compile_all(session)
 
     out = tmp_path / "tokens.csv"

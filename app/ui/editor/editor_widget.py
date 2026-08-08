@@ -2,25 +2,21 @@
 
 Built on QPlainTextEdit with:
   - a line-number gutter
-  - mini-c syntax highlighting
+  - multi-language syntax highlighting via a factory
   - zoom (Ctrl+= / Ctrl+-)
   - diagnostic squiggles rendered as extra selections
   - a cursor-position signal for the status bar
-
-The editor is intentionally presentation-only: it never tokenizes or
-parses source for the pipeline. All compiler data arrives as domain
-models produced by the backend.
 """
 
 from __future__ import annotations
 
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QColor, QFont, QPainter, QTextCharFormat, QTextCursor
+from PyQt5.QtGui import QColor, QFont, QPainter, QSyntaxHighlighter, QTextCharFormat, QTextCursor
 from PyQt5.QtWidgets import QPlainTextEdit, QTextEdit, QWidget
 
 from app.domain import lexicon
 from app.domain.diagnostics import Diagnostic, Severity
-from app.ui.editor.syntax import MiniCHighlighter
+from app.ui.editor.syntax import create_highlighter
 
 
 class _LineNumberArea(QWidget):
@@ -29,7 +25,7 @@ class _LineNumberArea(QWidget):
         self._editor = editor
 
     def sizeHint(self):
-        return self._editor._line_number_area_width()
+        return self._editor._line_number_area_size_hint()
 
     def paintEvent(self, event) -> None:
         self._editor._paint_line_numbers(event)
@@ -41,6 +37,7 @@ class EditorWidget(QPlainTextEdit):
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
+        self._highlighter: QSyntaxHighlighter | None = None
 
         self._base_point_size = 11
         font = QFont()
@@ -55,7 +52,7 @@ class EditorWidget(QPlainTextEdit):
         self.setLineWrapMode(QPlainTextEdit.NoWrap)
         self.setFrameShape(QTextEdit.NoFrame)
 
-        self._highlighter = MiniCHighlighter(self.document())
+        self.set_language("mini-c")  # Set default language
         self._line_number_area = _LineNumberArea(self)
 
         self.blockCountChanged.connect(self._update_line_number_area_width)
@@ -65,14 +62,19 @@ class EditorWidget(QPlainTextEdit):
         self._update_line_number_area_width(0)
         self._emit_cursor_position()
 
+    def set_language(self, language: str) -> None:
+        """Sets the syntax highlighter for the chosen language."""
+        self._highlighter = create_highlighter(language, self.document())
+        self._highlighter.rehighlight()
+
     # ------------------------------------------------------ line numbers
 
-    def _line_number_area_width(self) -> int:
+    def _line_number_area_size_hint(self) -> int:
         digits = max(2, len(str(max(1, self.blockCount()))))
         return 10 + self.fontMetrics().horizontalAdvance("9") * digits
 
     def _update_line_number_area_width(self, _count: int) -> None:
-        self.setViewportMargins(self._line_number_area_width(), 0, 0, 0)
+        self.setViewportMargins(self._line_number_area_size_hint(), 0, 0, 0)
 
     def _update_line_number_area(self, rect, dy: int) -> None:
         if dy:
@@ -86,7 +88,7 @@ class EditorWidget(QPlainTextEdit):
         super().resizeEvent(event)
         cr = self.contentsRect()
         self._line_number_area.setGeometry(
-            cr.left(), cr.top(), self._line_number_area_width(), cr.height()
+            cr.left(), cr.top(), self._line_number_area_size_hint(), cr.height()
         )
 
     def _paint_line_numbers(self, event) -> None:
@@ -98,9 +100,14 @@ class EditorWidget(QPlainTextEdit):
         top = round(self.blockBoundingGeometry(block).translated(self.contentOffset()).top())
         bottom = top + round(self.blockBoundingRect(block).height())
 
+        active_color = QColor("#c6c6c6")
+        inactive_color = QColor("#858585")
+        current_block = self.textCursor().blockNumber()
+
         while block.isValid() and top <= event.rect().bottom():
             if block.isVisible() and bottom >= event.rect().top():
-                painter.setPen(QColor("#858585"))
+                is_current = block_number == current_block
+                painter.setPen(active_color if is_current else inactive_color)
                 painter.drawText(
                     0, top, self._line_number_area.width() - 6,
                     self.fontMetrics().height(), Qt.AlignRight, str(block_number + 1),
@@ -150,7 +157,7 @@ class EditorWidget(QPlainTextEdit):
 
     def set_diagnostics(self, diagnostics: list[Diagnostic]) -> None:
         """Render error/warning squiggles under the affected source lines."""
-        selections: list = []
+        selections: list[QTextEdit.ExtraSelection] = []
 
         for diag in diagnostics:
             if diag.severity not in (Severity.ERROR, Severity.WARNING):
@@ -158,15 +165,18 @@ class EditorWidget(QPlainTextEdit):
             cursor = self._cursor_for_diagnostic(diag)
             if cursor.isNull():
                 continue
+            
             fmt = QTextCharFormat()
-            color = QColor(lexicon.COLOR_ERROR if diag.severity == Severity.ERROR
-                           else "#ffcc00")
+            if diag.severity == Severity.ERROR:
+                color = QColor(lexicon.COLOR_ERROR)
+                fmt.setBackground(QColor(color.red(), color.green(), color.blue(), 40))
+            else:
+                color = QColor("#ffcc00")
+                fmt.setBackground(QColor(color.red(), color.green(), color.blue(), 25))
+
             fmt.setUnderlineColor(color)
             fmt.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
-            if diag.severity == Severity.ERROR:
-                fmt.setBackground(QColor(191, 97, 106, 40))
-            else:
-                fmt.setBackground(QColor(255, 204, 0, 25))
+            
             selection = QTextEdit.ExtraSelection()
             selection.cursor = cursor
             selection.format = fmt

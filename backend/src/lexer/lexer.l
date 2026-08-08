@@ -85,6 +85,7 @@ WS         [ \t\r]+
 "//"[^\n]*              { if (lex_collect_comments) record_token(TOK_COMMENT); else skip(); }
 "/*"([^*]|"*"+[^*/])*"*"+"/" { if (lex_collect_comments) record_token(TOK_COMMENT); else skip(); }
 "/*"                    { record_error("Unterminated block comment"); }
+^[ \t]*"#"[^\n]*        { record_token(TOK_PREPROC); }
 \"(\\.|[^"\\\n])*\"     { record_token(TOK_STRING_LITERAL); }
 \"(\\.|[^"\\\n])*       { record_error("Unterminated string literal"); }
 
@@ -110,6 +111,10 @@ WS         [ \t\r]+
 "||"    { record_token(TOK_OR); }
 "++"    { record_token(TOK_PLUSPLUS); }
 "--"    { record_token(TOK_MINUSMINUS); }
+"->"    { record_token(TOK_ARROW); }
+"<<"    { record_token(TOK_SHL); }
+">>"    { record_token(TOK_SHR); }
+"::"    { record_token(TOK_SCOPE); }
 "+"     { record_token(TOK_ADD); }
 "-"     { record_token(TOK_SUB); }
 "*"     { record_token(TOK_MUL); }
@@ -119,6 +124,11 @@ WS         [ \t\r]+
 ">"     { record_token(TOK_GT); }
 "!"     { record_token(TOK_NOT); }
 "="     { record_token(TOK_ASSIGN); }
+"&"     { record_token(TOK_AMP); }
+"."     { record_token(TOK_DOT); }
+":"     { record_token(TOK_COLON); }
+"?"     { record_token(TOK_QUESTION); }
+"~"     { record_token(TOK_TILDE); }
 
 ";"     { record_token(TOK_SEMICOLON); }
 ","     { record_token(TOK_COMMA); }

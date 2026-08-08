@@ -12,11 +12,8 @@ from pathlib import Path
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from PyQt5.QtWidgets import QApplication, QMessageBox
+from PyQt5.QtWidgets import QApplication
 
-from app.application.orchestrator import Orchestrator
-from app.infrastructure.artifact_store import ArtifactStore
-from app.infrastructure.backend_runner import BackendRunner
 from app.services.logging_service import setup_logging
 from app.services.settings_service import Settings
 from app.services.theme_service import ThemeService
@@ -31,23 +28,11 @@ def main() -> int:
     app.setOrganizationName("CompileOne")
 
     settings = Settings()
-    runner = BackendRunner()
-    settings.register("runner", runner)
-    settings.register("store", ArtifactStore())
-    settings.register("orchestrator", Orchestrator(runner=runner))
 
     ThemeService().apply(app)
 
     window = MainWindow(app, settings)
     window.show()
-
-    if not runner.available():
-        QMessageBox.warning(
-            window,
-            "Backend not found",
-            "Build/compileone.exe is missing.\n\n"
-            "Run 'make' in the project root to build the compiler backend.",
-        )
 
     return app.exec_()
 
