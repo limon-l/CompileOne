@@ -33,9 +33,11 @@ OBJS := $(BUILD_DIR)/compileone.o \
         $(BUILD_DIR)/json_reader.o \
         $(BUILD_DIR)/artifact_loader.o \
         $(BUILD_DIR)/parser.o \
+        $(BUILD_DIR)/frontend.o \
         $(BUILD_DIR)/semantic.o \
         $(BUILD_DIR)/interp.o \
         $(BUILD_DIR)/ir.o \
+        $(BUILD_DIR)/ir_lang.o \
         $(BUILD_DIR)/optimize.o \
         $(BUILD_DIR)/codegen.o
 

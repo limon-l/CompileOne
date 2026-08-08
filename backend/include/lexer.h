@@ -11,6 +11,11 @@
    not fatal), -1 on I/O failure. */
 int lex_file(const char *input_path, TokenList *tokens, LexErrorList *errors);
 
+/* Selects the scanner's language: "mini-c" (default) or a native
+   language ("c", "c++", "java") which enables the C-family keyword and
+   operator superset. Call before lex_file(). */
+void lex_set_language(const char *lang);
+
 /* When non-zero (default) TOK_COMMENT tokens are emitted into the token
    stream. When zero, comments are consumed but not recorded — used by the
    future parse phase, whose grammar must not see comments. */

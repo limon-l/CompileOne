@@ -20,6 +20,7 @@
 
 #include "artifact_loader.h"
 #include "codegen.h"
+#include "frontend.h"
 #include "interp.h"
 #include "ir.h"
 #include "json_writer.h"
@@ -160,6 +161,7 @@ static int cmd_lex(const char *input, const char *output, const char *language) 
     TokenList tokens = {0};
     LexErrorList errors = {0};
 
+    lex_set_language(language);
     if (lex_file(input, &tokens, &errors) != 0) {
         fprintf(stderr, "error: cannot open input file '%s'\n", input);
         return 1;
@@ -282,6 +284,7 @@ static int cmd_run(const char *input, const char *output, const char *language) 
 
     TokenList tokens = {0};
     LexErrorList errors = {0};
+    lex_set_language(language);
     if (lex_file(input, &tokens, &errors) != 0) {
         fprintf(stderr, "error: cannot open input file '%s'\n", input);
         return 1;
@@ -339,6 +342,28 @@ static int load_input_tokens(const char *input, TokenList *tokens) {
     return 0;
 }
 
+/* Run the front end appropriate for the language: the mini-c parser for
+   the study language, the C-family front end otherwise. On success the
+   CST and AST are fully populated; on syntax errors `errors` is filled
+   and the caller should halt the pipeline. */
+static void run_frontend(const char *language, TokenList *tokens, ParseResult *pr) {
+    if (lang_is_native(language)) {
+        lang_reclassify_tokens(tokens, language);
+        lang_parse_tokens(tokens, language, pr);
+    } else {
+        parse_tokens(tokens, pr);
+    }
+}
+
+/* Lower the front-end AST with the walker matching the language. */
+static void build_ir(const char *language, const ASTNode *root, IrQuadList *out) {
+    if (lang_is_native(language)) {
+        ir_build_lang(root, out);
+    } else {
+        ir_build(root, out);
+    }
+}
+
 static void write_syntax_errors(JsonWriter *w, const SyntaxErrorList *errors) {
     jw_key(w, "errors");
     jw_begin_array(w);
@@ -362,7 +387,7 @@ static int cmd_parse(const char *input, const char *output, const char *language
     }
 
     ParseResult pr;
-    parse_tokens(&tokens, &pr);
+    run_frontend(language, &tokens, &pr);
 
     double duration_ms = ((double)(clock() - start)) * 1000.0 / CLOCKS_PER_SEC;
 
@@ -410,7 +435,7 @@ static int cmd_ast(const char *input, const char *output, const char *language) 
     }
 
     ParseResult pr;
-    parse_tokens(&tokens, &pr);
+    run_frontend(language, &tokens, &pr);
 
     double duration_ms = ((double)(clock() - start)) * 1000.0 / CLOCKS_PER_SEC;
 
@@ -457,7 +482,7 @@ static int cmd_semantic(const char *input, const char *output, const char *langu
     }
 
     ParseResult pr;
-    parse_tokens(&tokens, &pr);
+    run_frontend(language, &tokens, &pr);
 
     SemanticResult sr;
     semantic_analyze(pr.ast_root, &sr);
@@ -637,10 +662,10 @@ static int cmd_ir(const char *input, const char *output, const char *language) {
     }
 
     ParseResult pr;
-    parse_tokens(&tokens, &pr);
+    run_frontend(language, &tokens, &pr);
 
     IrQuadList quads;
-    ir_build(pr.ast_root, &quads);
+    build_ir(language, pr.ast_root, &quads);
 
     double duration_ms = ((double)(clock() - start)) * 1000.0 / CLOCKS_PER_SEC;
     write_ir_artifact(output, input, language, duration_ms, &quads, &pr.errors);
@@ -663,10 +688,10 @@ static int cmd_opt(const char *input, const char *output, const char *language) 
     }
 
     ParseResult pr;
-    parse_tokens(&tokens, &pr);
+    run_frontend(language, &tokens, &pr);
 
     IrQuadList quads;
-    ir_build(pr.ast_root, &quads);
+    build_ir(language, pr.ast_root, &quads);
 
     IrQuadList optimized;
     OptReport report;
@@ -778,10 +803,10 @@ static int cmd_codegen(const char *input, const char *output, const char *langua
     }
 
     ParseResult pr;
-    parse_tokens(&tokens, &pr);
+    run_frontend(language, &tokens, &pr);
 
     IrQuadList quads;
-    ir_build(pr.ast_root, &quads);
+    build_ir(language, pr.ast_root, &quads);
 
     AsmDoc doc;
     codegen_generate(&quads, &doc);

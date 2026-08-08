@@ -75,6 +75,76 @@ typedef enum TokenKind {
     TOK_TILDE,       /* ~ bitwise complement */
     TOK_PREPROC,     /* # preprocessor directive line */
 
+    /* ---- C / C++ / Java keywords (native language front end) ---- */
+    TOK_VOID,        /* void */
+    TOK_DOUBLE,      /* double */
+    TOK_DO,          /* do */
+    TOK_BREAK,       /* break */
+    TOK_CONTINUE,    /* continue */
+    TOK_CLASS,       /* class (C++ / Java) */
+    TOK_PUBLIC,      /* public */
+    TOK_PRIVATE,     /* private */
+    TOK_PROTECTED,   /* protected */
+    TOK_STATIC,      /* static */
+    TOK_NEW,         /* new */
+    TOK_THIS,        /* this */
+    TOK_EXTENDS,     /* extends (Java) */
+    TOK_IMPLEMENTS,  /* implements (Java) */
+    TOK_INTERFACE,   /* interface (Java) */
+    TOK_IMPORT,      /* import (Java) */
+    TOK_PACKAGE,     /* package (Java) */
+    TOK_NAMESPACE,   /* namespace (C++) */
+    TOK_USING,       /* using (C++) */
+    TOK_SUPER,       /* super (Java) */
+    TOK_FINAL,       /* final (Java) */
+    TOK_ABSTRACT,    /* abstract (Java) */
+    TOK_BOOLEAN,     /* boolean (Java) */
+    TOK_BYTE,        /* byte (Java) */
+    TOK_SHORT,       /* short */
+    TOK_LONG,        /* long */
+    TOK_NULL,        /* null (Java) */
+    TOK_DELETE,      /* delete (C++) */
+    TOK_SIZEOF,      /* sizeof (C/C++) */
+    TOK_STRUCT,      /* struct (C/C++) */
+    TOK_TYPEDEF,     /* typedef (C/C++) */
+    TOK_ENUM,        /* enum (C/C++) */
+    TOK_UNION,       /* union (C/C++) */
+    TOK_SWITCH,      /* switch */
+    TOK_CASE,        /* case */
+    TOK_DEFAULT,     /* default */
+    TOK_GOTO,        /* goto (C/C++) */
+    TOK_EXTERN,      /* extern (C/C++) */
+    TOK_SIGNED,      /* signed (C/C++) */
+    TOK_UNSIGNED,    /* unsigned (C/C++) */
+    TOK_TEMPLATE,    /* template (C++) */
+    TOK_VIRTUAL,     /* virtual (C++) */
+    TOK_FRIEND,      /* friend (C++) */
+    TOK_INLINE,      /* inline (C/C++) */
+    TOK_TRY,         /* try (Java) */
+    TOK_CATCH,       /* catch (Java) */
+    TOK_FINALLY,     /* finally (Java) */
+    TOK_THROW,       /* throw (Java) */
+    TOK_THROWS,      /* throws (Java) */
+    TOK_INSTANCEOF,  /* instanceof (Java) */
+    TOK_SYNCHRONIZED,/* synchronized (Java) */
+    TOK_OPERATOR,    /* operator (C++) */
+    TOK_STRING,      /* String (Java type specifier) */
+
+    /* ---- C-family literals & operators ---- */
+    TOK_CHAR_LITERAL,/* 'a' */
+    TOK_PLUSEQ,      /* += */
+    TOK_MINUSEQ,     /* -= */
+    TOK_STAREQ,      /* *= */
+    TOK_SLASHEQ,     /* /= */
+    TOK_PERCENTEQ,   /* %= */
+    TOK_ANDEQ,       /* &= */
+    TOK_OREQ,        /* |= */
+    TOK_XOREQ,       /* ^= */
+    TOK_SHLASSIGN,   /* <<= */
+    TOK_SHRASSIGN,   /* >>= */
+    TOK_PIPE,        /* | */
+    TOK_CARET,       /* ^ */
+
     /* special */
     TOK_COMMENT,
     TOK_LEX_ERROR

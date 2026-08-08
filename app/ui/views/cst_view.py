@@ -27,12 +27,6 @@ class CSTView(QTreeWidget):
             self.addTopLevelItem(root_item)
             self.expandToDepth(2) # Expand the first few levels by default
             self.setUpdatesEnabled(True)
-        elif language is not None and language != "mini-c":
-            placeholder = QTreeWidgetItem([
-                f"Parse tree not available for {language}",
-                "Full parse-tree support is only available for Mini-C"
-            ])
-            self.addTopLevelItem(placeholder)
         self.resizeColumnToContents(0)
         self.resizeColumnToContents(1)
 

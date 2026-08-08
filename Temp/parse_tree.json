@@ -1,10 +1,587 @@
 {
   "schema": "compileone/parse-tree/1.0",
   "phase": "parse",
-  "language": "c",
+  "language": "java",
   "source_file": "D:\\Project\\CompileOne\\Temp\\token_stream.json",
-  "generated_by": "c native placeholder",
-  "duration_ms": 0.0,
-  "root": null,
-  "errors": []
+  "generated_by": "compileone.exe v0.1.0 (recursive-descent parser)",
+  "duration_ms": 27,
+  "root": {
+    "rule_name": "program",
+    "children": [
+      {
+        "rule_name": "class_definition",
+        "children": [
+          {
+            "token": {
+              "id": 2,
+              "line": 1,
+              "column": 8,
+              "lexeme": "class",
+              "token": "KW_CLASS",
+              "category": "keyword",
+              "subtype": "type",
+              "length": 5,
+              "scope": "global",
+              "scope_level": 0,
+              "color": "#569cd6",
+              "description": "Class definition keyword (C++/Java)",
+              "offset": {
+                "start": 7,
+                "end": 12
+              }
+            }
+          },
+          {
+            "token": {
+              "id": 3,
+              "line": 1,
+              "column": 14,
+              "lexeme": "Demo",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "subtype": "user-identifier",
+              "length": 4,
+              "scope": "global",
+              "scope_level": 0,
+              "color": "#9cdcfe",
+              "description": "User-defined identifier",
+              "offset": {
+                "start": 13,
+                "end": 17
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "function_definition",
+        "children": [
+          {
+            "token": {
+              "id": 8,
+              "line": 2,
+              "column": 24,
+              "lexeme": "main",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "subtype": "user-identifier",
+              "length": 4,
+              "scope": "block",
+              "scope_level": 1,
+              "color": "#9cdcfe",
+              "description": "User-defined identifier",
+              "offset": {
+                "start": 43,
+                "end": 47
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "parameter_declaration"
+      },
+      {
+        "rule_name": "compound_statement",
+        "children": [
+          {
+            "token": {
+              "id": 15,
+              "line": 2,
+              "column": 44,
+              "lexeme": "{",
+              "token": "LBRACE",
+              "category": "delimiter",
+              "subtype": "block",
+              "length": 1,
+              "scope": "block",
+              "scope_level": 1,
+              "color": "#d4d4d4",
+              "description": "Block open delimiter",
+              "offset": {
+                "start": 63,
+                "end": 64
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "variable_declaration"
+      },
+      {
+        "rule_name": "literal",
+        "children": [
+          {
+            "token": {
+              "id": 19,
+              "line": 3,
+              "column": 17,
+              "lexeme": "10",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "subtype": "integer",
+              "length": 2,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#b5cea8",
+              "description": "Integer literal constant",
+              "offset": {
+                "start": 81,
+                "end": 83
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "variable_declaration"
+      },
+      {
+        "rule_name": "literal",
+        "children": [
+          {
+            "token": {
+              "id": 24,
+              "line": 4,
+              "column": 19,
+              "lexeme": "0",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "subtype": "integer",
+              "length": 1,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#b5cea8",
+              "description": "Integer literal constant",
+              "offset": {
+                "start": 103,
+                "end": 104
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "for_statement",
+        "children": [
+          {
+            "token": {
+              "id": 26,
+              "line": 6,
+              "column": 9,
+              "lexeme": "for",
+              "token": "KW_FOR",
+              "category": "keyword",
+              "subtype": "control-flow",
+              "length": 3,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#569cd6",
+              "description": "Counter-controlled loop keyword",
+              "offset": {
+                "start": 115,
+                "end": 118
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "variable_declaration"
+      },
+      {
+        "rule_name": "literal",
+        "children": [
+          {
+            "token": {
+              "id": 31,
+              "line": 6,
+              "column": 22,
+              "lexeme": "1",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "subtype": "integer",
+              "length": 1,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#b5cea8",
+              "description": "Integer literal constant",
+              "offset": {
+                "start": 128,
+                "end": 129
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "incdec_expr",
+        "children": [
+          {
+            "token": {
+              "id": 38,
+              "line": 6,
+              "column": 34,
+              "lexeme": "++",
+              "token": "OP_INC",
+              "category": "operator",
+              "subtype": "increment",
+              "length": 2,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#d4d4d4",
+              "description": "Pre/post increment operator",
+              "offset": {
+                "start": 140,
+                "end": 142
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "compound_statement",
+        "children": [
+          {
+            "token": {
+              "id": 40,
+              "line": 6,
+              "column": 38,
+              "lexeme": "{",
+              "token": "LBRACE",
+              "category": "delimiter",
+              "subtype": "block",
+              "length": 1,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#d4d4d4",
+              "description": "Block open delimiter",
+              "offset": {
+                "start": 144,
+                "end": 145
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "system_out_call",
+        "children": [
+          {
+            "token": {
+              "id": 46,
+              "line": 10,
+              "column": 9,
+              "lexeme": "System",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "subtype": "user-identifier",
+              "length": 6,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#9cdcfe",
+              "description": "User-defined identifier",
+              "offset": {
+                "start": 187,
+                "end": 193
+              }
+            }
+          },
+          {
+            "token": {
+              "id": 50,
+              "line": 10,
+              "column": 20,
+              "lexeme": "println",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "subtype": "user-identifier",
+              "length": 7,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#9cdcfe",
+              "description": "User-defined identifier",
+              "offset": {
+                "start": 198,
+                "end": 205
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "string_literal",
+        "children": [
+          {
+            "token": {
+              "id": 52,
+              "line": 10,
+              "column": 28,
+              "lexeme": "\"Sum of 1..10 = \"",
+              "token": "STRING_LITERAL",
+              "category": "literal",
+              "subtype": "string",
+              "length": 17,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#ce9178",
+              "description": "String literal constant",
+              "offset": {
+                "start": 206,
+                "end": 223
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "if_statement",
+        "children": [
+          {
+            "token": {
+              "id": 57,
+              "line": 12,
+              "column": 9,
+              "lexeme": "if",
+              "token": "KW_IF",
+              "category": "keyword",
+              "subtype": "control-flow",
+              "length": 2,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#569cd6",
+              "description": "Conditional branch keyword",
+              "offset": {
+                "start": 241,
+                "end": 243
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "literal",
+        "children": [
+          {
+            "token": {
+              "id": 61,
+              "line": 12,
+              "column": 19,
+              "lexeme": "50",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "subtype": "integer",
+              "length": 2,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#b5cea8",
+              "description": "Integer literal constant",
+              "offset": {
+                "start": 251,
+                "end": 253
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "compound_statement",
+        "children": [
+          {
+            "token": {
+              "id": 63,
+              "line": 12,
+              "column": 23,
+              "lexeme": "{",
+              "token": "LBRACE",
+              "category": "delimiter",
+              "subtype": "block",
+              "length": 1,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#d4d4d4",
+              "description": "Block open delimiter",
+              "offset": {
+                "start": 255,
+                "end": 256
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "system_out_call",
+        "children": [
+          {
+            "token": {
+              "id": 64,
+              "line": 13,
+              "column": 13,
+              "lexeme": "System",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "subtype": "user-identifier",
+              "length": 6,
+              "scope": "block",
+              "scope_level": 3,
+              "color": "#9cdcfe",
+              "description": "User-defined identifier",
+              "offset": {
+                "start": 269,
+                "end": 275
+              }
+            }
+          },
+          {
+            "token": {
+              "id": 68,
+              "line": 13,
+              "column": 24,
+              "lexeme": "println",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "subtype": "user-identifier",
+              "length": 7,
+              "scope": "block",
+              "scope_level": 3,
+              "color": "#9cdcfe",
+              "description": "User-defined identifier",
+              "offset": {
+                "start": 280,
+                "end": 287
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "string_literal",
+        "children": [
+          {
+            "token": {
+              "id": 70,
+              "line": 13,
+              "column": 32,
+              "lexeme": "\"That is a big sum!\"",
+              "token": "STRING_LITERAL",
+              "category": "literal",
+              "subtype": "string",
+              "length": 20,
+              "scope": "block",
+              "scope_level": 3,
+              "color": "#ce9178",
+              "description": "String literal constant",
+              "offset": {
+                "start": 288,
+                "end": 308
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "compound_statement",
+        "children": [
+          {
+            "token": {
+              "id": 75,
+              "line": 14,
+              "column": 16,
+              "lexeme": "{",
+              "token": "LBRACE",
+              "category": "delimiter",
+              "subtype": "block",
+              "length": 1,
+              "scope": "block",
+              "scope_level": 2,
+              "color": "#d4d4d4",
+              "description": "Block open delimiter",
+              "offset": {
+                "start": 326,
+                "end": 327
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "system_out_call",
+        "children": [
+          {
+            "token": {
+              "id": 76,
+              "line": 15,
+              "column": 13,
+              "lexeme": "System",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "subtype": "user-identifier",
+              "length": 6,
+              "scope": "block",
+              "scope_level": 3,
+              "color": "#9cdcfe",
+              "description": "User-defined identifier",
+              "offset": {
+                "start": 340,
+                "end": 346
+              }
+            }
+          },
+          {
+            "token": {
+              "id": 80,
+              "line": 15,
+              "column": 24,
+              "lexeme": "println",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "subtype": "user-identifier",
+              "length": 7,
+              "scope": "block",
+              "scope_level": 3,
+              "color": "#9cdcfe",
+              "description": "User-defined identifier",
+              "offset": {
+                "start": 351,
+                "end": 358
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "string_literal",
+        "children": [
+          {
+            "token": {
+              "id": 82,
+              "line": 15,
+              "column": 32,
+              "lexeme": "\"That is a small sum.\"",
+              "token": "STRING_LITERAL",
+              "category": "literal",
+              "subtype": "string",
+              "length": 22,
+              "scope": "block",
+              "scope_level": 3,
+              "color": "#ce9178",
+              "description": "String literal constant",
+              "offset": {
+                "start": 359,
+                "end": 381
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "errors": [
+    {
+      "line": 6,
+      "column": 25,
+      "message": "expected ';' after for-init"
+    }
+  ]
 }

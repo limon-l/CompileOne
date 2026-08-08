@@ -57,17 +57,8 @@ class AssemblyView(QWidget):
         self._listing.clear()
         self._stack_table.setRowCount(0)
 
-        if assembly is None or (
-            language is not None and language != "mini-c"
-            and assembly.generated_by.endswith("native placeholder")
-        ):
-            if language is not None and language != "mini-c":
-                self._summary.setText(
-                    f"Target assembly is not available for {language}. "
-                    "Full assembly support is only available for Mini-C."
-                )
-            else:
-                self._summary.setText("No assembly generated yet.")
+        if assembly is None:
+            self._summary.setText("No assembly generated yet.")
             return
 
         self._summary.setText(

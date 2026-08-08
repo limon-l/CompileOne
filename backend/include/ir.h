@@ -34,6 +34,10 @@ DARRAY_DECLARE(IrQuad, IrQuadList)
    the produced list (see ir_list_free). */
 void ir_build(const ASTNode *program, IrQuadList *out);
 
+/* Lower a native-language (C / C++ / Java) "Program" AST root to the
+   extended TAC (functions, calls, arrays, objects, strings). */
+void ir_build_lang(const ASTNode *program, IrQuadList *out);
+
 /* Render the whole instruction list as readable TAC text (caller frees). */
 char *ir_render(const IrQuadList *quads);
 

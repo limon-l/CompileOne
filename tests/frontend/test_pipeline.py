@@ -126,10 +126,10 @@ def test_run_halts_and_drops_stale_artifacts_on_phase_error(tmp_path, fake_runne
     assert "ast" not in session_artifacts
 
 
-def test_native_language_phases_use_native_placeholders(tmp_path, fake_runner):
+def test_native_languages_run_compile_phases_and_skip_interpreter(tmp_path, fake_runner):
     """
-    Native languages should still update all study phase views through
-    the pipeline, while the internal mini-c interpreter run phase remains skipped.
+    Native languages run every compile phase through the pipeline, while
+    the internal mini-c interpreter run phase remains skipped.
     """
     pipeline = Pipeline()
     store = ArtifactStore(output_dir=tmp_path / "out", cache_dir=tmp_path / "cache")

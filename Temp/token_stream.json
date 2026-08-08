@@ -1,52 +1,52 @@
 {
   "schema": "compileone/token-stream/1.0",
   "phase": "lexical",
-  "language": "c",
-  "source_file": "D:\\Project\\CompileOne\\Temp\\compileone_source.c",
+  "language": "java",
+  "source_file": "D:\\Project\\CompileOne\\Temp\\compileone_source.java",
   "generated_by": "compileone.exe v0.1.0 (flex)",
-  "duration_ms": 2,
+  "duration_ms": 1,
   "tokens": [
     {
       "id": 1,
       "line": 1,
       "column": 1,
-      "lexeme": "#include <stdio.h>",
-      "token": "PREPROC",
-      "category": "comment",
-      "subtype": "preprocessor",
-      "length": 18,
+      "lexeme": "public",
+      "token": "KW_PUBLIC",
+      "category": "keyword",
+      "subtype": "access",
+      "length": 6,
       "scope": "global",
       "scope_level": 0,
       "color": "#569cd6",
-      "description": "Preprocessor directive (skipped by the compiler)",
+      "description": "Public access modifier",
       "offset": {
         "start": 0,
-        "end": 18
+        "end": 6
       }
     },
     {
       "id": 2,
-      "line": 3,
-      "column": 1,
-      "lexeme": "int",
-      "token": "KW_INT",
-      "category": "type",
-      "subtype": "type-specifier",
-      "length": 3,
+      "line": 1,
+      "column": 8,
+      "lexeme": "class",
+      "token": "KW_CLASS",
+      "category": "keyword",
+      "subtype": "type",
+      "length": 5,
       "scope": "global",
       "scope_level": 0,
-      "color": "#4ec9b0",
-      "description": "32-bit signed integer type specifier",
+      "color": "#569cd6",
+      "description": "Class definition keyword (C++/Java)",
       "offset": {
-        "start": 20,
-        "end": 23
+        "start": 7,
+        "end": 12
       }
     },
     {
       "id": 3,
-      "line": 3,
-      "column": 5,
-      "lexeme": "main",
+      "line": 1,
+      "column": 14,
+      "lexeme": "Demo",
       "token": "IDENTIFIER",
       "category": "identifier",
       "subtype": "user-identifier",
@@ -56,50 +56,14 @@
       "color": "#9cdcfe",
       "description": "User-defined identifier",
       "offset": {
-        "start": 24,
-        "end": 28
+        "start": 13,
+        "end": 17
       }
     },
     {
       "id": 4,
-      "line": 3,
-      "column": 9,
-      "lexeme": "(",
-      "token": "LPAREN",
-      "category": "delimiter",
-      "subtype": "grouping",
-      "length": 1,
-      "scope": "global",
-      "scope_level": 0,
-      "color": "#d4d4d4",
-      "description": "Grouping / call delimiter (open)",
-      "offset": {
-        "start": 28,
-        "end": 29
-      }
-    },
-    {
-      "id": 5,
-      "line": 3,
-      "column": 10,
-      "lexeme": ")",
-      "token": "RPAREN",
-      "category": "delimiter",
-      "subtype": "grouping",
-      "length": 1,
-      "scope": "global",
-      "scope_level": 0,
-      "color": "#d4d4d4",
-      "description": "Grouping / call delimiter (close)",
-      "offset": {
-        "start": 29,
-        "end": 30
-      }
-    },
-    {
-      "id": 6,
-      "line": 3,
-      "column": 12,
+      "line": 1,
+      "column": 19,
       "lexeme": "{",
       "token": "LBRACE",
       "category": "delimiter",
@@ -110,149 +74,185 @@
       "color": "#d4d4d4",
       "description": "Block open delimiter",
       "offset": {
+        "start": 18,
+        "end": 19
+      }
+    },
+    {
+      "id": 5,
+      "line": 2,
+      "column": 5,
+      "lexeme": "public",
+      "token": "KW_PUBLIC",
+      "category": "keyword",
+      "subtype": "access",
+      "length": 6,
+      "scope": "block:1",
+      "scope_level": 1,
+      "color": "#569cd6",
+      "description": "Public access modifier",
+      "offset": {
+        "start": 24,
+        "end": 30
+      }
+    },
+    {
+      "id": 6,
+      "line": 2,
+      "column": 12,
+      "lexeme": "static",
+      "token": "KW_STATIC",
+      "category": "keyword",
+      "subtype": "storage",
+      "length": 6,
+      "scope": "block:1",
+      "scope_level": 1,
+      "color": "#569cd6",
+      "description": "Static storage/scope modifier",
+      "offset": {
         "start": 31,
-        "end": 32
+        "end": 37
       }
     },
     {
       "id": 7,
-      "line": 4,
-      "column": 5,
-      "lexeme": "int",
-      "token": "KW_INT",
+      "line": 2,
+      "column": 19,
+      "lexeme": "void",
+      "token": "KW_VOID",
       "category": "type",
       "subtype": "type-specifier",
-      "length": 3,
+      "length": 4,
       "scope": "block:1",
       "scope_level": 1,
       "color": "#4ec9b0",
-      "description": "32-bit signed integer type specifier",
+      "description": "Void type specifier (no value)",
       "offset": {
-        "start": 37,
-        "end": 40
+        "start": 38,
+        "end": 42
       }
     },
     {
       "id": 8,
-      "line": 4,
-      "column": 9,
-      "lexeme": "n",
+      "line": 2,
+      "column": 24,
+      "lexeme": "main",
       "token": "IDENTIFIER",
       "category": "identifier",
       "subtype": "user-identifier",
-      "length": 1,
+      "length": 4,
       "scope": "block:1",
       "scope_level": 1,
       "color": "#9cdcfe",
       "description": "User-defined identifier",
       "offset": {
-        "start": 41,
-        "end": 42
-      }
-    },
-    {
-      "id": 9,
-      "line": 4,
-      "column": 11,
-      "lexeme": "=",
-      "token": "OP_ASSIGN",
-      "category": "operator",
-      "subtype": "assignment",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Assignment operator",
-      "offset": {
         "start": 43,
-        "end": 44
-      }
-    },
-    {
-      "id": 10,
-      "line": 4,
-      "column": 13,
-      "lexeme": "10",
-      "token": "INT_LITERAL",
-      "category": "literal",
-      "subtype": "integer",
-      "length": 2,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#b5cea8",
-      "description": "Integer literal constant",
-      "offset": {
-        "start": 45,
         "end": 47
       }
     },
     {
-      "id": 11,
-      "line": 4,
-      "column": 15,
-      "lexeme": ";",
-      "token": "SEMICOLON",
+      "id": 9,
+      "line": 2,
+      "column": 28,
+      "lexeme": "(",
+      "token": "LPAREN",
       "category": "delimiter",
-      "subtype": "statement",
+      "subtype": "grouping",
       "length": 1,
       "scope": "block:1",
       "scope_level": 1,
       "color": "#d4d4d4",
-      "description": "Statement terminator",
+      "description": "Grouping / call delimiter (open)",
       "offset": {
         "start": 47,
         "end": 48
       }
     },
     {
-      "id": 12,
-      "line": 5,
-      "column": 5,
-      "lexeme": "int",
-      "token": "KW_INT",
+      "id": 10,
+      "line": 2,
+      "column": 29,
+      "lexeme": "String",
+      "token": "KW_STRING",
       "category": "type",
       "subtype": "type-specifier",
-      "length": 3,
+      "length": 6,
       "scope": "block:1",
       "scope_level": 1,
       "color": "#4ec9b0",
-      "description": "32-bit signed integer type specifier",
+      "description": "String type specifier (Java)",
       "offset": {
-        "start": 53,
+        "start": 48,
+        "end": 54
+      }
+    },
+    {
+      "id": 11,
+      "line": 2,
+      "column": 35,
+      "lexeme": "[",
+      "token": "LBRACKET",
+      "category": "delimiter",
+      "subtype": "array",
+      "length": 1,
+      "scope": "block:1",
+      "scope_level": 1,
+      "color": "#d4d4d4",
+      "description": "Array subscript delimiter (open)",
+      "offset": {
+        "start": 54,
+        "end": 55
+      }
+    },
+    {
+      "id": 12,
+      "line": 2,
+      "column": 36,
+      "lexeme": "]",
+      "token": "RBRACKET",
+      "category": "delimiter",
+      "subtype": "array",
+      "length": 1,
+      "scope": "block:1",
+      "scope_level": 1,
+      "color": "#d4d4d4",
+      "description": "Array subscript delimiter (close)",
+      "offset": {
+        "start": 55,
         "end": 56
       }
     },
     {
       "id": 13,
-      "line": 5,
-      "column": 9,
-      "lexeme": "sum",
+      "line": 2,
+      "column": 38,
+      "lexeme": "args",
       "token": "IDENTIFIER",
       "category": "identifier",
       "subtype": "user-identifier",
-      "length": 3,
+      "length": 4,
       "scope": "block:1",
       "scope_level": 1,
       "color": "#9cdcfe",
       "description": "User-defined identifier",
       "offset": {
         "start": 57,
-        "end": 60
+        "end": 61
       }
     },
     {
       "id": 14,
-      "line": 5,
-      "column": 13,
-      "lexeme": "=",
-      "token": "OP_ASSIGN",
-      "category": "operator",
-      "subtype": "assignment",
+      "line": 2,
+      "column": 42,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
+      "subtype": "grouping",
       "length": 1,
       "scope": "block:1",
       "scope_level": 1,
       "color": "#d4d4d4",
-      "description": "Assignment operator",
+      "description": "Grouping / call delimiter (close)",
       "offset": {
         "start": 61,
         "end": 62
@@ -260,296 +260,8 @@
     },
     {
       "id": 15,
-      "line": 5,
-      "column": 15,
-      "lexeme": "0",
-      "token": "INT_LITERAL",
-      "category": "literal",
-      "subtype": "integer",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#b5cea8",
-      "description": "Integer literal constant",
-      "offset": {
-        "start": 63,
-        "end": 64
-      }
-    },
-    {
-      "id": 16,
-      "line": 5,
-      "column": 16,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "subtype": "statement",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Statement terminator",
-      "offset": {
-        "start": 64,
-        "end": 65
-      }
-    },
-    {
-      "id": 17,
-      "line": 7,
-      "column": 5,
-      "lexeme": "for",
-      "token": "KW_FOR",
-      "category": "keyword",
-      "subtype": "control-flow",
-      "length": 3,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#569cd6",
-      "description": "Counter-controlled loop keyword",
-      "offset": {
-        "start": 71,
-        "end": 74
-      }
-    },
-    {
-      "id": 18,
-      "line": 7,
-      "column": 9,
-      "lexeme": "(",
-      "token": "LPAREN",
-      "category": "delimiter",
-      "subtype": "grouping",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Grouping / call delimiter (open)",
-      "offset": {
-        "start": 75,
-        "end": 76
-      }
-    },
-    {
-      "id": 19,
-      "line": 7,
-      "column": 10,
-      "lexeme": "int",
-      "token": "KW_INT",
-      "category": "type",
-      "subtype": "type-specifier",
-      "length": 3,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#4ec9b0",
-      "description": "32-bit signed integer type specifier",
-      "offset": {
-        "start": 76,
-        "end": 79
-      }
-    },
-    {
-      "id": 20,
-      "line": 7,
-      "column": 14,
-      "lexeme": "i",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "subtype": "user-identifier",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#9cdcfe",
-      "description": "User-defined identifier",
-      "offset": {
-        "start": 80,
-        "end": 81
-      }
-    },
-    {
-      "id": 21,
-      "line": 7,
-      "column": 16,
-      "lexeme": "=",
-      "token": "OP_ASSIGN",
-      "category": "operator",
-      "subtype": "assignment",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Assignment operator",
-      "offset": {
-        "start": 82,
-        "end": 83
-      }
-    },
-    {
-      "id": 22,
-      "line": 7,
-      "column": 18,
-      "lexeme": "1",
-      "token": "INT_LITERAL",
-      "category": "literal",
-      "subtype": "integer",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#b5cea8",
-      "description": "Integer literal constant",
-      "offset": {
-        "start": 84,
-        "end": 85
-      }
-    },
-    {
-      "id": 23,
-      "line": 7,
-      "column": 19,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "subtype": "statement",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Statement terminator",
-      "offset": {
-        "start": 85,
-        "end": 86
-      }
-    },
-    {
-      "id": 24,
-      "line": 7,
-      "column": 21,
-      "lexeme": "i",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "subtype": "user-identifier",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#9cdcfe",
-      "description": "User-defined identifier",
-      "offset": {
-        "start": 87,
-        "end": 88
-      }
-    },
-    {
-      "id": 25,
-      "line": 7,
-      "column": 23,
-      "lexeme": "<=",
-      "token": "OP_LE",
-      "category": "operator",
-      "subtype": "relational",
-      "length": 2,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Relational less-than-or-equal operator",
-      "offset": {
-        "start": 89,
-        "end": 91
-      }
-    },
-    {
-      "id": 26,
-      "line": 7,
-      "column": 26,
-      "lexeme": "n",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "subtype": "user-identifier",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#9cdcfe",
-      "description": "User-defined identifier",
-      "offset": {
-        "start": 92,
-        "end": 93
-      }
-    },
-    {
-      "id": 27,
-      "line": 7,
-      "column": 27,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "subtype": "statement",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Statement terminator",
-      "offset": {
-        "start": 93,
-        "end": 94
-      }
-    },
-    {
-      "id": 28,
-      "line": 7,
-      "column": 29,
-      "lexeme": "i",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "subtype": "user-identifier",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#9cdcfe",
-      "description": "User-defined identifier",
-      "offset": {
-        "start": 95,
-        "end": 96
-      }
-    },
-    {
-      "id": 29,
-      "line": 7,
-      "column": 30,
-      "lexeme": "++",
-      "token": "OP_INC",
-      "category": "operator",
-      "subtype": "increment",
-      "length": 2,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Pre/post increment operator",
-      "offset": {
-        "start": 96,
-        "end": 98
-      }
-    },
-    {
-      "id": 30,
-      "line": 7,
-      "column": 32,
-      "lexeme": ")",
-      "token": "RPAREN",
-      "category": "delimiter",
-      "subtype": "grouping",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Grouping / call delimiter (close)",
-      "offset": {
-        "start": 98,
-        "end": 99
-      }
-    },
-    {
-      "id": 31,
-      "line": 7,
-      "column": 34,
+      "line": 2,
+      "column": 44,
       "lexeme": "{",
       "token": "LBRACE",
       "category": "delimiter",
@@ -560,14 +272,122 @@
       "color": "#d4d4d4",
       "description": "Block open delimiter",
       "offset": {
-        "start": 100,
-        "end": 101
+        "start": 63,
+        "end": 64
       }
     },
     {
-      "id": 32,
-      "line": 8,
+      "id": 16,
+      "line": 3,
       "column": 9,
+      "lexeme": "int",
+      "token": "KW_INT",
+      "category": "type",
+      "subtype": "type-specifier",
+      "length": 3,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#4ec9b0",
+      "description": "32-bit signed integer type specifier",
+      "offset": {
+        "start": 73,
+        "end": 76
+      }
+    },
+    {
+      "id": 17,
+      "line": 3,
+      "column": 13,
+      "lexeme": "n",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 77,
+        "end": 78
+      }
+    },
+    {
+      "id": 18,
+      "line": 3,
+      "column": 15,
+      "lexeme": "=",
+      "token": "OP_ASSIGN",
+      "category": "operator",
+      "subtype": "assignment",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Assignment operator",
+      "offset": {
+        "start": 79,
+        "end": 80
+      }
+    },
+    {
+      "id": 19,
+      "line": 3,
+      "column": 17,
+      "lexeme": "10",
+      "token": "INT_LITERAL",
+      "category": "literal",
+      "subtype": "integer",
+      "length": 2,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#b5cea8",
+      "description": "Integer literal constant",
+      "offset": {
+        "start": 81,
+        "end": 83
+      }
+    },
+    {
+      "id": 20,
+      "line": 3,
+      "column": 19,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "subtype": "statement",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Statement terminator",
+      "offset": {
+        "start": 83,
+        "end": 84
+      }
+    },
+    {
+      "id": 21,
+      "line": 4,
+      "column": 9,
+      "lexeme": "int",
+      "token": "KW_INT",
+      "category": "type",
+      "subtype": "type-specifier",
+      "length": 3,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#4ec9b0",
+      "description": "32-bit signed integer type specifier",
+      "offset": {
+        "start": 93,
+        "end": 96
+      }
+    },
+    {
+      "id": 22,
+      "line": 4,
+      "column": 13,
       "lexeme": "sum",
       "token": "IDENTIFIER",
       "category": "identifier",
@@ -578,14 +398,554 @@
       "color": "#9cdcfe",
       "description": "User-defined identifier",
       "offset": {
-        "start": 110,
-        "end": 113
+        "start": 97,
+        "end": 100
+      }
+    },
+    {
+      "id": 23,
+      "line": 4,
+      "column": 17,
+      "lexeme": "=",
+      "token": "OP_ASSIGN",
+      "category": "operator",
+      "subtype": "assignment",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Assignment operator",
+      "offset": {
+        "start": 101,
+        "end": 102
+      }
+    },
+    {
+      "id": 24,
+      "line": 4,
+      "column": 19,
+      "lexeme": "0",
+      "token": "INT_LITERAL",
+      "category": "literal",
+      "subtype": "integer",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#b5cea8",
+      "description": "Integer literal constant",
+      "offset": {
+        "start": 103,
+        "end": 104
+      }
+    },
+    {
+      "id": 25,
+      "line": 4,
+      "column": 20,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "subtype": "statement",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Statement terminator",
+      "offset": {
+        "start": 104,
+        "end": 105
+      }
+    },
+    {
+      "id": 26,
+      "line": 6,
+      "column": 9,
+      "lexeme": "for",
+      "token": "KW_FOR",
+      "category": "keyword",
+      "subtype": "control-flow",
+      "length": 3,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#569cd6",
+      "description": "Counter-controlled loop keyword",
+      "offset": {
+        "start": 115,
+        "end": 118
+      }
+    },
+    {
+      "id": 27,
+      "line": 6,
+      "column": 13,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
+      "subtype": "grouping",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Grouping / call delimiter (open)",
+      "offset": {
+        "start": 119,
+        "end": 120
+      }
+    },
+    {
+      "id": 28,
+      "line": 6,
+      "column": 14,
+      "lexeme": "int",
+      "token": "KW_INT",
+      "category": "type",
+      "subtype": "type-specifier",
+      "length": 3,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#4ec9b0",
+      "description": "32-bit signed integer type specifier",
+      "offset": {
+        "start": 120,
+        "end": 123
+      }
+    },
+    {
+      "id": 29,
+      "line": 6,
+      "column": 18,
+      "lexeme": "i",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 124,
+        "end": 125
+      }
+    },
+    {
+      "id": 30,
+      "line": 6,
+      "column": 20,
+      "lexeme": "=",
+      "token": "OP_ASSIGN",
+      "category": "operator",
+      "subtype": "assignment",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Assignment operator",
+      "offset": {
+        "start": 126,
+        "end": 127
+      }
+    },
+    {
+      "id": 31,
+      "line": 6,
+      "column": 22,
+      "lexeme": "1",
+      "token": "INT_LITERAL",
+      "category": "literal",
+      "subtype": "integer",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#b5cea8",
+      "description": "Integer literal constant",
+      "offset": {
+        "start": 128,
+        "end": 129
+      }
+    },
+    {
+      "id": 32,
+      "line": 6,
+      "column": 23,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "subtype": "statement",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Statement terminator",
+      "offset": {
+        "start": 129,
+        "end": 130
       }
     },
     {
       "id": 33,
-      "line": 8,
+      "line": 6,
+      "column": 25,
+      "lexeme": "i",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 131,
+        "end": 132
+      }
+    },
+    {
+      "id": 34,
+      "line": 6,
+      "column": 27,
+      "lexeme": "<=",
+      "token": "OP_LE",
+      "category": "operator",
+      "subtype": "relational",
+      "length": 2,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Relational less-than-or-equal operator",
+      "offset": {
+        "start": 133,
+        "end": 135
+      }
+    },
+    {
+      "id": 35,
+      "line": 6,
+      "column": 30,
+      "lexeme": "n",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 136,
+        "end": 137
+      }
+    },
+    {
+      "id": 36,
+      "line": 6,
+      "column": 31,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "subtype": "statement",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Statement terminator",
+      "offset": {
+        "start": 137,
+        "end": 138
+      }
+    },
+    {
+      "id": 37,
+      "line": 6,
+      "column": 33,
+      "lexeme": "i",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 139,
+        "end": 140
+      }
+    },
+    {
+      "id": 38,
+      "line": 6,
+      "column": 34,
+      "lexeme": "++",
+      "token": "OP_INC",
+      "category": "operator",
+      "subtype": "increment",
+      "length": 2,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Pre/post increment operator",
+      "offset": {
+        "start": 140,
+        "end": 142
+      }
+    },
+    {
+      "id": 39,
+      "line": 6,
+      "column": 36,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
+      "subtype": "grouping",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Grouping / call delimiter (close)",
+      "offset": {
+        "start": 142,
+        "end": 143
+      }
+    },
+    {
+      "id": 40,
+      "line": 6,
+      "column": 38,
+      "lexeme": "{",
+      "token": "LBRACE",
+      "category": "delimiter",
+      "subtype": "block",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Block open delimiter",
+      "offset": {
+        "start": 144,
+        "end": 145
+      }
+    },
+    {
+      "id": 41,
+      "line": 7,
       "column": 13,
+      "lexeme": "sum",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 3,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 158,
+        "end": 161
+      }
+    },
+    {
+      "id": 42,
+      "line": 7,
+      "column": 17,
+      "lexeme": "+=",
+      "token": "OP_PLUS_EQ",
+      "category": "operator",
+      "subtype": "assignment",
+      "length": 2,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Add-and-assign operator",
+      "offset": {
+        "start": 162,
+        "end": 164
+      }
+    },
+    {
+      "id": 43,
+      "line": 7,
+      "column": 20,
+      "lexeme": "i",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 165,
+        "end": 166
+      }
+    },
+    {
+      "id": 44,
+      "line": 7,
+      "column": 21,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "subtype": "statement",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Statement terminator",
+      "offset": {
+        "start": 166,
+        "end": 167
+      }
+    },
+    {
+      "id": 45,
+      "line": 8,
+      "column": 9,
+      "lexeme": "}",
+      "token": "RBRACE",
+      "category": "delimiter",
+      "subtype": "block",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Block close delimiter",
+      "offset": {
+        "start": 176,
+        "end": 177
+      }
+    },
+    {
+      "id": 46,
+      "line": 10,
+      "column": 9,
+      "lexeme": "System",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 6,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 187,
+        "end": 193
+      }
+    },
+    {
+      "id": 47,
+      "line": 10,
+      "column": 15,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "subtype": "member",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Member/field access operator (C/C++)",
+      "offset": {
+        "start": 193,
+        "end": 194
+      }
+    },
+    {
+      "id": 48,
+      "line": 10,
+      "column": 16,
+      "lexeme": "out",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 3,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 194,
+        "end": 197
+      }
+    },
+    {
+      "id": 49,
+      "line": 10,
+      "column": 19,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "subtype": "member",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Member/field access operator (C/C++)",
+      "offset": {
+        "start": 197,
+        "end": 198
+      }
+    },
+    {
+      "id": 50,
+      "line": 10,
+      "column": 20,
+      "lexeme": "println",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 7,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 198,
+        "end": 205
+      }
+    },
+    {
+      "id": 51,
+      "line": 10,
+      "column": 27,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
+      "subtype": "grouping",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Grouping / call delimiter (open)",
+      "offset": {
+        "start": 205,
+        "end": 206
+      }
+    },
+    {
+      "id": 52,
+      "line": 10,
+      "column": 28,
+      "lexeme": "\"Sum of 1..10 = \"",
+      "token": "STRING_LITERAL",
+      "category": "literal",
+      "subtype": "string",
+      "length": 17,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#ce9178",
+      "description": "String literal constant",
+      "offset": {
+        "start": 206,
+        "end": 223
+      }
+    },
+    {
+      "id": 53,
+      "line": 10,
+      "column": 46,
       "lexeme": "+",
       "token": "OP_ADD",
       "category": "operator",
@@ -596,392 +956,158 @@
       "color": "#d4d4d4",
       "description": "Arithmetic addition operator",
       "offset": {
-        "start": 114,
-        "end": 115
+        "start": 224,
+        "end": 225
       }
     },
     {
-      "id": 34,
-      "line": 8,
-      "column": 14,
-      "lexeme": "=",
-      "token": "OP_ASSIGN",
-      "category": "operator",
-      "subtype": "assignment",
-      "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#d4d4d4",
-      "description": "Assignment operator",
-      "offset": {
-        "start": 115,
-        "end": 116
-      }
-    },
-    {
-      "id": 35,
-      "line": 8,
-      "column": 16,
-      "lexeme": "i",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "subtype": "user-identifier",
-      "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#9cdcfe",
-      "description": "User-defined identifier",
-      "offset": {
-        "start": 117,
-        "end": 118
-      }
-    },
-    {
-      "id": 36,
-      "line": 8,
-      "column": 17,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "subtype": "statement",
-      "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#d4d4d4",
-      "description": "Statement terminator",
-      "offset": {
-        "start": 118,
-        "end": 119
-      }
-    },
-    {
-      "id": 37,
-      "line": 9,
-      "column": 5,
-      "lexeme": "}",
-      "token": "RBRACE",
-      "category": "delimiter",
-      "subtype": "block",
-      "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#d4d4d4",
-      "description": "Block close delimiter",
-      "offset": {
-        "start": 124,
-        "end": 125
-      }
-    },
-    {
-      "id": 38,
-      "line": 11,
-      "column": 5,
-      "lexeme": "printf",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "subtype": "user-identifier",
-      "length": 6,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#9cdcfe",
-      "description": "User-defined identifier",
-      "offset": {
-        "start": 131,
-        "end": 137
-      }
-    },
-    {
-      "id": 39,
-      "line": 11,
-      "column": 11,
-      "lexeme": "(",
-      "token": "LPAREN",
-      "category": "delimiter",
-      "subtype": "grouping",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Grouping / call delimiter (open)",
-      "offset": {
-        "start": 137,
-        "end": 138
-      }
-    },
-    {
-      "id": 40,
-      "line": 11,
-      "column": 12,
-      "lexeme": "\"Sum of 1..10 = %d\\n\"",
-      "token": "STRING_LITERAL",
-      "category": "literal",
-      "subtype": "string",
-      "length": 21,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#ce9178",
-      "description": "String literal constant",
-      "offset": {
-        "start": 138,
-        "end": 159
-      }
-    },
-    {
-      "id": 41,
-      "line": 11,
-      "column": 33,
-      "lexeme": ",",
-      "token": "COMMA",
-      "category": "delimiter",
-      "subtype": "separator",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Argument / expression separator",
-      "offset": {
-        "start": 159,
-        "end": 160
-      }
-    },
-    {
-      "id": 42,
-      "line": 11,
-      "column": 35,
+      "id": 54,
+      "line": 10,
+      "column": 48,
       "lexeme": "sum",
       "token": "IDENTIFIER",
       "category": "identifier",
       "subtype": "user-identifier",
       "length": 3,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#9cdcfe",
       "description": "User-defined identifier",
       "offset": {
-        "start": 161,
-        "end": 164
+        "start": 226,
+        "end": 229
       }
     },
     {
-      "id": 43,
-      "line": 11,
-      "column": 38,
+      "id": 55,
+      "line": 10,
+      "column": 51,
       "lexeme": ")",
       "token": "RPAREN",
       "category": "delimiter",
       "subtype": "grouping",
       "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#d4d4d4",
       "description": "Grouping / call delimiter (close)",
       "offset": {
-        "start": 164,
-        "end": 165
+        "start": 229,
+        "end": 230
       }
     },
     {
-      "id": 44,
-      "line": 11,
-      "column": 39,
+      "id": 56,
+      "line": 10,
+      "column": 52,
       "lexeme": ";",
       "token": "SEMICOLON",
       "category": "delimiter",
       "subtype": "statement",
       "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#d4d4d4",
       "description": "Statement terminator",
       "offset": {
-        "start": 165,
-        "end": 166
+        "start": 230,
+        "end": 231
       }
     },
     {
-      "id": 45,
-      "line": 13,
-      "column": 5,
+      "id": 57,
+      "line": 12,
+      "column": 9,
       "lexeme": "if",
       "token": "KW_IF",
       "category": "keyword",
       "subtype": "control-flow",
       "length": 2,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#569cd6",
       "description": "Conditional branch keyword",
       "offset": {
-        "start": 172,
-        "end": 174
+        "start": 241,
+        "end": 243
       }
     },
     {
-      "id": 46,
-      "line": 13,
-      "column": 8,
+      "id": 58,
+      "line": 12,
+      "column": 12,
       "lexeme": "(",
       "token": "LPAREN",
       "category": "delimiter",
       "subtype": "grouping",
       "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#d4d4d4",
       "description": "Grouping / call delimiter (open)",
       "offset": {
-        "start": 175,
-        "end": 176
+        "start": 244,
+        "end": 245
       }
     },
     {
-      "id": 47,
-      "line": 13,
-      "column": 9,
+      "id": 59,
+      "line": 12,
+      "column": 13,
       "lexeme": "sum",
       "token": "IDENTIFIER",
       "category": "identifier",
       "subtype": "user-identifier",
       "length": 3,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#9cdcfe",
       "description": "User-defined identifier",
       "offset": {
-        "start": 176,
-        "end": 179
+        "start": 245,
+        "end": 248
       }
     },
     {
-      "id": 48,
-      "line": 13,
-      "column": 13,
+      "id": 60,
+      "line": 12,
+      "column": 17,
       "lexeme": ">",
       "token": "OP_GT",
       "category": "operator",
       "subtype": "relational",
       "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#d4d4d4",
       "description": "Relational greater-than operator",
       "offset": {
-        "start": 180,
-        "end": 181
+        "start": 249,
+        "end": 250
       }
     },
     {
-      "id": 49,
-      "line": 13,
-      "column": 15,
+      "id": 61,
+      "line": 12,
+      "column": 19,
       "lexeme": "50",
       "token": "INT_LITERAL",
       "category": "literal",
       "subtype": "integer",
       "length": 2,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#b5cea8",
       "description": "Integer literal constant",
       "offset": {
-        "start": 182,
-        "end": 184
+        "start": 251,
+        "end": 253
       }
     },
     {
-      "id": 50,
-      "line": 13,
-      "column": 17,
-      "lexeme": ")",
-      "token": "RPAREN",
-      "category": "delimiter",
-      "subtype": "grouping",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Grouping / call delimiter (close)",
-      "offset": {
-        "start": 184,
-        "end": 185
-      }
-    },
-    {
-      "id": 51,
-      "line": 13,
-      "column": 19,
-      "lexeme": "{",
-      "token": "LBRACE",
-      "category": "delimiter",
-      "subtype": "block",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Block open delimiter",
-      "offset": {
-        "start": 186,
-        "end": 187
-      }
-    },
-    {
-      "id": 52,
-      "line": 14,
-      "column": 9,
-      "lexeme": "printf",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "subtype": "user-identifier",
-      "length": 6,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#9cdcfe",
-      "description": "User-defined identifier",
-      "offset": {
-        "start": 196,
-        "end": 202
-      }
-    },
-    {
-      "id": 53,
-      "line": 14,
-      "column": 15,
-      "lexeme": "(",
-      "token": "LPAREN",
-      "category": "delimiter",
-      "subtype": "grouping",
-      "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#d4d4d4",
-      "description": "Grouping / call delimiter (open)",
-      "offset": {
-        "start": 202,
-        "end": 203
-      }
-    },
-    {
-      "id": 54,
-      "line": 14,
-      "column": 16,
-      "lexeme": "\"That is a big sum!\\n\"",
-      "token": "STRING_LITERAL",
-      "category": "literal",
-      "subtype": "string",
-      "length": 22,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#ce9178",
-      "description": "String literal constant",
-      "offset": {
-        "start": 203,
-        "end": 225
-      }
-    },
-    {
-      "id": 55,
-      "line": 14,
-      "column": 38,
+      "id": 62,
+      "line": 12,
+      "column": 21,
       "lexeme": ")",
       "token": "RPAREN",
       "category": "delimiter",
@@ -992,174 +1118,426 @@
       "color": "#d4d4d4",
       "description": "Grouping / call delimiter (close)",
       "offset": {
-        "start": 225,
-        "end": 226
+        "start": 253,
+        "end": 254
       }
     },
     {
-      "id": 56,
-      "line": 14,
-      "column": 39,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "subtype": "statement",
-      "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#d4d4d4",
-      "description": "Statement terminator",
-      "offset": {
-        "start": 226,
-        "end": 227
-      }
-    },
-    {
-      "id": 57,
-      "line": 15,
-      "column": 5,
-      "lexeme": "}",
-      "token": "RBRACE",
-      "category": "delimiter",
-      "subtype": "block",
-      "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#d4d4d4",
-      "description": "Block close delimiter",
-      "offset": {
-        "start": 232,
-        "end": 233
-      }
-    },
-    {
-      "id": 58,
-      "line": 15,
-      "column": 7,
-      "lexeme": "else",
-      "token": "KW_ELSE",
-      "category": "keyword",
-      "subtype": "control-flow",
-      "length": 4,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#569cd6",
-      "description": "Alternate branch keyword",
-      "offset": {
-        "start": 234,
-        "end": 238
-      }
-    },
-    {
-      "id": 59,
-      "line": 15,
-      "column": 12,
+      "id": 63,
+      "line": 12,
+      "column": 23,
       "lexeme": "{",
       "token": "LBRACE",
       "category": "delimiter",
       "subtype": "block",
       "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
+      "scope": "block:2",
+      "scope_level": 2,
       "color": "#d4d4d4",
       "description": "Block open delimiter",
-      "offset": {
-        "start": 239,
-        "end": 240
-      }
-    },
-    {
-      "id": 60,
-      "line": 16,
-      "column": 9,
-      "lexeme": "printf",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "subtype": "user-identifier",
-      "length": 6,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#9cdcfe",
-      "description": "User-defined identifier",
-      "offset": {
-        "start": 249,
-        "end": 255
-      }
-    },
-    {
-      "id": 61,
-      "line": 16,
-      "column": 15,
-      "lexeme": "(",
-      "token": "LPAREN",
-      "category": "delimiter",
-      "subtype": "grouping",
-      "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#d4d4d4",
-      "description": "Grouping / call delimiter (open)",
       "offset": {
         "start": 255,
         "end": 256
       }
     },
     {
-      "id": 62,
-      "line": 16,
-      "column": 16,
-      "lexeme": "\"That is a small sum.\\n\"",
-      "token": "STRING_LITERAL",
-      "category": "literal",
-      "subtype": "string",
-      "length": 24,
-      "scope": "block:2",
-      "scope_level": 2,
-      "color": "#ce9178",
-      "description": "String literal constant",
+      "id": 64,
+      "line": 13,
+      "column": 13,
+      "lexeme": "System",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 6,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
       "offset": {
-        "start": 256,
+        "start": 269,
+        "end": 275
+      }
+    },
+    {
+      "id": 65,
+      "line": 13,
+      "column": 19,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "subtype": "member",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Member/field access operator (C/C++)",
+      "offset": {
+        "start": 275,
+        "end": 276
+      }
+    },
+    {
+      "id": 66,
+      "line": 13,
+      "column": 20,
+      "lexeme": "out",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 3,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 276,
+        "end": 279
+      }
+    },
+    {
+      "id": 67,
+      "line": 13,
+      "column": 23,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "subtype": "member",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Member/field access operator (C/C++)",
+      "offset": {
+        "start": 279,
         "end": 280
       }
     },
     {
-      "id": 63,
-      "line": 16,
-      "column": 40,
+      "id": 68,
+      "line": 13,
+      "column": 24,
+      "lexeme": "println",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 7,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 280,
+        "end": 287
+      }
+    },
+    {
+      "id": 69,
+      "line": 13,
+      "column": 31,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
+      "subtype": "grouping",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Grouping / call delimiter (open)",
+      "offset": {
+        "start": 287,
+        "end": 288
+      }
+    },
+    {
+      "id": 70,
+      "line": 13,
+      "column": 32,
+      "lexeme": "\"That is a big sum!\"",
+      "token": "STRING_LITERAL",
+      "category": "literal",
+      "subtype": "string",
+      "length": 20,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#ce9178",
+      "description": "String literal constant",
+      "offset": {
+        "start": 288,
+        "end": 308
+      }
+    },
+    {
+      "id": 71,
+      "line": 13,
+      "column": 52,
       "lexeme": ")",
       "token": "RPAREN",
       "category": "delimiter",
       "subtype": "grouping",
       "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
+      "scope": "block:3",
+      "scope_level": 3,
       "color": "#d4d4d4",
       "description": "Grouping / call delimiter (close)",
       "offset": {
-        "start": 280,
-        "end": 281
+        "start": 308,
+        "end": 309
       }
     },
     {
-      "id": 64,
-      "line": 16,
-      "column": 41,
+      "id": 72,
+      "line": 13,
+      "column": 53,
       "lexeme": ";",
       "token": "SEMICOLON",
       "category": "delimiter",
       "subtype": "statement",
       "length": 1,
-      "scope": "block:2",
-      "scope_level": 2,
+      "scope": "block:3",
+      "scope_level": 3,
       "color": "#d4d4d4",
       "description": "Statement terminator",
       "offset": {
-        "start": 281,
-        "end": 282
+        "start": 309,
+        "end": 310
       }
     },
     {
-      "id": 65,
+      "id": 73,
+      "line": 14,
+      "column": 9,
+      "lexeme": "}",
+      "token": "RBRACE",
+      "category": "delimiter",
+      "subtype": "block",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Block close delimiter",
+      "offset": {
+        "start": 319,
+        "end": 320
+      }
+    },
+    {
+      "id": 74,
+      "line": 14,
+      "column": 11,
+      "lexeme": "else",
+      "token": "KW_ELSE",
+      "category": "keyword",
+      "subtype": "control-flow",
+      "length": 4,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#569cd6",
+      "description": "Alternate branch keyword",
+      "offset": {
+        "start": 321,
+        "end": 325
+      }
+    },
+    {
+      "id": 75,
+      "line": 14,
+      "column": 16,
+      "lexeme": "{",
+      "token": "LBRACE",
+      "category": "delimiter",
+      "subtype": "block",
+      "length": 1,
+      "scope": "block:2",
+      "scope_level": 2,
+      "color": "#d4d4d4",
+      "description": "Block open delimiter",
+      "offset": {
+        "start": 326,
+        "end": 327
+      }
+    },
+    {
+      "id": 76,
+      "line": 15,
+      "column": 13,
+      "lexeme": "System",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 6,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 340,
+        "end": 346
+      }
+    },
+    {
+      "id": 77,
+      "line": 15,
+      "column": 19,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "subtype": "member",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Member/field access operator (C/C++)",
+      "offset": {
+        "start": 346,
+        "end": 347
+      }
+    },
+    {
+      "id": 78,
+      "line": 15,
+      "column": 20,
+      "lexeme": "out",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 3,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 347,
+        "end": 350
+      }
+    },
+    {
+      "id": 79,
+      "line": 15,
+      "column": 23,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "subtype": "member",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Member/field access operator (C/C++)",
+      "offset": {
+        "start": 350,
+        "end": 351
+      }
+    },
+    {
+      "id": 80,
+      "line": 15,
+      "column": 24,
+      "lexeme": "println",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "subtype": "user-identifier",
+      "length": 7,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#9cdcfe",
+      "description": "User-defined identifier",
+      "offset": {
+        "start": 351,
+        "end": 358
+      }
+    },
+    {
+      "id": 81,
+      "line": 15,
+      "column": 31,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
+      "subtype": "grouping",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Grouping / call delimiter (open)",
+      "offset": {
+        "start": 358,
+        "end": 359
+      }
+    },
+    {
+      "id": 82,
+      "line": 15,
+      "column": 32,
+      "lexeme": "\"That is a small sum.\"",
+      "token": "STRING_LITERAL",
+      "category": "literal",
+      "subtype": "string",
+      "length": 22,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#ce9178",
+      "description": "String literal constant",
+      "offset": {
+        "start": 359,
+        "end": 381
+      }
+    },
+    {
+      "id": 83,
+      "line": 15,
+      "column": 54,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
+      "subtype": "grouping",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Grouping / call delimiter (close)",
+      "offset": {
+        "start": 381,
+        "end": 382
+      }
+    },
+    {
+      "id": 84,
+      "line": 15,
+      "column": 55,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "subtype": "statement",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Statement terminator",
+      "offset": {
+        "start": 382,
+        "end": 383
+      }
+    },
+    {
+      "id": 85,
+      "line": 16,
+      "column": 9,
+      "lexeme": "}",
+      "token": "RBRACE",
+      "category": "delimiter",
+      "subtype": "block",
+      "length": 1,
+      "scope": "block:3",
+      "scope_level": 3,
+      "color": "#d4d4d4",
+      "description": "Block close delimiter",
+      "offset": {
+        "start": 392,
+        "end": 393
+      }
+    },
+    {
+      "id": 86,
       "line": 17,
       "column": 5,
       "lexeme": "}",
@@ -1172,67 +1550,13 @@
       "color": "#d4d4d4",
       "description": "Block close delimiter",
       "offset": {
-        "start": 287,
-        "end": 288
+        "start": 398,
+        "end": 399
       }
     },
     {
-      "id": 66,
-      "line": 19,
-      "column": 5,
-      "lexeme": "return",
-      "token": "KW_RETURN",
-      "category": "keyword",
-      "subtype": "control-flow",
-      "length": 6,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#569cd6",
-      "description": "Return-from-function keyword",
-      "offset": {
-        "start": 294,
-        "end": 300
-      }
-    },
-    {
-      "id": 67,
-      "line": 19,
-      "column": 12,
-      "lexeme": "0",
-      "token": "INT_LITERAL",
-      "category": "literal",
-      "subtype": "integer",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#b5cea8",
-      "description": "Integer literal constant",
-      "offset": {
-        "start": 301,
-        "end": 302
-      }
-    },
-    {
-      "id": 68,
-      "line": 19,
-      "column": 13,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "subtype": "statement",
-      "length": 1,
-      "scope": "block:1",
-      "scope_level": 1,
-      "color": "#d4d4d4",
-      "description": "Statement terminator",
-      "offset": {
-        "start": 302,
-        "end": 303
-      }
-    },
-    {
-      "id": 69,
-      "line": 20,
+      "id": 87,
+      "line": 18,
       "column": 1,
       "lexeme": "}",
       "token": "RBRACE",
@@ -1244,21 +1568,21 @@
       "color": "#d4d4d4",
       "description": "Block close delimiter",
       "offset": {
-        "start": 304,
-        "end": 305
+        "start": 400,
+        "end": 401
       }
     }
   ],
   "statistics": {
-    "total": 69,
+    "total": 87,
     "by_category": {
-      "keyword": 4,
-      "type": 4,
-      "identifier": 14,
-      "literal": 8,
-      "operator": 8,
-      "delimiter": 30,
-      "comment": 1,
+      "keyword": 7,
+      "type": 5,
+      "identifier": 22,
+      "literal": 7,
+      "operator": 14,
+      "delimiter": 32,
+      "comment": 0,
       "error": 0
     }
   },

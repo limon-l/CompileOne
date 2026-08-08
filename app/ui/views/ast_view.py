@@ -64,12 +64,6 @@ class ASTView(QWidget):
             self._tree.addTopLevelItem(root_item)
             self._tree.expandToDepth(3)
             self._tree.setUpdatesEnabled(True)
-        elif language is not None and language != "mini-c":
-            placeholder = QTreeWidgetItem([
-                f"AST not available for {language}",
-                "Full AST support is only implemented for Mini-C"
-            ])
-            self._tree.addTopLevelItem(placeholder)
         
         self._tree.resizeColumnToContents(0)
         self._tree.resizeColumnToContents(1)

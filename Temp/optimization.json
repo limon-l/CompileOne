@@ -1,13 +1,48 @@
 {
   "schema": "compileone/optimization/1.0",
   "phase": "optimization",
-  "language": "c",
+  "language": "java",
   "source_file": "D:\\Project\\CompileOne\\Temp\\token_stream.json",
-  "generated_by": "c native placeholder",
-  "duration_ms": 0.0,
-  "before_instruction_count": 0,
-  "after_instruction_count": 0,
-  "instruction_reduction_pct": 0.0,
-  "passes": [],
-  "errors": []
+  "generated_by": "compileone.exe v0.1.0 (optimizer)",
+  "duration_ms": 0,
+  "before_instruction_count": 34,
+  "after_instruction_count": 33,
+  "instruction_reduction_pct": 2.94,
+  "passes": [
+    {
+      "name": "Constant Folding",
+      "applied": false,
+      "explanation": "No constant expressions found; every operation already involves a runtime value.",
+      "instruction_reduction": 0,
+      "removed_instructions": [],
+      "before": [],
+      "after": []
+    },
+    {
+      "name": "Dead Code Elimination",
+      "applied": true,
+      "explanation": "Removed 1 temporary computation(s) whose result was never read; unused temporaries waste a stack slot and register moves.",
+      "instruction_reduction": 1,
+      "removed_instructions": [
+        {
+          "index": 14,
+          "op": "assign",
+          "arg1": "i",
+          "arg2": "",
+          "result": "t2"
+        }
+      ],
+      "before": [
+        "t2 = i"
+      ],
+      "after": []
+    }
+  ],
+  "errors": [
+    {
+      "line": 6,
+      "column": 25,
+      "message": "expected ';' after for-init"
+    }
+  ]
 }

@@ -355,7 +355,100 @@ char *ir_quad_text(const IrQuad *q) {
     StrBuf sb;
     strbuf_init(&sb);
 
-    if (strcmp(q->op, "label") == 0) {
+    if (strcmp(q->op, "func") == 0) {
+        strbuf_append(&sb, "func ");
+        strbuf_append(&sb, q->result ? q->result : "?");
+        strbuf_append(&sb, " : ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "int");
+        if (q->arg2) {
+            strbuf_append_char(&sb, ' ');
+            strbuf_append(&sb, q->arg2);
+        }
+    } else if (strcmp(q->op, "param") == 0) {
+        strbuf_append(&sb, "param ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "int");
+        strbuf_append_char(&sb, ' ');
+        strbuf_append(&sb, q->result ? q->result : "?");
+    } else if (strcmp(q->op, "endfunc") == 0) {
+        strbuf_append(&sb, "endfunc");
+    } else if (strcmp(q->op, "arg") == 0) {
+        strbuf_append(&sb, "arg ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "?");
+    } else if (strcmp(q->op, "call") == 0) {
+        if (q->result) {
+            strbuf_append(&sb, q->result);
+            strbuf_append(&sb, " = ");
+        }
+        strbuf_append(&sb, "call ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "?");
+        strbuf_append_char(&sb, '(');
+        strbuf_append(&sb, q->arg2 ? q->arg2 : "0");
+        strbuf_append_char(&sb, ')');
+    } else if (strcmp(q->op, "alloc") == 0) {
+        strbuf_append(&sb, q->result ? q->result : "?");
+        strbuf_append(&sb, " = alloc ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "int");
+        if (q->arg2) {
+            strbuf_append_char(&sb, ' ');
+            strbuf_append(&sb, q->arg2);
+        }
+    } else if (strcmp(q->op, "string") == 0) {
+        strbuf_append(&sb, q->result ? q->result : "?");
+        strbuf_append(&sb, " = string ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "\"\"");
+    } else if (strcmp(q->op, "arr_load") == 0 ||
+               strcmp(q->op, "arr_loadf") == 0) {
+        strbuf_append(&sb, q->result ? q->result : "?");
+        strbuf_append(&sb, " = ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "?");
+        strbuf_append_char(&sb, '[');
+        strbuf_append(&sb, q->arg2 ? q->arg2 : "?");
+        strbuf_append_char(&sb, ']');
+    } else if (strcmp(q->op, "arr_store") == 0 ||
+               strcmp(q->op, "arr_storef") == 0) {
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "?");
+        strbuf_append_char(&sb, '[');
+        strbuf_append(&sb, q->arg2 ? q->arg2 : "?");
+        strbuf_append(&sb, "] = ");
+        strbuf_append(&sb, q->result ? q->result : "?");
+    } else if (strcmp(q->op, "member_load") == 0 ||
+               strcmp(q->op, "member_loadf") == 0 ||
+               strcmp(q->op, "member_loadq") == 0) {
+        strbuf_append(&sb, q->result ? q->result : "?");
+        strbuf_append(&sb, " = ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "?");
+        strbuf_append_char(&sb, '.');
+        strbuf_append(&sb, q->arg2 ? q->arg2 : "0");
+    } else if (strcmp(q->op, "member_store") == 0 ||
+               strcmp(q->op, "member_storef") == 0 ||
+               strcmp(q->op, "member_storeq") == 0) {
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "?");
+        strbuf_append_char(&sb, '.');
+        strbuf_append(&sb, q->arg2 ? q->arg2 : "0");
+        strbuf_append(&sb, " = ");
+        strbuf_append(&sb, q->result ? q->result : "?");
+    } else if (strcmp(q->op, "concat") == 0) {
+        strbuf_append(&sb, q->result ? q->result : "?");
+        strbuf_append(&sb, " = concat ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "?");
+        strbuf_append_char(&sb, ',');
+        strbuf_append_char(&sb, ' ');
+        strbuf_append(&sb, q->arg2 ? q->arg2 : "?");
+    } else if (strcmp(q->op, "print_item") == 0 ||
+               strcmp(q->op, "print_float_item") == 0 ||
+               strcmp(q->op, "print_str_addr") == 0) {
+        strbuf_append(&sb, q->op);
+        strbuf_append_char(&sb, ' ');
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "?");
+    } else if (strcmp(q->op, "print_str_item") == 0) {
+        strbuf_append(&sb, "print_str_item ");
+        strbuf_append(&sb, q->arg1 ? q->arg1 : "\"\"");
+    } else if (strcmp(q->op, "println") == 0) {
+        strbuf_append(&sb, "println");
+    } else if (strcmp(q->op, "read_str") == 0) {
+        strbuf_append(&sb, "read_str ");
+        strbuf_append(&sb, q->result ? q->result : "?");
+    } else if (strcmp(q->op, "label") == 0) {
         strbuf_append(&sb, q->result ? q->result : "?");
         strbuf_append_char(&sb, ':');
     } else if (strcmp(q->op, "goto") == 0) {
