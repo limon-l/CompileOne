@@ -4,7 +4,7 @@
   "language": "java",
   "source_file": "D:\\Project\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (three-address code)",
-  "duration_ms": 0,
+  "duration_ms": 2,
   "tac": [
     {
       "index": 1,

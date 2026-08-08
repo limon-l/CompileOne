@@ -4,7 +4,7 @@
   "language": "java",
   "source_file": "D:\\Project\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (recursive-descent parser)",
-  "duration_ms": 2,
+  "duration_ms": 4,
   "root": {
     "id": 1,
     "node_type": "Program",
