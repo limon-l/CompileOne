@@ -1,0 +1,198 @@
+{
+  "schema": "compileone/assembly/1.0",
+  "phase": "codegen",
+  "language": "c",
+  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\compileone_working.c",
+  "generated_by": "compileone.exe (gcc -S)",
+  "duration_ms": 0,
+  "target": "x86-64 (gcc -S)",
+  "lines": [
+    {
+      "kind": "directive",
+      "text": "\t.file\t\"compileone_working.c\"",
+      "line": 1
+    },
+    {
+      "kind": "directive",
+      "text": "\t.def\t___main;\t.scl\t2;\t.type\t32;\t.endef",
+      "line": 2
+    },
+    {
+      "kind": "directive",
+      "text": "\t.section .rdata,\"dr\"",
+      "line": 3
+    },
+    {
+      "kind": "label",
+      "text": "LC0:",
+      "line": 4
+    },
+    {
+      "kind": "directive",
+      "text": "\t.ascii \"Hello CompileOne\\0\"",
+      "line": 5
+    },
+    {
+      "kind": "label",
+      "text": "LC1:",
+      "line": 6
+    },
+    {
+      "kind": "directive",
+      "text": "\t.ascii \"%d\\0\"",
+      "line": 7
+    },
+    {
+      "kind": "directive",
+      "text": "\t.section\t.text.startup,\"x\"",
+      "line": 8
+    },
+    {
+      "kind": "directive",
+      "text": "\t.p2align 4,,15",
+      "line": 9
+    },
+    {
+      "kind": "directive",
+      "text": "\t.globl\t_main",
+      "line": 10
+    },
+    {
+      "kind": "directive",
+      "text": "\t.def\t_main;\t.scl\t2;\t.type\t32;\t.endef",
+      "line": 11
+    },
+    {
+      "kind": "label",
+      "text": "_main:",
+      "line": 12
+    },
+    {
+      "kind": "label",
+      "text": "LFB12:",
+      "line": 13
+    },
+    {
+      "kind": "directive",
+      "text": "\t.cfi_startproc",
+      "line": 14
+    },
+    {
+      "kind": "instruction",
+      "text": "\tpushl\t%ebp",
+      "line": 15
+    },
+    {
+      "kind": "directive",
+      "text": "\t.cfi_def_cfa_offset 8",
+      "line": 16
+    },
+    {
+      "kind": "directive",
+      "text": "\t.cfi_offset 5, -8",
+      "line": 17
+    },
+    {
+      "kind": "instruction",
+      "text": "\tmovl\t%esp, %ebp",
+      "line": 18
+    },
+    {
+      "kind": "directive",
+      "text": "\t.cfi_def_cfa_register 5",
+      "line": 19
+    },
+    {
+      "kind": "instruction",
+      "text": "\tandl\t$-16, %esp",
+      "line": 20
+    },
+    {
+      "kind": "instruction",
+      "text": "\tsubl\t$16, %esp",
+      "line": 21
+    },
+    {
+      "kind": "instruction",
+      "text": "\tcall\t___main",
+      "line": 22
+    },
+    {
+      "kind": "instruction",
+      "text": "\tmovl\t$LC0, (%esp)",
+      "line": 23
+    },
+    {
+      "kind": "instruction",
+      "text": "\tcall\t_puts",
+      "line": 24
+    },
+    {
+      "kind": "instruction",
+      "text": "\tmovl\t$0, 4(%esp)",
+      "line": 25
+    },
+    {
+      "kind": "instruction",
+      "text": "\tmovl\t$LC1, (%esp)",
+      "line": 26
+    },
+    {
+      "kind": "instruction",
+      "text": "\tcall\t_scanf",
+      "line": 27
+    },
+    {
+      "kind": "instruction",
+      "text": "\txorl\t%eax, %eax",
+      "line": 28
+    },
+    {
+      "kind": "instruction",
+      "text": "\tleave",
+      "line": 29
+    },
+    {
+      "kind": "directive",
+      "text": "\t.cfi_restore 5",
+      "line": 30
+    },
+    {
+      "kind": "directive",
+      "text": "\t.cfi_def_cfa 4, 4",
+      "line": 31
+    },
+    {
+      "kind": "instruction",
+      "text": "\tret",
+      "line": 32
+    },
+    {
+      "kind": "directive",
+      "text": "\t.cfi_endproc",
+      "line": 33
+    },
+    {
+      "kind": "label",
+      "text": "LFE12:",
+      "line": 34
+    },
+    {
+      "kind": "directive",
+      "text": "\t.ident\t\"GCC: (MinGW.org GCC-6.3.0-1) 6.3.0\"",
+      "line": 35
+    },
+    {
+      "kind": "directive",
+      "text": "\t.def\t_puts;\t.scl\t2;\t.type\t32;\t.endef",
+      "line": 36
+    },
+    {
+      "kind": "directive",
+      "text": "\t.def\t_scanf;\t.scl\t2;\t.type\t32;\t.endef",
+      "line": 37
+    }
+  ],
+  "instruction_count": 13,
+  "strings": []
+}

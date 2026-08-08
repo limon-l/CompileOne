@@ -1,0 +1,104 @@
+{
+  "schema": "compileone/ir/1.0",
+  "phase": "ir",
+  "language": "mini-c",
+  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\token_stream.json",
+  "generated_by": "compileone.exe v0.1.0 (three-address code)",
+  "duration_ms": 2,
+  "tac": [
+    {
+      "index": 1,
+      "op": "mul",
+      "arg1": "2",
+      "arg2": "3",
+      "result": "t1"
+    },
+    {
+      "index": 2,
+      "op": "add",
+      "arg1": "1",
+      "arg2": "t1",
+      "result": "t2"
+    },
+    {
+      "index": 3,
+      "op": "print",
+      "arg1": "t2",
+      "arg2": "",
+      "result": ""
+    },
+    {
+      "index": 4,
+      "op": "add",
+      "arg1": "1",
+      "arg2": "2",
+      "result": "t3"
+    },
+    {
+      "index": 5,
+      "op": "mul",
+      "arg1": "t3",
+      "arg2": "3",
+      "result": "t4"
+    },
+    {
+      "index": 6,
+      "op": "print",
+      "arg1": "t4",
+      "arg2": "",
+      "result": ""
+    }
+  ],
+  "quadruples": [
+    {
+      "index": 1,
+      "op": "mul",
+      "a": "2",
+      "b": "3",
+      "r": "t1"
+    },
+    {
+      "index": 2,
+      "op": "add",
+      "a": "1",
+      "b": "t1",
+      "r": "t2"
+    },
+    {
+      "index": 3,
+      "op": "print",
+      "a": "t2",
+      "b": "",
+      "r": ""
+    },
+    {
+      "index": 4,
+      "op": "add",
+      "a": "1",
+      "b": "2",
+      "r": "t3"
+    },
+    {
+      "index": 5,
+      "op": "mul",
+      "a": "t3",
+      "b": "3",
+      "r": "t4"
+    },
+    {
+      "index": 6,
+      "op": "print",
+      "a": "t4",
+      "b": "",
+      "r": ""
+    }
+  ],
+  "temporaries": [
+    "t1",
+    "t2",
+    "t3",
+    "t4"
+  ],
+  "labels": [],
+  "errors": []
+}

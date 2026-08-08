@@ -1,0 +1,1 @@
+{"schema":"compileone/execution/1.0","phase":"execution","language":"mini-c","source_file":"examples\\study\\hello.mc","generated_by":"compileone.exe v0.2.0 (interpreter)","duration_ms":1,"status":"lex-error","exit_code":1,"steps":0,"output":[],"errors":[{"line":1,"column":1,"message":"Unknown character"},{"line":5,"column":7,"message":"Unknown character"}]}

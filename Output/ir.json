@@ -1,0 +1,104 @@
+{
+  "schema": "compileone/ir/1.0",
+  "phase": "ir",
+  "language": "c",
+  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\compileone_working.c",
+  "generated_by": "compileone.exe (gcc -fdump-tree-optimized)",
+  "duration_ms": 266,
+  "temp_count": 0,
+  "label_count": 0,
+  "instruction_count": 10,
+  "functions": [],
+  "instructions": [
+    {
+      "id": 1,
+      "op": "main",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 4,
+      "text": "main ()"
+    },
+    {
+      "id": 2,
+      "op": "int",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 6,
+      "text": "int a;"
+    },
+    {
+      "id": 3,
+      "op": "int",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 7,
+      "text": "int D.1884;"
+    },
+    {
+      "id": 4,
+      "op": "int",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 8,
+      "text": "int _5;"
+    },
+    {
+      "id": 5,
+      "op": "<bb",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 10,
+      "text": "<bb 2>:"
+    },
+    {
+      "id": 6,
+      "op": "__builtin_puts",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 11,
+      "text": "__builtin_puts (&\"Hello CompileOne\"[0]);"
+    },
+    {
+      "id": 7,
+      "op": "scanf",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 12,
+      "text": "scanf (\"%d\", a_3(D));"
+    },
+    {
+      "id": 8,
+      "op": "_5",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 13,
+      "text": "_5 = 0;"
+    },
+    {
+      "id": 9,
+      "op": "<L0>:",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 15,
+      "text": "<L0>:"
+    },
+    {
+      "id": 10,
+      "op": "return",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 16,
+      "text": "return _5;"
+    }
+  ]
+}

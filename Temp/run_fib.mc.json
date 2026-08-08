@@ -1,0 +1,1 @@
+{"schema":"compileone/execution/1.0","phase":"execution","language":"mini-c","source_file":"examples\\study\\fib.mc","generated_by":"compileone.exe v0.1.0 (interpreter)","duration_ms":0,"status":"runtime-error","exit_code":1,"steps":2,"output":[],"errors":[{"line":11,"column":7,"message":"function call 'fib(...)' is not supported yet (roadmap Phase D)"}]}

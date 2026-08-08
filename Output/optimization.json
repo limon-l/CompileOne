@@ -1,0 +1,76 @@
+{
+  "schema": "compileone/optimization/1.0",
+  "phase": "optimization",
+  "language": "c",
+  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\compileone_working.c",
+  "generated_by": "compileone.exe (gcc -O2 -fdump-tree-optimized)",
+  "duration_ms": 544,
+  "before_count": 10,
+  "after_count": 6,
+  "savings_pct": 40,
+  "optimizations": [
+    {
+      "kind": "function",
+      "line": 0,
+      "before": "",
+      "after": "main"
+    }
+  ],
+  "functions": [],
+  "instructions": [
+    {
+      "id": 1,
+      "op": "main",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 4,
+      "text": "main ()"
+    },
+    {
+      "id": 2,
+      "op": "int",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 6,
+      "text": "int a;"
+    },
+    {
+      "id": 3,
+      "op": "<bb",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 8,
+      "text": "<bb 2>:"
+    },
+    {
+      "id": 4,
+      "op": "__builtin_puts",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 9,
+      "text": "__builtin_puts (&\"Hello CompileOne\"[0]);"
+    },
+    {
+      "id": 5,
+      "op": "scanf",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 10,
+      "text": "scanf (\"%d\", a_3(D));"
+    },
+    {
+      "id": 6,
+      "op": "return",
+      "dst": "",
+      "a": "",
+      "b": "",
+      "line": 11,
+      "text": "return 0;"
+    }
+  ]
+}

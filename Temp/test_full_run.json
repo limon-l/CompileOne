@@ -1,0 +1,1 @@
+{"schema":"compileone/execution/1.0","phase":"execution","language":"mini-c","source_file":"Temp\\test_full.mc","generated_by":"compileone.exe v0.1.0 (interpreter)","duration_ms":0,"status":"ok","exit_code":0,"steps":25,"output":["0","1","2","3","4","2.5","done","all done","1","2","3","6"],"errors":[]}

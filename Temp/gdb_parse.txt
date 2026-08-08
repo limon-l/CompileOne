@@ -1,0 +1,8 @@
+break parse_error_impl
+commands
+silent
+printf "ERROR: fmt='%s' tok='%s' pos=%d\n", fmt, tok?tok->lexeme:"NULL", p->pos
+bt 3
+continue
+end
+run

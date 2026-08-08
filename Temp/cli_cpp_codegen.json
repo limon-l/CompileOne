@@ -1,0 +1,1 @@
+{"schema":"compileone/unavailable/1.0","phase":"codegen","language":"cpp","source_file":"samples\\hello.cpp","generated_by":"compileone.exe v0.2.0","duration_ms":0,"status":"unavailable","message":"The codegen phase consumes the mini-c IR; C/C++/Java need a separate backend."}

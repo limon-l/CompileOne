@@ -1,0 +1,25 @@
+{
+  "schema": "compileone/parse-tree/1.0",
+  "phase": "syntax",
+  "language": "c",
+  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\compileone_working.c",
+  "generated_by": "compileone.exe (gcc GENERIC parse tree)",
+  "duration_ms": 262,
+  "node_count": 9,
+  "root": {
+    "id": 1,
+    "kind": "program",
+    "production": "program",
+    "line": 0,
+    "column": 0,
+    "name": "",
+    "type": "",
+    "value": "",
+    "op": "",
+    "lexeme": "",
+    "token": "",
+    "role": "",
+    "children": []
+  },
+  "errors": []
+}

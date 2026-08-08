@@ -1,0 +1,1 @@
+{"schema":"compileone/unavailable/1.0","phase":"run","language":"java","source_file":"samples\\hello.java","generated_by":"compileone.exe v0.2.0","duration_ms":0,"status":"unavailable","message":"The run phase is the mini-c interpreter; C/C++/Java execution needs a separate backend."}

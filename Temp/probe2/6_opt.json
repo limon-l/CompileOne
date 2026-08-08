@@ -1,0 +1,1 @@
+{"schema":"compileone/opt/1.0","phase":"optimization","language":"mini-c","source_file":"Temp\\probe2\\5_ir.json","generated_by":"compileone.exe (peephole optimizer)","duration_ms":2,"before_count":0,"after_count":0,"savings_pct":0,"optimizations":[],"instructions":[],"functions":[]}

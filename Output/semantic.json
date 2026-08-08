@@ -1,0 +1,19 @@
+{
+  "schema": "compileone/semantic/1.0",
+  "phase": "semantic",
+  "language": "c",
+  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\compileone_working.c",
+  "generated_by": "compileone.exe (gcc semantic analyzer)",
+  "duration_ms": 134,
+  "valid": true,
+  "symbols": [],
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "line": 13,
+      "column": 13,
+      "code": "TC001",
+      "message": "format '%d' expects argument of type 'int *', but argument 2 has type 'int' [-Wformat=]"
+    }
+  ]
+}
