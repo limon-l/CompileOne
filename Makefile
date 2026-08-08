@@ -6,6 +6,11 @@
 
 CC        := gcc
 FLEX      := flex
+ifneq ($(wildcard .venv/Scripts/python.exe),)
+PYTHON := .venv/Scripts/python.exe
+else
+PYTHON ?= python
+endif
 
 BUILD_DIR := Build
 GEN_DIR   := backend/build
@@ -105,13 +110,13 @@ build_dirs:
 
 # Backend smoke test + full frontend test suite
 test: all
-	python -m pytest tests/frontend tests/integration -q
+	"$(PYTHON)" -m pytest tests/frontend tests/integration -q
 
 pytest:
-	python -m pytest tests/frontend tests/integration -q
+	"$(PYTHON)" -m pytest tests/frontend tests/integration -q
 
 gui: all
-	python app/main.py
+	"$(PYTHON)" app/main.py
 
 clean:
 	@echo "[clean] removing build artifacts..."

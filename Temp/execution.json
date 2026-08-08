@@ -2,7 +2,7 @@
   "schema": "compileone/execution/1.0",
   "phase": "execution",
   "language": "mini-c",
-  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\compileone_source.mc",
+  "source_file": "D:\\Project\\CompileOne\\Temp\\compileone_source.mc",
   "generated_by": "compileone.exe v0.1.0 (interpreter)",
   "duration_ms": 0,
   "status": "ok",

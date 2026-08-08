@@ -95,10 +95,41 @@ def test_run_marks_roadmap_phases_unavailable_when_backend_missing(tmp_path):
     assert not (tmp_path / "out" / "ir.json").is_file()
 
 
-def test_run_phase_skipped_for_native_languages(tmp_path, fake_runner):
+def test_run_halts_and_drops_stale_artifacts_on_phase_error(tmp_path, fake_runner):
+    class FailingRunner(type(fake_runner)):
+        def run_phase(self, phase, input_path, output_path, language="mini-c"):
+            if phase == "parse":
+                raise RuntimeError("parse failed")
+            return super().run_phase(phase, input_path, output_path, language=language)
+
+    pipeline = Pipeline()
+    store = ArtifactStore(output_dir=tmp_path / "out", cache_dir=tmp_path / "cache")
+    session_artifacts = {
+        "parse_tree": {"schema": "compileone/parse-tree/1.0", "phase": "parse", "errors": []},
+        "ast": {"schema": "compileone/ast/1.0", "phase": "ast", "errors": []},
+    }
+    results = pipeline.run(
+        source_path=tmp_path / "hello.mc",
+        store=store,
+        runner=FailingRunner(),
+        session_artifacts=session_artifacts,
+    )
+
+    by_id = {r.phase.id: r for r in results}
+    assert by_id["lex"].status == PhaseStatus.OK
+    assert by_id["parse"].status == PhaseStatus.ERROR
+    assert by_id["parse"].error == "parse failed"
+    assert by_id["ast"].status == PhaseStatus.SKIPPED
+    assert by_id["semantic"].status == PhaseStatus.SKIPPED
+    assert by_id["ir"].status == PhaseStatus.SKIPPED
+    assert "parse_tree" not in session_artifacts
+    assert "ast" not in session_artifacts
+
+
+def test_native_language_phases_use_native_placeholders(tmp_path, fake_runner):
     """
-    The mini-c interpreter must not be invoked when lexing/compiling
-    native languages (C/C++/Java); those are run by their own toolchain.
+    Native languages should still update all study phase views through
+    the pipeline, while the internal mini-c interpreter run phase remains skipped.
     """
     pipeline = Pipeline()
     store = ArtifactStore(output_dir=tmp_path / "out", cache_dir=tmp_path / "cache")
@@ -109,9 +140,10 @@ def test_run_phase_skipped_for_native_languages(tmp_path, fake_runner):
         session_artifacts={},
         language="c++",
     )
-    assert fake_runner.calls == ["lex"]
-    assert results[1].status == PhaseStatus.SKIPPED  # parse
-    assert "mini-c" in results[1].error
+    assert fake_runner.calls == [
+        "lex", "parse", "ast", "semantic", "ir", "opt", "codegen"
+    ]
+    assert results[1].status == PhaseStatus.OK
     assert results[-1].status == PhaseStatus.SKIPPED
     assert "native" in results[-1].error
 

@@ -15,6 +15,9 @@ from app.infrastructure.backend_runner import PhaseNotImplemented
 from app.infrastructure.json_loader import load_json
 from app.infrastructure.paths import PHASE_ARTIFACTS
 
+NATIVE_SOURCE_PHASES = {"parse", "ast", "semantic", "ir", "opt", "codegen"}
+NATIVE_LANGUAGES = {"c", "c++", "java"}
+
 
 @dataclass(frozen=True)
 class Phase:
@@ -39,17 +42,17 @@ class Phase:
 STUDY_PHASES: list[Phase] = [
     Phase("lex", "Lexical Analysis", "source", "token_stream", True),
     Phase("parse", "Parsing (Parse Tree)", "artifact", "parse_tree", True,
-          input_artifact="token_stream", mini_c_only=True),
+          input_artifact="token_stream"),
     Phase("ast", "Abstract Syntax Tree", "artifact", "ast", True,
-          input_artifact="token_stream", mini_c_only=True),
+          input_artifact="token_stream"),
     Phase("semantic", "Semantic Analysis", "artifact", "semantic", True,
-          input_artifact="token_stream", mini_c_only=True),
+          input_artifact="token_stream"),
     Phase("ir", "Intermediate Representation", "artifact", "ir", True,
-          input_artifact="token_stream", mini_c_only=True),
+          input_artifact="token_stream"),
     Phase("opt", "Optimization", "artifact", "optimization", True,
-          input_artifact="token_stream", mini_c_only=True),
+          input_artifact="token_stream"),
     Phase("codegen", "Code Generation", "artifact", "assembly", True,
-          input_artifact="token_stream", mini_c_only=True),
+          input_artifact="token_stream"),
     Phase("run", "Execution", "source", "execution", True, mini_c_only=True),
 ]
 
@@ -95,6 +98,12 @@ class Pipeline:
     def previous_phase(self, phase: Phase) -> Phase | None:
         index = self.phases.index(phase)
         return self.phases[index - 1] if index > 0 else None
+
+    def artifact_producer(self, artifact_id: str) -> Phase | None:
+        for phase in self.phases:
+            if phase.output_artifact == artifact_id:
+                return phase
+        return None
 
     # ------------------------------------------------------ execution
 
@@ -154,16 +163,47 @@ class Pipeline:
                 drop_stale(phase)
                 continue
 
+            if phase.input_kind == "artifact":
+                prev = self.previous_phase(phase)
+                required_artifact = phase.input_artifact or prev.output_artifact
+
+                if required_artifact not in session_artifacts:
+                    producer = self.artifact_producer(required_artifact)
+                    if producer is not None:
+                        producing_result = next(
+                            (r for r in results if r.phase == producer), None
+                        )
+                        if producing_result is not None:
+                            if producing_result.status == PhaseStatus.UNAVAILABLE:
+                                result.status = PhaseStatus.UNAVAILABLE
+                                result.error = (
+                                    f"required artifact '{required_artifact}' is unavailable "
+                                    f"because phase '{producer.id}' is unavailable"
+                                )
+                                drop_stale(phase)
+                                continue
+                            if producing_result.status == PhaseStatus.ERROR:
+                                result.status = PhaseStatus.SKIPPED
+                                result.error = (
+                                    f"required artifact '{required_artifact}' is missing because "
+                                    f"phase '{producer.id}' failed"
+                                )
+                                drop_stale(phase)
+                                continue
+                    result.status = PhaseStatus.SKIPPED
+                    result.error = (
+                        f"required artifact '{required_artifact}' is missing; "
+                        "the producing phase did not complete"
+                    )
+                    drop_stale(phase)
+                    continue
+
+                input_path = store.artifact_path(required_artifact)
+            else:
+                input_path = source_path
+
             result.status = PhaseStatus.RUNNING
             try:
-                if phase.input_kind == "source":
-                    input_path = source_path
-                else:
-                    prev = self.previous_phase(phase)
-                    input_path = store.artifact_path(
-                        phase.input_artifact or prev.output_artifact
-                    )
-
                 output_path = store.artifact_path(phase.output_artifact)
                 data = runner.run_phase(
                     phase.id, input_path, output_path, language=language
@@ -179,6 +219,8 @@ class Pipeline:
             except Exception as exc:  # noqa: BLE001 — surface every failure to the UI
                 result.status = PhaseStatus.ERROR
                 result.error = str(exc)
+                drop_stale(phase)
+                halted = True
 
         return results
 

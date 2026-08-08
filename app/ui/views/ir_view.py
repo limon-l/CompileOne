@@ -43,11 +43,20 @@ class IRView(QWidget):
         layout.addWidget(self._table)
         self.setLayout(layout)
 
-    def set_ir(self, ir: IrInfo | None) -> None:
+    def set_ir(self, ir: IrInfo | None, language: str | None = None) -> None:
         self._table.setRowCount(0)
 
-        if ir is None:
-            self._summary.setText("No IR generated yet.")
+        if ir is None or (
+            language is not None and language != "mini-c"
+            and ir.generated_by.endswith("native placeholder")
+        ):
+            if language is not None and language != "mini-c":
+                self._summary.setText(
+                    f"IR is not available for {language}. "
+                    "Full IR support is only available for Mini-C."
+                )
+            else:
+                self._summary.setText("No IR generated yet.")
             return
 
         self._summary.setText(

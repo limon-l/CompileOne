@@ -61,12 +61,21 @@ class SemanticView(QWidget):
         layout.addWidget(splitter)
         self.setLayout(layout)
 
-    def set_semantic(self, semantic: SemanticInfo | None) -> None:
+    def set_semantic(self, semantic: SemanticInfo | None, language: str | None = None) -> None:
         self._symbols_table.setRowCount(0)
         self._diag_tree.clear()
 
-        if semantic is None:
-            self._summary.setText("No semantic analysis yet.")
+        if semantic is None or (
+            language is not None and language != "mini-c"
+            and semantic.generated_by.endswith("native placeholder")
+        ):
+            if language is not None and language != "mini-c":
+                self._summary.setText(
+                    f"Semantic analysis is not available for {language}. "
+                    "Full semantic support is only available for Mini-C."
+                )
+            else:
+                self._summary.setText("No semantic analysis yet.")
             return
 
         status = "VALID" if semantic.valid else "INVALID"

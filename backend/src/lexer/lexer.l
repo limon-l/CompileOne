@@ -75,19 +75,20 @@ LETTER     [a-zA-Z_]
 ID         {LETTER}({LETTER}|{DIGIT})*
 INT_LIT    {DIGIT}+
 FLOAT_LIT  {DIGIT}+\.{DIGIT}+
-WS         [ \t\r]+
+WS         [ \t]+
+NEWLINE    (\r\n|[\n\r])
 
 %%
 
 {WS}                    { skip(); }
-\n                      { skip(); }
+{NEWLINE}               { skip(); }
 
-"//"[^\n]*              { if (lex_collect_comments) record_token(TOK_COMMENT); else skip(); }
+"//"[^\r\n]*              { if (lex_collect_comments) record_token(TOK_COMMENT); else skip(); }
 "/*"([^*]|"*"+[^*/])*"*"+"/" { if (lex_collect_comments) record_token(TOK_COMMENT); else skip(); }
 "/*"                    { record_error("Unterminated block comment"); }
-^[ \t]*"#"[^\n]*        { record_token(TOK_PREPROC); }
-\"(\\.|[^"\\\n])*\"     { record_token(TOK_STRING_LITERAL); }
-\"(\\.|[^"\\\n])*       { record_error("Unterminated string literal"); }
+^[ \t]*"#"[^\r\n]*        { record_token(TOK_PREPROC); }
+\"(\\.|[^\"\\\r\n])*\"     { record_token(TOK_STRING_LITERAL); }
+\"(\\.|[^\"\\\r\n])*       { record_error("Unterminated string literal"); }
 
 "int"       { record_token(TOK_INT); }
 "float"     { record_token(TOK_FLOAT); }
@@ -149,7 +150,9 @@ WS         [ \t\r]+
 %%
 
 int lex_file(const char *input_path, TokenList *tokens, LexErrorList *errors) {
-    FILE *fp = fopen(input_path, "rb");
+    /* Open in text mode so Windows CRLF line endings are translated
+       to a single '\n' and token offsets remain stable across platforms. */
+    FILE *fp = fopen(input_path, "r");
     if (!fp) {
         return -1;
     }

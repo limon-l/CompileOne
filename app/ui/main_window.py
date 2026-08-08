@@ -448,22 +448,24 @@ class MainWindow(QMainWindow):
         
         # Update CST view
         cst = self._orchestrator.cst_of(self._session)
-        self.cst_view.set_tree(cst)
+        self.cst_view.set_tree(cst, language=self._session.language)
 
         # Update AST view
         ast = self._orchestrator.ast_of(self._session)
-        self.ast_view.set_tree(ast)
+        self.ast_view.set_tree(ast, language=self._session.language)
 
         # Update semantic view
         semantic = self._orchestrator.semantic_of(self._session)
-        self.semantic_view.set_semantic(semantic)
+        self.semantic_view.set_semantic(semantic, language=self._session.language)
 
         # Update IR / optimization / assembly views
-        self.ir_view.set_ir(self._orchestrator.ir_of(self._session))
+        self.ir_view.set_ir(self._orchestrator.ir_of(self._session), language=self._session.language)
         self.optimization_view.set_optimization(
-            self._orchestrator.optimization_of(self._session)
+            self._orchestrator.optimization_of(self._session), language=self._session.language
         )
-        self.assembly_view.set_assembly(self._orchestrator.assembly_of(self._session))
+        self.assembly_view.set_assembly(
+            self._orchestrator.assembly_of(self._session), language=self._session.language
+        )
 
         # Update problems view
         self.problems.set_diagnostics(self._session.diagnostics)

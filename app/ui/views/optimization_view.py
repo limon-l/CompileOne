@@ -43,11 +43,20 @@ class OptimizationView(QWidget):
         layout.addWidget(splitter)
         self.setLayout(layout)
 
-    def set_optimization(self, opt: OptInfo | None) -> None:
+    def set_optimization(self, opt: OptInfo | None, language: str | None = None) -> None:
         self._pass_tree.clear()
 
-        if opt is None:
-            self._summary.setText("No optimization applied yet.")
+        if opt is None or (
+            language is not None and language != "mini-c"
+            and opt.generated_by.endswith("native placeholder")
+        ):
+            if language is not None and language != "mini-c":
+                self._summary.setText(
+                    f"Optimization results are not available for {language}. "
+                    "Full optimization support is only available for Mini-C."
+                )
+            else:
+                self._summary.setText("No optimization applied yet.")
             return
 
         self._summary.setText(

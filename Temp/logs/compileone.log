@@ -1818,3 +1818,1212 @@ collect2.exe: error: ld returned 1 exit status
 2026-08-08 19:36:13,846 DEBUG    compileone.store: artifact saved: C:\Users\User\OneDrive - LP Industries\Documents\Limon\Projects\CompileOne\Temp\token_stream.json
 2026-08-08 19:36:13,849 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
 2026-08-08 19:36:16,378 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o C:\Users\User\OneDrive - LP Industries\Documents\Limon\Projects\CompileOne\Temp\compileone_source.exe C:\Users\User\OneDrive - LP Industries\Documents\Limon\Projects\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:10:39,544 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 20:10:42,712 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:10:42,800 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:42,820 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:42,821 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:10:42,862 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 12.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:10:42,880 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:10:42,882 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:10:42,908 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:10:42,927 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:10:42,928 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:10:42,952 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:10:42,966 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:10:42,967 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:10:42,993 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 5.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:10:43,009 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:10:43,010 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:10:43,036 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 5.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:10:43,049 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:10:43,050 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:10:43,076 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:10:43,096 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:10:43,097 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:10:43,120 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:10:43,135 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:10:43,137 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:10:43,720 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:10:43,747 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:43,780 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:43,781 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:10:43,857 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 42.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:10:43,890 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:10:43,898 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:10:43,967 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:10:43,974 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:10:43,975 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:10:44,009 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 2.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:10:44,029 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:10:44,030 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:10:44,053 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:10:44,075 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:10:44,076 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:10:44,098 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:10:44,130 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:10:44,132 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:10:44,155 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:10:44,159 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:10:44,160 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:10:44,181 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:10:44,184 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:10:44,185 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:10:47,190 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:10:47,213 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:47,216 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:47,217 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:10:47,241 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 5.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:10:47,261 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:10:47,262 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:10:47,283 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 6.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:10:47,306 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:10:47,307 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:10:47,327 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:10:47,329 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:10:47,330 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:10:47,351 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:10:47,356 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:10:47,357 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:10:47,377 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:10:47,380 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:10:47,381 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:10:47,402 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:10:47,407 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:10:47,408 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:10:47,427 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:10:47,430 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:10:47,431 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:10:48,397 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:10:48,424 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:10:48,426 INFO     compileone.orchestrator: execute: status=ok exit=0 steps=2
+2026-08-08 20:10:51,717 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:10:51,754 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 9.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:51,785 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:51,787 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:10:52,284 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:10:52,325 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:52,358 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:10:52,359 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:01,348 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:11:01,372 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:01,396 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:01,397 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:03,892 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 20:11:07,696 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:07,738 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 15.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:07,761 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:07,762 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:08,299 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:08,322 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:08,346 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:08,347 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:09,492 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:09,515 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:09,552 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:09,553 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:10,948 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:11:21,007 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:21,062 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 27.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:21,085 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:21,087 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:22,017 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:22,068 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 24.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:22,092 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:22,094 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:33,377 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:33,415 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 16.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:33,438 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:33,440 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:50,624 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:50,673 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 19.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:50,706 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:50,708 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:51,539 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:51,576 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 18.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:51,614 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:51,615 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:53,505 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:53,530 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:53,554 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:53,556 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:54,287 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:54,325 INFO     compileone.backend: backend[lex]: lex: 85 tokens, 0 errors, 6.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:54,348 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:54,350 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:57,327 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:57,365 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 22.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:57,387 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:57,389 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:11:58,876 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:11:58,899 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 5.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:58,926 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:11:58,927 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:12:01,756 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:12:15,397 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:12:15,438 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 10.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:12:15,458 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:12:15,459 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:12:16,860 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:12:16,882 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:12:16,908 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:12:16,909 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:12:17,972 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:12:55,415 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 20:12:57,609 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:12:57,634 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:12:57,658 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:12:57,659 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:12:57,702 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 16.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:12:57,724 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:12:57,725 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:12:57,751 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:12:57,754 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:12:57,755 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:12:57,780 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:12:57,784 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:12:57,785 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:12:57,808 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:12:57,810 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:12:57,811 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:12:57,836 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:12:57,839 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:12:57,840 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:12:57,863 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:12:57,868 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:12:57,869 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:12:57,895 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:12:57,897 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:12:57,899 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:12:58,365 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:12:58,389 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 4.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:12:58,415 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:12:58,418 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:12:58,469 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 25.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:12:58,509 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:12:58,511 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:12:58,554 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 2.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:12:58,584 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:12:58,586 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:12:58,611 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 2.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:12:58,615 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:12:58,616 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:12:58,643 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:12:58,647 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:12:58,649 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:12:58,676 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:12:58,679 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:12:58,681 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:12:58,710 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:12:58,715 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:12:58,717 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:12:58,745 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:12:58,750 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:12:58,752 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:13:00,972 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:13:00,999 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:01,025 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:01,026 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:13:01,561 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:13:01,580 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:01,608 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:01,609 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:13:04,987 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:13:05,015 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 4.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:05,039 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:05,040 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:13:07,371 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:13:07,392 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:07,423 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:07,424 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:13:08,796 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:13:17,827 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:13:17,867 INFO     compileone.backend: backend[lex]: lex: 85 tokens, 0 errors, 14.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:17,887 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:17,889 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:13:18,861 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:13:18,911 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 26.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:18,932 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:18,933 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:13:20,252 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:13:20,277 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:20,304 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:13:20,306 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:13:21,988 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:13:51,277 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 20:14:03,991 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:14:04,138 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 13.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:04,363 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:04,372 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:14:04,848 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 233.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:14:05,086 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:14:05,096 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:14:05,294 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 2.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:14:05,299 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:14:05,301 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:14:05,335 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 1.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:14:05,361 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:14:05,363 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:14:05,409 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:14:05,468 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:14:05,671 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:14:06,707 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 3.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:14:06,741 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:14:06,743 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:14:06,776 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 1.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:14:06,824 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:14:06,825 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:14:06,862 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:14:06,866 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:14:06,987 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:14:12,910 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:14:13,263 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 22.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:13,526 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:13,534 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:14:13,693 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 31.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:14:13,797 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:14:13,815 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:14:14,116 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 5.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:14:14,348 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:14:14,357 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:14:14,659 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 4.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:14:14,880 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:14:14,896 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:14:15,035 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 1.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:14:15,064 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:14:15,068 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:14:15,097 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 2.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:14:15,121 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:14:15,125 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:14:15,738 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 10.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:14:16,216 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:14:16,422 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:14:16,478 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:14:16,481 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:14:16,483 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:14:26,221 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:14:26,252 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:26,282 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:26,283 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:14:27,323 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:14:27,507 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 17.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:27,632 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:27,634 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:14:47,338 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:14:47,411 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:47,452 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:47,454 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:14:49,351 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:14:49,499 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 12.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:49,746 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:14:49,755 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:14:51,322 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:15:55,578 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:16:02,652 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:16:02,678 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:16:02,705 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:16:02,707 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:16:04,156 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:42:31,354 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 20:42:34,704 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:42:34,729 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:42:34,751 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:42:34,752 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:42:34,791 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 15.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:42:34,812 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:42:34,813 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:42:34,835 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:42:34,856 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:42:34,856 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:42:34,881 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 1.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:42:34,883 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:42:34,883 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:42:34,905 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:42:34,907 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:42:34,909 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:42:34,929 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:42:34,943 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:42:34,944 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:42:34,965 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 1.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:42:34,984 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:42:34,985 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:42:35,005 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:42:35,007 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:42:35,008 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:42:36,437 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:42:36,465 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:42:36,469 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:42:36,472 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:42:36,520 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:42:36,544 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:42:36,545 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:42:36,565 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:42:36,568 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:42:36,569 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:42:36,590 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 1.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:42:36,592 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:42:36,594 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:42:36,617 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:42:36,619 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:42:36,621 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:42:36,642 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:42:36,645 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:42:36,646 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:42:36,670 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 1.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:42:36,675 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:42:36,676 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:42:36,696 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:42:36,698 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:42:36,699 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:47:51,869 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 20:47:55,045 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:47:55,070 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:47:55,074 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:47:55,075 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:47:55,099 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:47:55,102 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:47:55,103 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:47:55,128 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:47:55,132 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:47:55,133 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:47:55,156 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:47:55,159 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:47:55,161 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:47:55,182 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:47:55,184 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:47:55,185 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:47:55,206 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 1.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:47:55,220 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:47:55,221 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:47:55,245 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:47:55,247 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:47:55,248 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:47:55,269 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:47:55,271 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:47:55,274 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:47:56,523 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:47:56,550 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:47:56,553 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:47:56,555 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:47:56,581 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:47:56,584 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:47:56,585 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:47:56,609 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:47:56,613 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:47:56,614 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:47:56,636 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:47:56,639 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:47:56,641 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:47:56,666 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 2.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:47:56,688 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:47:56,690 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:47:56,713 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:47:56,716 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:47:56,717 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:47:56,739 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 1.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:47:56,743 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:47:56,744 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:47:56,766 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:47:56,768 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:47:56,769 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:48:02,115 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:48:02,441 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 194.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:48:02,615 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:48:02,618 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:48:02,953 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:48:02,980 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:48:03,021 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:48:03,023 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:48:04,333 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\g++.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.cpp -g
+2026-08-08 20:48:39,944 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:48:39,967 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:48:39,992 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:48:39,994 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:49:29,550 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 20:49:32,152 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:49:32,237 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:32,241 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:32,242 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:49:32,265 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:49:32,293 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:49:32,294 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:49:32,323 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 4.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:49:32,345 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:49:32,346 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:49:32,372 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:49:32,375 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:49:32,376 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:49:32,399 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:49:32,401 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:49:32,402 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:49:32,425 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 2.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:49:32,443 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:49:32,444 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:49:32,466 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:49:32,469 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:49:32,470 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:49:32,491 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 1.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:49:32,506 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:49:32,507 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:49:33,059 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:49:33,077 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:33,080 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:33,081 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:49:33,102 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:49:33,121 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:49:33,122 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:49:33,140 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 1.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:49:33,164 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:49:33,165 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:49:33,184 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:49:33,185 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:49:33,186 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:49:33,203 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:49:33,206 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:49:33,207 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:49:33,228 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:49:33,230 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:49:33,231 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:49:33,249 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:49:33,252 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:49:33,253 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:49:33,270 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 1.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:49:33,272 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:49:33,273 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:49:39,724 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:49:39,860 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 93.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:40,082 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:40,089 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:49:40,771 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:49:40,793 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 9.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:40,816 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:40,817 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:49:41,558 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:49:41,586 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:41,625 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:49:41,627 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:49:43,486 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 20:51:52,063 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:51:52,110 INFO     compileone.backend: backend[lex]: lex: 80 tokens, 0 errors, 16.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:51:52,134 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:51:52,135 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:51:54,211 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:51:54,236 INFO     compileone.backend: backend[lex]: lex: 80 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:51:54,263 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:51:54,266 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:51:56,823 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 20:58:19,299 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 20:58:20,760 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:58:20,825 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:20,828 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:20,829 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:58:20,843 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:58:20,846 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:58:20,846 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:58:20,860 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:58:20,862 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:58:20,862 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:58:20,876 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:58:20,877 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:58:20,878 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:58:20,892 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:58:20,893 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:58:20,894 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:58:20,909 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:58:20,910 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:58:20,911 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:58:20,926 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 1.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:58:20,928 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:58:20,928 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:58:20,943 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:58:20,944 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:58:20,945 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:58:22,211 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:58:22,254 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:22,258 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:22,258 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:58:22,281 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:58:22,286 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:58:22,287 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:58:22,307 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 1.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:58:22,310 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:58:22,311 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:58:22,331 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 1.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:58:22,333 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:58:22,334 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:58:22,355 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 1.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:58:22,357 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:58:22,358 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:58:22,377 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 1.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:58:22,379 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:58:22,380 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:58:22,401 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:58:22,405 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:58:22,406 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:58:22,426 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:58:22,427 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:58:22,428 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:58:26,324 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:58:26,343 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:26,366 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:26,367 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:58:26,907 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:58:26,920 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:26,936 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:26,937 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:58:27,804 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:58:27,820 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:27,840 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:27,841 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:58:28,925 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 20:58:36,668 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:58:36,687 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:36,708 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:58:36,710 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:58:38,940 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 20:59:09,695 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 20:59:11,389 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:59:11,402 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:11,405 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:11,405 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:59:11,421 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:59:11,423 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:59:11,424 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:59:11,438 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:59:11,440 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:59:11,440 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:59:11,454 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 6.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:59:11,465 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:59:11,466 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:59:11,482 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:59:11,484 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:59:11,484 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:59:11,499 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:59:11,501 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:59:11,501 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:59:11,516 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:59:11,517 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:59:11,518 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:59:11,532 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:59:11,534 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:59:11,534 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:59:12,724 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:59:12,750 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:12,753 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:12,754 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:59:12,779 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:59:12,782 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:59:12,783 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:59:12,804 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:59:12,806 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:59:12,808 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:59:12,831 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 1.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:59:12,833 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:59:12,834 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:59:12,854 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 2.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:59:12,856 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:59:12,857 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:59:12,878 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 3.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:59:12,881 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:59:12,882 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:59:12,903 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:59:12,906 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:59:12,907 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:59:12,927 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:59:12,929 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:59:12,930 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:59:31,676 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 20:59:31,694 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 10.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:31,716 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:31,716 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 20:59:31,747 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 11.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:59:31,763 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 20:59:31,763 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 20:59:31,781 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:59:31,797 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 20:59:31,803 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 20:59:31,911 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 4.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:59:31,921 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 20:59:31,925 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 20:59:32,046 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 4.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:59:32,181 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 20:59:32,187 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 20:59:32,259 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 1.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:59:32,262 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 20:59:32,263 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 20:59:32,283 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:59:32,285 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 20:59:32,286 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:59:32,382 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 1.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:59:32,393 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:59:32,399 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 20:59:34,437 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 20:59:34,453 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 20:59:34,454 INFO     compileone.orchestrator: execute: status=ok exit=0 steps=2
+2026-08-08 20:59:37,502 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:59:37,520 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:37,540 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:37,541 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:59:38,099 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.cpp --output D:\Project\CompileOne\Temp\token_stream.json --language c++
+2026-08-08 20:59:38,132 INFO     compileone.backend: backend[lex]: lex: 84 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:38,156 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:38,157 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:59:39,468 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.java --output D:\Project\CompileOne\Temp\token_stream.json --language java
+2026-08-08 20:59:39,501 INFO     compileone.backend: backend[lex]: lex: 88 tokens, 0 errors, 15.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:39,518 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:39,520 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:59:40,067 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.java --output D:\Project\CompileOne\Temp\token_stream.json --language java
+2026-08-08 20:59:40,099 INFO     compileone.backend: backend[lex]: lex: 88 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:40,120 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:40,122 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:59:44,268 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.java --output D:\Project\CompileOne\Temp\token_stream.json --language java
+2026-08-08 20:59:44,295 INFO     compileone.backend: backend[lex]: lex: 88 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:44,321 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:44,323 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:59:56,563 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:59:56,594 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:56,756 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:56,763 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:59:57,162 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:59:57,293 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 10.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:57,476 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:57,483 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 20:59:58,900 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 20:59:58,927 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 3.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:58,957 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 20:59:58,958 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:00:00,052 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 21:10:03,785 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 21:10:04,896 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:10:04,958 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:04,961 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:04,962 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:10:04,979 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 7.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:10:04,992 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:10:04,993 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:10:05,007 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:10:05,009 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:10:05,010 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:10:05,024 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:10:05,026 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:10:05,026 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:10:05,041 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:10:05,042 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:10:05,043 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:10:05,057 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:10:05,059 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:10:05,059 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:10:05,073 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:10:05,087 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:10:05,088 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:10:05,103 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:10:05,104 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:10:05,104 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:10:05,508 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:10:05,525 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 7.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:05,551 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:05,552 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:10:05,587 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 22.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:10:05,607 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:10:05,608 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:10:05,623 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:10:05,625 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:10:05,625 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:10:05,638 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:10:05,639 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:10:05,640 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:10:05,653 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:10:05,655 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:10:05,655 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:10:05,668 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:10:05,670 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:10:05,671 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:10:05,683 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:10:05,687 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:10:05,687 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:10:05,700 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:10:05,703 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:10:05,703 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:10:09,231 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:10:09,250 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:09,270 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:09,271 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:10:09,828 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:10:09,862 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 9.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:09,883 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:09,885 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:10:10,531 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:10:10,551 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:10,571 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:10:10,572 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:10:11,618 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 21:25:25,257 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 21:25:26,375 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:25:26,389 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:26,391 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:26,392 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:25:26,406 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:25:26,408 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:25:26,409 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:25:26,423 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:25:26,424 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:25:26,425 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:25:26,438 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:25:26,440 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:25:26,440 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:25:26,455 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:25:26,457 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:25:26,457 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:25:26,472 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:25:26,474 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:25:26,475 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:25:26,488 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:25:26,490 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:25:26,491 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:25:26,504 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:25:26,505 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:25:26,505 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:25:26,986 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:25:27,028 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:27,033 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:27,034 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:25:27,051 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:25:27,054 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:25:27,055 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:25:27,069 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:25:27,071 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:25:27,071 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:25:27,086 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:25:27,087 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:25:27,087 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:25:27,101 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:25:27,102 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:25:27,102 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:25:27,115 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 1.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:25:27,116 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:25:27,117 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:25:27,130 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:25:27,132 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:25:27,133 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:25:27,146 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:25:27,148 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:25:27,149 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:25:50,661 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:25:50,682 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:50,701 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:50,702 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:25:51,249 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:25:51,286 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:51,308 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:51,310 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:25:52,295 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:25:52,320 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:52,347 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:25:52,348 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:25:54,896 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 21:26:00,952 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:26:00,976 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:26:01,000 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:26:01,001 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:26:36,447 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:26:36,467 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:26:36,493 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:26:36,495 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:26:38,135 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 21:32:35,577 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 21:32:37,174 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:32:37,247 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:37,250 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:37,251 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:32:37,274 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:32:37,278 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:32:37,279 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:32:37,303 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:32:37,306 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:32:37,307 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:32:37,330 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:32:37,333 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:32:37,334 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:32:37,356 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:32:37,360 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:32:37,361 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:32:37,382 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:32:37,384 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:32:37,385 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:32:37,410 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:32:37,413 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:32:37,414 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:32:37,437 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:32:37,439 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:32:37,440 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:32:37,978 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:32:38,001 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:38,005 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:38,006 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:32:38,030 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 1.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:32:38,033 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:32:38,034 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:32:38,054 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 1.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:32:38,058 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:32:38,060 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:32:38,078 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 4.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:32:38,080 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:32:38,081 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:32:38,100 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:32:38,102 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:32:38,103 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:32:38,123 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:32:38,126 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:32:38,127 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:32:38,148 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:32:38,150 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:32:38,151 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:32:38,171 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:32:38,174 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:32:38,175 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:32:41,963 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:32:41,985 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 8.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:42,005 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:42,007 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:32:42,569 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:32:42,590 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:42,615 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:42,617 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:32:43,318 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:32:43,341 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 9.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:43,363 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:32:43,364 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:32:45,023 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 21:33:05,655 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:33:05,676 INFO     compileone.backend: backend[lex]: lex: 59 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:05,700 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:05,701 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:33:05,735 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 11.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:05,759 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:05,760 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:33:05,779 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 5.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:05,798 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:05,799 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:33:05,819 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=3 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:05,822 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:05,823 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:33:05,843 INFO     compileone.backend: backend[ir]: ir: 24 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:05,846 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:05,847 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:33:05,867 INFO     compileone.backend: backend[opt]: opt: 24 -> 24 instructions (0.0% reduction), 3.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:05,870 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:05,871 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:33:05,891 INFO     compileone.backend: backend[codegen]: codegen: 52 instruction(s), stack 48 bytes, 1.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:05,913 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:05,914 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:33:05,932 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=28, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:05,934 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:05,935 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:33:06,262 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:33:06,288 INFO     compileone.backend: backend[lex]: lex: 59 tokens, 0 errors, 8.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:06,308 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:06,309 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:33:06,347 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 18.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:06,371 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:06,372 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:33:06,392 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:06,411 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:06,412 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:33:06,432 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=3 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:06,434 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:06,435 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:33:06,456 INFO     compileone.backend: backend[ir]: ir: 24 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:06,458 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:06,459 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:33:06,478 INFO     compileone.backend: backend[opt]: opt: 24 -> 24 instructions (0.0% reduction), 3.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:06,480 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:06,481 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:33:06,501 INFO     compileone.backend: backend[codegen]: codegen: 52 instruction(s), stack 48 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:06,519 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:06,520 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:33:06,538 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=28, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:06,540 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:06,541 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:33:10,376 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:33:10,397 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:10,422 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:10,423 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:33:10,462 INFO     compileone.backend: backend[parse]: parse: 0 node(s), 21 errors, 16.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:10,492 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:10,493 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:33:10,512 INFO     compileone.backend: backend[ast]: ast: 21 error(s), 3.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:10,531 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:10,532 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:33:10,551 INFO     compileone.backend: backend[semantic]: semantic: valid=0 symbols=2 diagnostics=5, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:10,570 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:10,572 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:33:10,593 INFO     compileone.backend: backend[ir]: ir: 27 quad(s), 3.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:10,609 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:10,610 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:33:10,629 INFO     compileone.backend: backend[opt]: opt: 27 -> 26 instructions (3.7% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:10,647 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:10,648 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:33:10,668 INFO     compileone.backend: backend[codegen]: codegen: 50 instruction(s), stack 48 bytes, 1.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:10,687 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:10,689 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:33:10,707 INFO     compileone.backend: backend[run]: run: status=runtime-error exit=1 steps=1, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:10,718 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:10,720 INFO     compileone.orchestrator: compile_all: 8 phases run, 48 diagnostic(s)
+2026-08-08 21:33:14,259 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:33:14,281 INFO     compileone.backend: backend[lex]: lex: 59 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:14,312 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:14,313 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:33:14,355 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 23.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:14,402 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:14,420 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:33:14,486 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 2.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:14,525 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:14,527 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:33:14,554 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=3 diagnostics=0, 9.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:14,583 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:14,584 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:33:14,607 INFO     compileone.backend: backend[ir]: ir: 24 quad(s), 1.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:14,625 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:14,626 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:33:14,649 INFO     compileone.backend: backend[opt]: opt: 24 -> 24 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:14,672 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:14,673 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:33:14,694 INFO     compileone.backend: backend[codegen]: codegen: 52 instruction(s), stack 48 bytes, 3.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:14,713 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:14,714 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:33:14,734 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=28, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:14,737 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:14,738 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:33:15,398 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:33:15,418 INFO     compileone.backend: backend[lex]: lex: 59 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:15,440 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:15,441 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:33:15,479 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 17.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:15,501 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:33:15,502 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:33:15,521 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:15,542 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:33:15,543 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:33:15,563 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=3 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:15,565 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:33:15,566 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:33:15,587 INFO     compileone.backend: backend[ir]: ir: 24 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:15,589 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:33:15,590 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:33:15,609 INFO     compileone.backend: backend[opt]: opt: 24 -> 24 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:15,611 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:33:15,611 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:33:15,632 INFO     compileone.backend: backend[codegen]: codegen: 52 instruction(s), stack 48 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:15,650 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:33:15,651 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:33:15,671 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=28, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:15,673 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:15,674 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:33:17,711 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:33:17,732 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=28, 3.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:33:17,745 INFO     compileone.orchestrator: execute: status=ok exit=0 steps=28
+2026-08-08 21:33:33,576 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:33:33,597 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:33,622 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:33,624 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:33:34,191 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:33:34,213 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:34,235 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:34,236 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:33:34,751 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:33:34,772 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:34,794 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:33:34,795 INFO     compileone.orchestrator: compile_all: 1 phases run, 0 diagnostic(s)
+2026-08-08 21:33:36,342 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 21:53:49,590 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 21:53:51,254 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:53:51,337 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:53:51,340 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:53:51,341 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:53:51,366 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:53:51,386 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:53:51,387 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:53:51,409 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 4.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:53:51,413 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:53:51,414 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:53:51,437 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:53:51,438 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:53:51,439 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:53:51,463 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:53:51,465 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:53:51,466 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:53:51,489 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:53:51,491 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:53:51,493 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:53:51,516 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:53:51,519 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:53:51,520 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:53:51,540 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:53:51,542 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:53:51,543 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:53:52,065 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:53:52,101 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 4.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:53:52,104 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:53:52,105 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:53:52,128 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:53:52,132 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:53:52,133 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:53:52,152 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:53:52,155 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:53:52,156 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:53:52,174 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 3.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:53:52,194 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:53:52,196 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:53:52,215 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:53:52,217 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:53:52,218 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:53:52,239 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 1.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:53:52,260 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:53:52,261 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:53:52,282 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:53:52,285 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:53:52,286 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:53:52,306 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:53:52,309 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:53:52,310 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:53:54,707 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 21:53:54,729 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:53:54,732 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:53:54,733 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 21:53:54,752 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 4.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:53:54,773 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:53:54,774 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 21:53:54,793 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 0.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:53:54,797 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:53:54,798 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 21:53:54,816 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:53:54,817 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:53:54,818 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 21:53:54,836 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:53:54,838 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:53:54,839 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 21:53:54,858 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:53:54,860 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:53:54,861 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 21:53:54,881 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 0.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:53:54,883 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:53:54,884 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:53:54,902 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:53:54,904 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:53:54,905 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 21:53:55,875 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 21:53:55,898 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 21:53:55,899 INFO     compileone.orchestrator: execute: status=ok exit=0 steps=2
+2026-08-08 21:54:00,143 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:54:00,167 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:54:00,187 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:54:00,189 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:54:00,192 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:54:00,195 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:54:00,198 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:54:00,200 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:54:00,202 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:54:00,203 INFO     compileone.orchestrator: compile_all: 7 phases run, 0 diagnostic(s)
+2026-08-08 21:54:00,740 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:54:00,763 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:54:00,785 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:54:00,788 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:54:00,790 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:54:00,793 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:54:00,796 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:54:00,798 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:54:00,801 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:54:00,803 INFO     compileone.orchestrator: compile_all: 7 phases run, 0 diagnostic(s)
+2026-08-08 21:54:01,795 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 21:54:01,816 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:54:01,836 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 21:54:01,838 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 21:54:01,841 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 21:54:01,844 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 21:54:01,847 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 21:54:01,849 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 21:54:01,851 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 21:54:01,852 INFO     compileone.orchestrator: compile_all: 7 phases run, 0 diagnostic(s)
+2026-08-08 21:54:04,243 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g
+2026-08-08 22:24:35,294 DEBUG    compileone.theme: applied stylesheet D:\Project\CompileOne\app\ui\theme\vs_dark.qss
+2026-08-08 22:24:44,573 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 22:24:44,982 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:45,004 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:45,005 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 22:24:45,046 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 20.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 22:24:45,064 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 22:24:45,066 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 22:24:45,090 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 2.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 22:24:45,109 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 22:24:45,110 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 22:24:45,135 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 22:24:45,147 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 22:24:45,148 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 22:24:45,172 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 0.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 22:24:45,174 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 22:24:45,175 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 22:24:45,260 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 10.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 22:24:45,365 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 22:24:45,368 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 22:24:45,476 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 2.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 22:24:45,580 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 22:24:45,584 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 22:24:45,704 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 22:24:45,711 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 22:24:45,715 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 22:24:46,703 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\token_stream.json --language mini-c
+2026-08-08 22:24:46,774 INFO     compileone.backend: backend[lex]: lex: 17 tokens, 0 errors, 12.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:46,908 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:46,916 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe parse --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\parse_tree.json --language mini-c
+2026-08-08 22:24:47,155 INFO     compileone.backend: backend[parse]: parse: 1 node(s), 0 errors, 123.00 ms -> D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 22:24:47,268 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 22:24:47,272 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ast --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ast.json --language mini-c
+2026-08-08 22:24:47,382 INFO     compileone.backend: backend[ast]: ast: 0 error(s), 7.00 ms -> D:\Project\CompileOne\Temp\ast.json
+2026-08-08 22:24:47,500 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 22:24:47,504 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe semantic --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\semantic.json --language mini-c
+2026-08-08 22:24:47,626 INFO     compileone.backend: backend[semantic]: semantic: valid=1 symbols=0 diagnostics=0, 0.00 ms -> D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 22:24:47,635 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 22:24:47,638 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe ir --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\ir.json --language mini-c
+2026-08-08 22:24:47,741 INFO     compileone.backend: backend[ir]: ir: 6 quad(s), 8.00 ms -> D:\Project\CompileOne\Temp\ir.json
+2026-08-08 22:24:47,829 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 22:24:47,832 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe opt --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\optimization.json --language mini-c
+2026-08-08 22:24:47,947 INFO     compileone.backend: backend[opt]: opt: 6 -> 6 instructions (0.0% reduction), 0.00 ms -> D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 22:24:47,958 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 22:24:47,967 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe codegen --input D:\Project\CompileOne\Temp\token_stream.json --output D:\Project\CompileOne\Temp\assembly.json --language mini-c
+2026-08-08 22:24:48,011 INFO     compileone.backend: backend[codegen]: codegen: 24 instruction(s), stack 16 bytes, 5.00 ms -> D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 22:24:48,035 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 22:24:48,036 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe run --input D:\Project\CompileOne\Temp\compileone_source.mc --output D:\Project\CompileOne\Temp\execution.json --language mini-c
+2026-08-08 22:24:48,055 INFO     compileone.backend: backend[run]: run: status=ok exit=0 steps=2, 0.00 ms -> D:\Project\CompileOne\Temp\execution.json
+2026-08-08 22:24:48,057 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\execution.json
+2026-08-08 22:24:48,058 INFO     compileone.orchestrator: compile_all: 8 phases run, 0 diagnostic(s)
+2026-08-08 22:24:50,610 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 22:24:50,631 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:50,648 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:50,650 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 22:24:50,652 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 22:24:50,654 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 22:24:50,656 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 22:24:50,659 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 22:24:50,662 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 22:24:50,663 INFO     compileone.orchestrator: compile_all: 7 phases run, 0 diagnostic(s)
+2026-08-08 22:24:51,208 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 22:24:51,227 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 0.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:51,245 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:51,246 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 22:24:51,248 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 22:24:51,249 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 22:24:51,251 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 22:24:51,252 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 22:24:51,256 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 22:24:51,264 INFO     compileone.orchestrator: compile_all: 7 phases run, 0 diagnostic(s)
+2026-08-08 22:24:52,621 DEBUG    compileone.backend: backend: D:\Project\CompileOne\build\compileone.exe lex --input D:\Project\CompileOne\Temp\compileone_source.c --output D:\Project\CompileOne\Temp\token_stream.json --language c
+2026-08-08 22:24:52,793 INFO     compileone.backend: backend[lex]: lex: 69 tokens, 0 errors, 2.00 ms -> D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:52,985 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\token_stream.json
+2026-08-08 22:24:53,005 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\parse_tree.json
+2026-08-08 22:24:53,021 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ast.json
+2026-08-08 22:24:53,040 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\semantic.json
+2026-08-08 22:24:53,058 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\ir.json
+2026-08-08 22:24:53,082 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\optimization.json
+2026-08-08 22:24:53,097 DEBUG    compileone.store: artifact saved: D:\Project\CompileOne\Temp\assembly.json
+2026-08-08 22:24:53,109 INFO     compileone.orchestrator: compile_all: 7 phases run, 0 diagnostic(s)
+2026-08-08 22:24:53,741 DEBUG    compileone.orchestrator: native compile: C:\MinGW\bin\gcc.EXE -o D:\Project\CompileOne\Temp\compileone_source.exe D:\Project\CompileOne\Temp\compileone_source.c -g

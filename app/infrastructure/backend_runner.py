@@ -12,6 +12,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import subprocess
 from pathlib import Path
@@ -38,6 +39,15 @@ class PhaseNotImplemented(BackendError):
 
 
 class BackendRunner:
+    NATIVE_PLACEHOLDER_PHASES = {
+        "parse",
+        "ast",
+        "semantic",
+        "ir",
+        "opt",
+        "codegen",
+    }
+
     def __init__(self, toolchain: Toolchain, cwd: Path | None = None) -> None:
         self._toolchain = toolchain
         self._tool_info: ToolInfo | None = self._toolchain.get("compileone")
@@ -50,14 +60,118 @@ class BackendRunner:
     def available(self) -> bool:
         return self._tool_info.available if self._tool_info else False
 
-    def run_phase(
+    def _write_json_artifact(self, path: Path, data: dict) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with open(path, "w", encoding="utf-8") as fh:
+            json.dump(data, fh, indent=2)
+
+    def _native_placeholder_artifact(
+        self,
+        phase: str,
+        input_path: Path,
+        language: str,
+    ) -> dict:
+        generated_by = f"{language} native placeholder"
+        source_file = str(input_path)
+
+        if phase == "parse":
+            return {
+                "schema": "compileone/parse-tree/1.0",
+                "phase": "parse",
+                "language": language,
+                "source_file": source_file,
+                "generated_by": generated_by,
+                "duration_ms": 0.0,
+                "root": None,
+                "errors": [],
+            }
+
+        if phase == "ast":
+            return {
+                "schema": "compileone/ast/1.0",
+                "phase": "ast",
+                "language": language,
+                "source_file": source_file,
+                "generated_by": generated_by,
+                "duration_ms": 0.0,
+                "root": None,
+                "errors": [],
+            }
+
+        if phase == "semantic":
+            return {
+                "schema": "compileone/semantic/1.0",
+                "phase": "semantic",
+                "language": language,
+                "source_file": source_file,
+                "generated_by": generated_by,
+                "duration_ms": 0.0,
+                "valid": True,
+                "symbols": [],
+                "diagnostics": [],
+            }
+
+        if phase == "ir":
+            return {
+                "schema": "compileone/ir/1.0",
+                "phase": "ir",
+                "language": language,
+                "source_file": source_file,
+                "generated_by": generated_by,
+                "duration_ms": 0.0,
+                "tac": [],
+                "quadruples": [],
+                "temporaries": [],
+                "labels": [],
+                "errors": [],
+            }
+
+        if phase == "opt":
+            return {
+                "schema": "compileone/optimization/1.0",
+                "phase": "optimization",
+                "language": language,
+                "source_file": source_file,
+                "generated_by": generated_by,
+                "duration_ms": 0.0,
+                "before_instruction_count": 0,
+                "after_instruction_count": 0,
+                "instruction_reduction_pct": 0.0,
+                "passes": [],
+                "errors": [],
+            }
+
+        if phase == "codegen":
+            return {
+                "schema": "compileone/assembly/1.0",
+                "phase": "codegen",
+                "language": language,
+                "source_file": source_file,
+                "generated_by": generated_by,
+                "duration_ms": 0.0,
+                "arch": "x86_64",
+                "syntax": "att",
+                "text": "",
+                "instructions": [],
+                "prologue": [],
+                "epilogue": [],
+                "stack_layout": {
+                    "total_size": 0,
+                    "slots": [],
+                },
+                "errors": [],
+            }
+
+        raise PhaseNotImplemented(f"phase '{phase}' is not supported for native languages")
+
+    def _run_compileone_phase(
         self,
         phase: str,
         input_path: Path,
         output_path: Path,
-        language: str = "mini-c",
+        language: str,
     ) -> dict:
-        """Run one backend phase and return its parsed artifact dict."""
+        """Run a real compileone backend phase for native languages."""
         if not self.available() or not self.executable:
             raise BackendError(
                 "compileone backend executable not found. "
@@ -68,9 +182,71 @@ class BackendRunner:
         cmd = [
             self.executable,
             phase,
-            "--input", str(input_path),
-            "--output", str(output_path),
-            "--language", language,
+            "--input",
+            str(input_path),
+            "--output",
+            str(output_path),
+            "--language",
+            language,
+        ]
+        logger.debug("backend: %s", " ".join(cmd))
+
+        proc = subprocess.run(
+            cmd,
+            cwd=str(self._cwd),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=False,
+        )
+
+        if proc.stderr:
+            logger.info("backend[%s]: %s", phase, proc.stderr.strip())
+
+        if proc.returncode == 2:
+            raise PhaseNotImplemented(
+                f"phase '{phase}' is registered but not implemented yet"
+            )
+        if proc.returncode != 0:
+            raise BackendError(
+                f"phase '{phase}' failed (exit {proc.returncode}): "
+                f"{proc.stderr.strip()}"
+            )
+        if not output_path.is_file():
+            raise ArtifactError(f"phase '{phase}' wrote no artifact to {output_path}")
+
+        return load_json(output_path)
+
+    def run_phase(
+        self,
+        phase: str,
+        input_path: Path,
+        output_path: Path,
+        language: str = "mini-c",
+    ) -> dict:
+        """Run one backend phase and return its parsed artifact dict."""
+        if language != "mini-c" and phase in self.NATIVE_PLACEHOLDER_PHASES:
+            data = self._native_placeholder_artifact(phase, input_path, language)
+            self._write_json_artifact(output_path, data)
+            return data
+
+        if not self.available() or not self.executable:
+            raise BackendError(
+                "compileone backend executable not found. "
+                "Ensure it is built and in the project's build/ or bin/ directory, "
+                "or in the system PATH."
+            )
+
+        cmd = [
+            self.executable,
+            phase,
+            "--input",
+            str(input_path),
+            "--output",
+            str(output_path),
+            "--language",
+            language,
         ]
         logger.debug("backend: %s", " ".join(cmd))
 
