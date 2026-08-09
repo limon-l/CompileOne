@@ -60,7 +60,7 @@ class TokenTableModel(QAbstractTableModel):
             return self._display(token, column)
         if role == Qt.ForegroundRole:
             return self._foreground(token, column)
-        if role == Qt.TextAlignmentRole and column == COL_LINE:
+        if role == Qt.TextAlignmentRole:
             return int(Qt.AlignCenter)
         if role == Qt.ToolTipRole:
             return f"{token.token}\n{token.category}"

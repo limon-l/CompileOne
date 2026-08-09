@@ -54,6 +54,12 @@ def test_model_clear():
     assert model.rowCount() == 0
 
 
+def test_model_cells_centered_in_all_columns():
+    model = _model_with_tokens()
+    for col in range(4):
+        assert model.data(model.index(0, col), Qt.TextAlignmentRole) == int(Qt.AlignCenter)
+
+
 def test_proxy_text_filter():
     proxy = TokenFilterProxy()
     proxy.setSourceModel(_model_with_tokens())

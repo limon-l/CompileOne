@@ -1,7 +1,7 @@
 {
   "schema": "compileone/ast/1.0",
   "phase": "ast",
-  "language": "mini-c",
+  "language": "c++",
   "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (recursive-descent parser)",
   "duration_ms": 0,
@@ -11,233 +11,675 @@
     "children": [
       {
         "id": 2,
-        "node_type": "Print",
+        "node_type": "FunctionDef",
         "token": {
-          "id": 2,
-          "line": 2,
-          "column": 1,
-          "lexeme": "print",
-          "token": "KW_PRINT",
-          "category": "keyword",
+          "id": 3,
+          "line": 3,
+          "column": 5,
+          "lexeme": "main",
+          "token": "IDENTIFIER",
+          "category": "identifier",
           "offset": {
-            "start": 37,
-            "end": 42
+            "start": 25,
+            "end": 29
           }
+        },
+        "attributes": {
+          "name": "main",
+          "return_type": "int"
         },
         "children": [
           {
-            "id": 7,
-            "node_type": "BinaryOp",
+            "id": 3,
+            "node_type": "Block",
             "token": {
-              "id": 4,
-              "line": 2,
-              "column": 9,
-              "lexeme": "+",
-              "token": "OP_ADD",
-              "category": "operator",
+              "id": 6,
+              "line": 3,
+              "column": 12,
+              "lexeme": "{",
+              "token": "LBRACE",
+              "category": "delimiter",
               "offset": {
-                "start": 45,
-                "end": 46
+                "start": 32,
+                "end": 33
               }
-            },
-            "attributes": {
-              "op": "+"
             },
             "children": [
               {
-                "id": 3,
-                "node_type": "IntLit",
-                "token": {
-                  "id": 3,
-                  "line": 2,
-                  "column": 7,
-                  "lexeme": "1",
-                  "token": "INT_LITERAL",
-                  "category": "literal",
-                  "offset": {
-                    "start": 43,
-                    "end": 44
-                  }
-                },
-                "attributes": {
-                  "value": 1
-                }
-              },
-              {
-                "id": 6,
-                "node_type": "BinaryOp",
-                "token": {
-                  "id": 6,
-                  "line": 2,
-                  "column": 13,
-                  "lexeme": "*",
-                  "token": "OP_MUL",
-                  "category": "operator",
-                  "offset": {
-                    "start": 49,
-                    "end": 50
-                  }
-                },
-                "attributes": {
-                  "op": "*"
-                },
+                "id": 4,
+                "node_type": "Block",
                 "children": [
-                  {
-                    "id": 4,
-                    "node_type": "IntLit",
-                    "token": {
-                      "id": 5,
-                      "line": 2,
-                      "column": 11,
-                      "lexeme": "2",
-                      "token": "INT_LITERAL",
-                      "category": "literal",
-                      "offset": {
-                        "start": 47,
-                        "end": 48
-                      }
-                    },
-                    "attributes": {
-                      "value": 2
-                    }
-                  },
                   {
                     "id": 5,
-                    "node_type": "IntLit",
-                    "token": {
-                      "id": 7,
-                      "line": 2,
-                      "column": 15,
-                      "lexeme": "3",
-                      "token": "INT_LITERAL",
-                      "category": "literal",
-                      "offset": {
-                        "start": 51,
-                        "end": 52
-                      }
-                    },
+                    "node_type": "VarDecl",
                     "attributes": {
-                      "value": 3
-                    }
+                      "name": "n",
+                      "type_name": "int"
+                    },
+                    "children": [
+                      {
+                        "id": 6,
+                        "node_type": "IntLit",
+                        "token": {
+                          "id": 10,
+                          "line": 4,
+                          "column": 13,
+                          "lexeme": "10",
+                          "token": "INT_LITERAL",
+                          "category": "literal",
+                          "offset": {
+                            "start": 46,
+                            "end": 48
+                          }
+                        },
+                        "attributes": {
+                          "value": 10
+                        }
+                      }
+                    ]
                   }
                 ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 8,
-        "node_type": "Print",
-        "token": {
-          "id": 9,
-          "line": 3,
-          "column": 1,
-          "lexeme": "print",
-          "token": "KW_PRINT",
-          "category": "keyword",
-          "offset": {
-            "start": 54,
-            "end": 59
-          }
-        },
-        "children": [
-          {
-            "id": 13,
-            "node_type": "BinaryOp",
-            "token": {
-              "id": 15,
-              "line": 3,
-              "column": 15,
-              "lexeme": "*",
-              "token": "OP_MUL",
-              "category": "operator",
-              "offset": {
-                "start": 68,
-                "end": 69
-              }
-            },
-            "attributes": {
-              "op": "*"
-            },
-            "children": [
+              },
               {
-                "id": 11,
-                "node_type": "BinaryOp",
-                "token": {
-                  "id": 12,
-                  "line": 3,
-                  "column": 10,
-                  "lexeme": "+",
-                  "token": "OP_ADD",
-                  "category": "operator",
-                  "offset": {
-                    "start": 63,
-                    "end": 64
+                "id": 7,
+                "node_type": "Block",
+                "children": [
+                  {
+                    "id": 8,
+                    "node_type": "VarDecl",
+                    "attributes": {
+                      "name": "sum",
+                      "type_name": "int"
+                    },
+                    "children": [
+                      {
+                        "id": 9,
+                        "node_type": "IntLit",
+                        "token": {
+                          "id": 15,
+                          "line": 5,
+                          "column": 15,
+                          "lexeme": "0",
+                          "token": "INT_LITERAL",
+                          "category": "literal",
+                          "offset": {
+                            "start": 64,
+                            "end": 65
+                          }
+                        },
+                        "attributes": {
+                          "value": 0
+                        }
+                      }
+                    ]
                   }
-                },
-                "attributes": {
-                  "op": "+"
+                ]
+              },
+              {
+                "id": 10,
+                "node_type": "For",
+                "token": {
+                  "id": 17,
+                  "line": 7,
+                  "column": 5,
+                  "lexeme": "for",
+                  "token": "KW_FOR",
+                  "category": "keyword",
+                  "offset": {
+                    "start": 72,
+                    "end": 75
+                  }
                 },
                 "children": [
                   {
-                    "id": 9,
-                    "node_type": "IntLit",
+                    "id": 11,
+                    "node_type": "Block",
+                    "children": [
+                      {
+                        "id": 12,
+                        "node_type": "VarDecl",
+                        "attributes": {
+                          "name": "i",
+                          "type_name": "int"
+                        },
+                        "children": [
+                          {
+                            "id": 13,
+                            "node_type": "IntLit",
+                            "token": {
+                              "id": 22,
+                              "line": 7,
+                              "column": 18,
+                              "lexeme": "1",
+                              "token": "INT_LITERAL",
+                              "category": "literal",
+                              "offset": {
+                                "start": 85,
+                                "end": 86
+                              }
+                            },
+                            "attributes": {
+                              "value": 1
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": 16,
+                    "node_type": "BinaryOp",
                     "token": {
-                      "id": 11,
-                      "line": 3,
-                      "column": 8,
-                      "lexeme": "1",
-                      "token": "INT_LITERAL",
-                      "category": "literal",
+                      "id": 25,
+                      "line": 7,
+                      "column": 23,
+                      "lexeme": "<=",
+                      "token": "OP_LE",
+                      "category": "operator",
                       "offset": {
-                        "start": 61,
-                        "end": 62
+                        "start": 90,
+                        "end": 92
                       }
                     },
                     "attributes": {
-                      "value": 1
+                      "op": "<="
+                    },
+                    "children": [
+                      {
+                        "id": 14,
+                        "node_type": "Identifier",
+                        "token": {
+                          "id": 24,
+                          "line": 7,
+                          "column": 21,
+                          "lexeme": "i",
+                          "token": "IDENTIFIER",
+                          "category": "identifier",
+                          "offset": {
+                            "start": 88,
+                            "end": 89
+                          }
+                        },
+                        "attributes": {
+                          "name": "i"
+                        }
+                      },
+                      {
+                        "id": 15,
+                        "node_type": "Identifier",
+                        "token": {
+                          "id": 26,
+                          "line": 7,
+                          "column": 26,
+                          "lexeme": "n",
+                          "token": "IDENTIFIER",
+                          "category": "identifier",
+                          "offset": {
+                            "start": 93,
+                            "end": 94
+                          }
+                        },
+                        "attributes": {
+                          "name": "n"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": 18,
+                    "node_type": "IncDec",
+                    "token": {
+                      "id": 29,
+                      "line": 7,
+                      "column": 30,
+                      "lexeme": "++",
+                      "token": "OP_INC",
+                      "category": "operator",
+                      "offset": {
+                        "start": 97,
+                        "end": 99
+                      }
+                    },
+                    "attributes": {
+                      "op": "++"
+                    },
+                    "children": [
+                      {
+                        "id": 17,
+                        "node_type": "Identifier",
+                        "token": {
+                          "id": 28,
+                          "line": 7,
+                          "column": 29,
+                          "lexeme": "i",
+                          "token": "IDENTIFIER",
+                          "category": "identifier",
+                          "offset": {
+                            "start": 96,
+                            "end": 97
+                          }
+                        },
+                        "attributes": {
+                          "name": "i"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": 19,
+                    "node_type": "Block",
+                    "token": {
+                      "id": 31,
+                      "line": 7,
+                      "column": 34,
+                      "lexeme": "{",
+                      "token": "LBRACE",
+                      "category": "delimiter",
+                      "offset": {
+                        "start": 101,
+                        "end": 102
+                      }
+                    },
+                    "children": [
+                      {
+                        "id": 23,
+                        "node_type": "ExprStmt",
+                        "token": {
+                          "id": 33,
+                          "line": 8,
+                          "column": 13,
+                          "lexeme": "+=",
+                          "token": "OP_PLUS_EQ",
+                          "category": "operator",
+                          "offset": {
+                            "start": 115,
+                            "end": 117
+                          }
+                        },
+                        "children": [
+                          {
+                            "id": 22,
+                            "node_type": "Assign",
+                            "token": {
+                              "id": 33,
+                              "line": 8,
+                              "column": 13,
+                              "lexeme": "+=",
+                              "token": "OP_PLUS_EQ",
+                              "category": "operator",
+                              "offset": {
+                                "start": 115,
+                                "end": 117
+                              }
+                            },
+                            "attributes": {
+                              "name": "sum",
+                              "op": "+="
+                            },
+                            "children": [
+                              {
+                                "id": 21,
+                                "node_type": "Identifier",
+                                "token": {
+                                  "id": 34,
+                                  "line": 8,
+                                  "column": 16,
+                                  "lexeme": "i",
+                                  "token": "IDENTIFIER",
+                                  "category": "identifier",
+                                  "offset": {
+                                    "start": 118,
+                                    "end": 119
+                                  }
+                                },
+                                "attributes": {
+                                  "name": "i"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": 24,
+                "node_type": "CoutStream",
+                "token": {
+                  "id": 39,
+                  "line": 11,
+                  "column": 10,
+                  "lexeme": "cout",
+                  "token": "IDENTIFIER",
+                  "category": "identifier",
+                  "offset": {
+                    "start": 137,
+                    "end": 141
+                  }
+                },
+                "children": [
+                  {
+                    "id": 25,
+                    "node_type": "StringLit",
+                    "token": {
+                      "id": 41,
+                      "line": 11,
+                      "column": 18,
+                      "lexeme": "\"Sum of 1..10 = \"",
+                      "token": "STRING_LITERAL",
+                      "category": "literal",
+                      "offset": {
+                        "start": 145,
+                        "end": 162
+                      }
+                    },
+                    "attributes": {
+                      "value": "\"Sum of 1..10 = \""
                     }
                   },
                   {
-                    "id": 10,
-                    "node_type": "IntLit",
+                    "id": 26,
+                    "node_type": "Identifier",
                     "token": {
-                      "id": 13,
-                      "line": 3,
-                      "column": 12,
-                      "lexeme": "2",
-                      "token": "INT_LITERAL",
-                      "category": "literal",
+                      "id": 43,
+                      "line": 11,
+                      "column": 39,
+                      "lexeme": "sum",
+                      "token": "IDENTIFIER",
+                      "category": "identifier",
                       "offset": {
-                        "start": 65,
-                        "end": 66
+                        "start": 166,
+                        "end": 169
                       }
                     },
                     "attributes": {
-                      "value": 2
+                      "name": "sum"
+                    }
+                  },
+                  {
+                    "id": 27,
+                    "node_type": "Identifier",
+                    "token": {
+                      "id": 45,
+                      "line": 11,
+                      "column": 46,
+                      "lexeme": "std",
+                      "token": "IDENTIFIER",
+                      "category": "identifier",
+                      "offset": {
+                        "start": 173,
+                        "end": 176
+                      }
+                    },
+                    "attributes": {
+                      "name": "std::endl"
                     }
                   }
                 ]
               },
               {
-                "id": 12,
-                "node_type": "IntLit",
+                "id": 28,
+                "node_type": "If",
                 "token": {
-                  "id": 16,
-                  "line": 3,
-                  "column": 17,
-                  "lexeme": "3",
-                  "token": "INT_LITERAL",
-                  "category": "literal",
+                  "id": 49,
+                  "line": 13,
+                  "column": 5,
+                  "lexeme": "if",
+                  "token": "KW_IF",
+                  "category": "keyword",
                   "offset": {
-                    "start": 70,
-                    "end": 71
+                    "start": 189,
+                    "end": 191
                   }
                 },
-                "attributes": {
-                  "value": 3
-                }
+                "children": [
+                  {
+                    "id": 31,
+                    "node_type": "BinaryOp",
+                    "token": {
+                      "id": 52,
+                      "line": 13,
+                      "column": 13,
+                      "lexeme": ">",
+                      "token": "OP_GT",
+                      "category": "operator",
+                      "offset": {
+                        "start": 197,
+                        "end": 198
+                      }
+                    },
+                    "attributes": {
+                      "op": ">"
+                    },
+                    "children": [
+                      {
+                        "id": 29,
+                        "node_type": "Identifier",
+                        "token": {
+                          "id": 51,
+                          "line": 13,
+                          "column": 9,
+                          "lexeme": "sum",
+                          "token": "IDENTIFIER",
+                          "category": "identifier",
+                          "offset": {
+                            "start": 193,
+                            "end": 196
+                          }
+                        },
+                        "attributes": {
+                          "name": "sum"
+                        }
+                      },
+                      {
+                        "id": 30,
+                        "node_type": "IntLit",
+                        "token": {
+                          "id": 53,
+                          "line": 13,
+                          "column": 15,
+                          "lexeme": "50",
+                          "token": "INT_LITERAL",
+                          "category": "literal",
+                          "offset": {
+                            "start": 199,
+                            "end": 201
+                          }
+                        },
+                        "attributes": {
+                          "value": 50
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": 32,
+                    "node_type": "Block",
+                    "token": {
+                      "id": 55,
+                      "line": 13,
+                      "column": 19,
+                      "lexeme": "{",
+                      "token": "LBRACE",
+                      "category": "delimiter",
+                      "offset": {
+                        "start": 203,
+                        "end": 204
+                      }
+                    },
+                    "children": [
+                      {
+                        "id": 33,
+                        "node_type": "CoutStream",
+                        "token": {
+                          "id": 58,
+                          "line": 14,
+                          "column": 14,
+                          "lexeme": "cout",
+                          "token": "IDENTIFIER",
+                          "category": "identifier",
+                          "offset": {
+                            "start": 218,
+                            "end": 222
+                          }
+                        },
+                        "children": [
+                          {
+                            "id": 34,
+                            "node_type": "StringLit",
+                            "token": {
+                              "id": 60,
+                              "line": 14,
+                              "column": 22,
+                              "lexeme": "\"That is a big sum!\"",
+                              "token": "STRING_LITERAL",
+                              "category": "literal",
+                              "offset": {
+                                "start": 226,
+                                "end": 246
+                              }
+                            },
+                            "attributes": {
+                              "value": "\"That is a big sum!\""
+                            }
+                          },
+                          {
+                            "id": 35,
+                            "node_type": "Identifier",
+                            "token": {
+                              "id": 62,
+                              "line": 14,
+                              "column": 46,
+                              "lexeme": "std",
+                              "token": "IDENTIFIER",
+                              "category": "identifier",
+                              "offset": {
+                                "start": 250,
+                                "end": 253
+                              }
+                            },
+                            "attributes": {
+                              "name": "std::endl"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": 36,
+                    "node_type": "Block",
+                    "token": {
+                      "id": 68,
+                      "line": 15,
+                      "column": 12,
+                      "lexeme": "{",
+                      "token": "LBRACE",
+                      "category": "delimiter",
+                      "offset": {
+                        "start": 272,
+                        "end": 273
+                      }
+                    },
+                    "children": [
+                      {
+                        "id": 37,
+                        "node_type": "CoutStream",
+                        "token": {
+                          "id": 71,
+                          "line": 16,
+                          "column": 14,
+                          "lexeme": "cout",
+                          "token": "IDENTIFIER",
+                          "category": "identifier",
+                          "offset": {
+                            "start": 287,
+                            "end": 291
+                          }
+                        },
+                        "children": [
+                          {
+                            "id": 38,
+                            "node_type": "StringLit",
+                            "token": {
+                              "id": 73,
+                              "line": 16,
+                              "column": 22,
+                              "lexeme": "\"That is a small sum.\"",
+                              "token": "STRING_LITERAL",
+                              "category": "literal",
+                              "offset": {
+                                "start": 295,
+                                "end": 317
+                              }
+                            },
+                            "attributes": {
+                              "value": "\"That is a small sum.\""
+                            }
+                          },
+                          {
+                            "id": 39,
+                            "node_type": "Identifier",
+                            "token": {
+                              "id": 75,
+                              "line": 16,
+                              "column": 48,
+                              "lexeme": "std",
+                              "token": "IDENTIFIER",
+                              "category": "identifier",
+                              "offset": {
+                                "start": 321,
+                                "end": 324
+                              }
+                            },
+                            "attributes": {
+                              "name": "std::endl"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": 40,
+                "node_type": "Return",
+                "token": {
+                  "id": 80,
+                  "line": 19,
+                  "column": 5,
+                  "lexeme": "return",
+                  "token": "KW_RETURN",
+                  "category": "keyword",
+                  "offset": {
+                    "start": 343,
+                    "end": 349
+                  }
+                },
+                "children": [
+                  {
+                    "id": 41,
+                    "node_type": "IntLit",
+                    "token": {
+                      "id": 81,
+                      "line": 19,
+                      "column": 12,
+                      "lexeme": "0",
+                      "token": "INT_LITERAL",
+                      "category": "literal",
+                      "offset": {
+                        "start": 350,
+                        "end": 351
+                      }
+                    },
+                    "attributes": {
+                      "value": 0
+                    }
+                  }
+                ]
               }
             ]
           }
@@ -245,5 +687,11 @@
       }
     ]
   },
-  "errors": []
+  "errors": [
+    {
+      "line": 7,
+      "column": 21,
+      "message": "expected ';' after for-init"
+    }
+  ]
 }

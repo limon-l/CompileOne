@@ -1,297 +1,397 @@
 {
   "schema": "compileone/parse-tree/1.0",
   "phase": "parse",
-  "language": "mini-c",
+  "language": "c++",
   "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (recursive-descent parser)",
-  "duration_ms": 0,
+  "duration_ms": 46,
   "root": {
     "rule_name": "program",
     "children": [
       {
-        "rule_name": "print_statement",
+        "rule_name": "function_definition",
         "children": [
           {
             "token": {
-              "id": 2,
-              "line": 2,
-              "column": 1,
-              "lexeme": "print",
-              "token": "KW_PRINT",
-              "category": "keyword",
+              "id": 3,
+              "line": 3,
+              "column": 5,
+              "lexeme": "main",
+              "token": "IDENTIFIER",
+              "category": "identifier",
               "offset": {
-                "start": 37,
-                "end": 42
-              }
-            }
-          },
-          {
-            "rule_name": "int_literal",
-            "children": [
-              {
-                "token": {
-                  "id": 3,
-                  "line": 2,
-                  "column": 7,
-                  "lexeme": "1",
-                  "token": "INT_LITERAL",
-                  "category": "literal",
-                  "offset": {
-                    "start": 43,
-                    "end": 44
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "rule_name": "binary_expr",
-            "children": [
-              {
-                "token": {
-                  "id": 4,
-                  "line": 2,
-                  "column": 9,
-                  "lexeme": "+",
-                  "token": "OP_ADD",
-                  "category": "operator",
-                  "offset": {
-                    "start": 45,
-                    "end": 46
-                  }
-                }
-              },
-              {
-                "rule_name": "int_literal",
-                "children": [
-                  {
-                    "token": {
-                      "id": 5,
-                      "line": 2,
-                      "column": 11,
-                      "lexeme": "2",
-                      "token": "INT_LITERAL",
-                      "category": "literal",
-                      "offset": {
-                        "start": 47,
-                        "end": 48
-                      }
-                    }
-                  }
-                ]
-              },
-              {
-                "rule_name": "binary_expr",
-                "children": [
-                  {
-                    "token": {
-                      "id": 6,
-                      "line": 2,
-                      "column": 13,
-                      "lexeme": "*",
-                      "token": "OP_MUL",
-                      "category": "operator",
-                      "offset": {
-                        "start": 49,
-                        "end": 50
-                      }
-                    }
-                  },
-                  {
-                    "rule_name": "int_literal",
-                    "children": [
-                      {
-                        "token": {
-                          "id": 7,
-                          "line": 2,
-                          "column": 15,
-                          "lexeme": "3",
-                          "token": "INT_LITERAL",
-                          "category": "literal",
-                          "offset": {
-                            "start": 51,
-                            "end": 52
-                          }
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "token": {
-              "id": 8,
-              "line": 2,
-              "column": 16,
-              "lexeme": ";",
-              "token": "SEMICOLON",
-              "category": "delimiter",
-              "offset": {
-                "start": 52,
-                "end": 53
+                "start": 25,
+                "end": 29
               }
             }
           }
         ]
       },
       {
-        "rule_name": "print_statement",
+        "rule_name": "compound_statement",
         "children": [
           {
             "token": {
-              "id": 9,
+              "id": 6,
               "line": 3,
-              "column": 1,
-              "lexeme": "print",
-              "token": "KW_PRINT",
-              "category": "keyword",
+              "column": 12,
+              "lexeme": "{",
+              "token": "LBRACE",
+              "category": "delimiter",
               "offset": {
-                "start": 54,
-                "end": 59
+                "start": 32,
+                "end": 33
               }
             }
-          },
+          }
+        ]
+      },
+      {
+        "rule_name": "variable_declaration"
+      },
+      {
+        "rule_name": "literal",
+        "children": [
           {
-            "rule_name": "paren_expr",
-            "children": [
-              {
-                "token": {
-                  "id": 10,
-                  "line": 3,
-                  "column": 7,
-                  "lexeme": "(",
-                  "token": "LPAREN",
-                  "category": "delimiter",
-                  "offset": {
-                    "start": 60,
-                    "end": 61
-                  }
-                }
-              },
-              {
-                "rule_name": "int_literal",
-                "children": [
-                  {
-                    "token": {
-                      "id": 11,
-                      "line": 3,
-                      "column": 8,
-                      "lexeme": "1",
-                      "token": "INT_LITERAL",
-                      "category": "literal",
-                      "offset": {
-                        "start": 61,
-                        "end": 62
-                      }
-                    }
-                  }
-                ]
-              },
-              {
-                "rule_name": "binary_expr",
-                "children": [
-                  {
-                    "token": {
-                      "id": 12,
-                      "line": 3,
-                      "column": 10,
-                      "lexeme": "+",
-                      "token": "OP_ADD",
-                      "category": "operator",
-                      "offset": {
-                        "start": 63,
-                        "end": 64
-                      }
-                    }
-                  },
-                  {
-                    "rule_name": "int_literal",
-                    "children": [
-                      {
-                        "token": {
-                          "id": 13,
-                          "line": 3,
-                          "column": 12,
-                          "lexeme": "2",
-                          "token": "INT_LITERAL",
-                          "category": "literal",
-                          "offset": {
-                            "start": 65,
-                            "end": 66
-                          }
-                        }
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "token": {
-                  "id": 14,
-                  "line": 3,
-                  "column": 13,
-                  "lexeme": ")",
-                  "token": "RPAREN",
-                  "category": "delimiter",
-                  "offset": {
-                    "start": 66,
-                    "end": 67
-                  }
-                }
+            "token": {
+              "id": 10,
+              "line": 4,
+              "column": 13,
+              "lexeme": "10",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "offset": {
+                "start": 46,
+                "end": 48
               }
-            ]
-          },
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "variable_declaration"
+      },
+      {
+        "rule_name": "literal",
+        "children": [
           {
-            "rule_name": "binary_expr",
-            "children": [
-              {
-                "token": {
-                  "id": 15,
-                  "line": 3,
-                  "column": 15,
-                  "lexeme": "*",
-                  "token": "OP_MUL",
-                  "category": "operator",
-                  "offset": {
-                    "start": 68,
-                    "end": 69
-                  }
-                }
-              },
-              {
-                "rule_name": "int_literal",
-                "children": [
-                  {
-                    "token": {
-                      "id": 16,
-                      "line": 3,
-                      "column": 17,
-                      "lexeme": "3",
-                      "token": "INT_LITERAL",
-                      "category": "literal",
-                      "offset": {
-                        "start": 70,
-                        "end": 71
-                      }
-                    }
-                  }
-                ]
+            "token": {
+              "id": 15,
+              "line": 5,
+              "column": 15,
+              "lexeme": "0",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "offset": {
+                "start": 64,
+                "end": 65
               }
-            ]
-          },
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "for_statement",
+        "children": [
           {
             "token": {
               "id": 17,
-              "line": 3,
+              "line": 7,
+              "column": 5,
+              "lexeme": "for",
+              "token": "KW_FOR",
+              "category": "keyword",
+              "offset": {
+                "start": 72,
+                "end": 75
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "variable_declaration"
+      },
+      {
+        "rule_name": "literal",
+        "children": [
+          {
+            "token": {
+              "id": 22,
+              "line": 7,
               "column": 18,
-              "lexeme": ";",
-              "token": "SEMICOLON",
+              "lexeme": "1",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "offset": {
+                "start": 85,
+                "end": 86
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "incdec_expr",
+        "children": [
+          {
+            "token": {
+              "id": 29,
+              "line": 7,
+              "column": 30,
+              "lexeme": "++",
+              "token": "OP_INC",
+              "category": "operator",
+              "offset": {
+                "start": 97,
+                "end": 99
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "compound_statement",
+        "children": [
+          {
+            "token": {
+              "id": 31,
+              "line": 7,
+              "column": 34,
+              "lexeme": "{",
+              "token": "LBRACE",
               "category": "delimiter",
               "offset": {
-                "start": 71,
-                "end": 72
+                "start": 101,
+                "end": 102
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "cout_stream",
+        "children": [
+          {
+            "token": {
+              "id": 39,
+              "line": 11,
+              "column": 10,
+              "lexeme": "cout",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "offset": {
+                "start": 137,
+                "end": 141
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "string_literal",
+        "children": [
+          {
+            "token": {
+              "id": 41,
+              "line": 11,
+              "column": 18,
+              "lexeme": "\"Sum of 1..10 = \"",
+              "token": "STRING_LITERAL",
+              "category": "literal",
+              "offset": {
+                "start": 145,
+                "end": 162
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "if_statement",
+        "children": [
+          {
+            "token": {
+              "id": 49,
+              "line": 13,
+              "column": 5,
+              "lexeme": "if",
+              "token": "KW_IF",
+              "category": "keyword",
+              "offset": {
+                "start": 189,
+                "end": 191
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "literal",
+        "children": [
+          {
+            "token": {
+              "id": 53,
+              "line": 13,
+              "column": 15,
+              "lexeme": "50",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "offset": {
+                "start": 199,
+                "end": 201
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "compound_statement",
+        "children": [
+          {
+            "token": {
+              "id": 55,
+              "line": 13,
+              "column": 19,
+              "lexeme": "{",
+              "token": "LBRACE",
+              "category": "delimiter",
+              "offset": {
+                "start": 203,
+                "end": 204
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "cout_stream",
+        "children": [
+          {
+            "token": {
+              "id": 58,
+              "line": 14,
+              "column": 14,
+              "lexeme": "cout",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "offset": {
+                "start": 218,
+                "end": 222
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "string_literal",
+        "children": [
+          {
+            "token": {
+              "id": 60,
+              "line": 14,
+              "column": 22,
+              "lexeme": "\"That is a big sum!\"",
+              "token": "STRING_LITERAL",
+              "category": "literal",
+              "offset": {
+                "start": 226,
+                "end": 246
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "compound_statement",
+        "children": [
+          {
+            "token": {
+              "id": 68,
+              "line": 15,
+              "column": 12,
+              "lexeme": "{",
+              "token": "LBRACE",
+              "category": "delimiter",
+              "offset": {
+                "start": 272,
+                "end": 273
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "cout_stream",
+        "children": [
+          {
+            "token": {
+              "id": 71,
+              "line": 16,
+              "column": 14,
+              "lexeme": "cout",
+              "token": "IDENTIFIER",
+              "category": "identifier",
+              "offset": {
+                "start": 287,
+                "end": 291
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "string_literal",
+        "children": [
+          {
+            "token": {
+              "id": 73,
+              "line": 16,
+              "column": 22,
+              "lexeme": "\"That is a small sum.\"",
+              "token": "STRING_LITERAL",
+              "category": "literal",
+              "offset": {
+                "start": 295,
+                "end": 317
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "return_statement",
+        "children": [
+          {
+            "token": {
+              "id": 80,
+              "line": 19,
+              "column": 5,
+              "lexeme": "return",
+              "token": "KW_RETURN",
+              "category": "keyword",
+              "offset": {
+                "start": 343,
+                "end": 349
+              }
+            }
+          }
+        ]
+      },
+      {
+        "rule_name": "literal",
+        "children": [
+          {
+            "token": {
+              "id": 81,
+              "line": 19,
+              "column": 12,
+              "lexeme": "0",
+              "token": "INT_LITERAL",
+              "category": "literal",
+              "offset": {
+                "start": 350,
+                "end": 351
               }
             }
           }
@@ -299,5 +399,11 @@
       }
     ]
   },
-  "errors": []
+  "errors": [
+    {
+      "line": 7,
+      "column": 21,
+      "message": "expected ';' after for-init"
+    }
+  ]
 }

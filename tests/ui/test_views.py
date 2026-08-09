@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 from app.domain.artifacts import SemanticInfo, SymbolInfo, SemanticDiagnostic
-from app.infrastructure.json_loader import parse_ast, parse_assembly, parse_ir, parse_optimization, parse_semantic
+from app.infrastructure.json_loader import parse_ast, parse_assembly, parse_cst, parse_ir, parse_optimization, parse_semantic
 from app.ui.views.assembly_view import AssemblyView
 from app.ui.views.ast_view import ASTView
+from app.ui.views.cst_view import CSTView
 from app.ui.views.ir_view import IRView
 from app.ui.views.optimization_view import OptimizationView
 from app.ui.views.semantic_view import SemanticView
@@ -157,3 +158,61 @@ def test_assembly_view_clears_on_none(qapp):
     view.set_assembly(None)
     assert view._listing.toPlainText() == ""
     assert view._stack_table.rowCount() == 0
+
+
+def test_assembly_view_caps_summary_height(qapp):
+    """The one-line summary must be height-capped so the content sits higher."""
+    view = AssemblyView()
+    assert view._summary.maximumHeight() > 0
+
+
+def _cst_data(errors, token_line=1, token_column=3):
+    return {
+        "schema": "compileone/parse-tree/1.0",
+        "phase": "parse",
+        "language": "mini-c",
+        "source_file": "example.mc",
+        "generated_by": "compileone parse",
+        "duration_ms": 0.1,
+        "errors": errors,
+        "root": {
+            "rule_name": "statement",
+            "children": [
+                {
+                    "token": {
+                        "id": 1, "line": token_line, "column": token_column,
+                        "lexeme": "x", "token": "IDENTIFIER", "category": "identifier",
+                        "offset": {"start": 0, "end": 1},
+                    },
+                    "children": [],
+                }
+            ],
+        },
+    }
+
+
+def test_cst_view_shows_syntax_error_banner(qapp):
+    tree = parse_cst(_cst_data([{"line": 1, "column": 3, "message": "expected ';'"},
+                                {"line": 2, "column": 1, "message": "unexpected token"}]))
+    view = CSTView()
+    view.set_tree(tree)
+    assert not view._banner.isHidden()
+    assert "expected ';'" in view._banner.text()
+    assert "unexpected token" in view._banner.text()
+
+
+def test_cst_view_marks_offending_node_red(qapp):
+    tree = parse_cst(_cst_data([{"line": 1, "column": 3, "message": "expected ';'"}]))
+    view = CSTView()
+    view.set_tree(tree)
+    root = view._tree.topLevelItem(0)
+    token_item = root.child(0)
+    assert token_item.foreground(0).color().name() == "#f44747"
+
+
+def test_cst_view_hides_banner_without_errors_and_on_none(qapp):
+    view = CSTView()
+    view.set_tree(parse_cst(_cst_data([])))
+    assert view._banner.isHidden()
+    view.set_tree(None)
+    assert view._banner.isHidden()

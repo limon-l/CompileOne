@@ -1,53 +1,48 @@
 {
   "schema": "compileone/optimization/1.0",
   "phase": "optimization",
-  "language": "mini-c",
+  "language": "c++",
   "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (optimizer)",
   "duration_ms": 0,
-  "before_instruction_count": 6,
-  "after_instruction_count": 6,
-  "instruction_reduction_pct": 0,
+  "before_instruction_count": 34,
+  "after_instruction_count": 33,
+  "instruction_reduction_pct": 2.94,
   "passes": [
     {
       "name": "Constant Folding",
-      "applied": true,
-      "explanation": "Folded 2 constant expression(s) at compile time (t1 = 2 mul 3 evaluated to 6; t3 = 1 add 2 evaluated to 3). The value is fixed at build time so no runtime arithmetic is emitted.",
-      "instruction_reduction": 2,
-      "removed_instructions": [
-        {
-          "index": 1,
-          "op": "mul",
-          "arg1": "2",
-          "arg2": "3",
-          "result": "t1"
-        },
-        {
-          "index": 4,
-          "op": "add",
-          "arg1": "1",
-          "arg2": "2",
-          "result": "t3"
-        }
-      ],
-      "before": [
-        "t1 = 2 mul 3",
-        "t3 = 1 add 2"
-      ],
-      "after": [
-        "t1 = 6",
-        "t3 = 3"
-      ]
-    },
-    {
-      "name": "Dead Code Elimination",
       "applied": false,
-      "explanation": "Every temporary produced is read by a later instruction; nothing was dead.",
+      "explanation": "No constant expressions found; every operation already involves a runtime value.",
       "instruction_reduction": 0,
       "removed_instructions": [],
       "before": [],
       "after": []
+    },
+    {
+      "name": "Dead Code Elimination",
+      "applied": true,
+      "explanation": "Removed 1 temporary computation(s) whose result was never read; unused temporaries waste a stack slot and register moves.",
+      "instruction_reduction": 1,
+      "removed_instructions": [
+        {
+          "index": 13,
+          "op": "assign",
+          "arg1": "i",
+          "arg2": "",
+          "result": "t2"
+        }
+      ],
+      "before": [
+        "t2 = i"
+      ],
+      "after": []
     }
   ],
-  "errors": []
+  "errors": [
+    {
+      "line": 7,
+      "column": 21,
+      "message": "expected ';' after for-init"
+    }
+  ]
 }

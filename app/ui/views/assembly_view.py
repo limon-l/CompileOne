@@ -8,6 +8,7 @@ the prologue/epilogue the code generator emitted.
 
 from __future__ import annotations
 
+from PyQt5.QtGui import QFontMetrics
 from PyQt5.QtWidgets import (
     QHeaderView,
     QLabel,
@@ -27,7 +28,11 @@ class AssemblyView(QWidget):
         super().__init__(parent)
 
         self._summary = QLabel("No assembly generated yet.")
-        self._summary.setStyleSheet("padding: 4px; font-weight: bold;")
+        self._summary.setStyleSheet("padding: 2px 4px; font-weight: bold;")
+        # The summary is a single line; cap it to ~3 lines so the listing
+        # and stack table sit higher instead of leaving a tall empty header.
+        line_height = QFontMetrics(self._summary.font()).lineSpacing()
+        self._summary.setMaximumHeight(line_height * 3)
 
         self._listing = QPlainTextEdit()
         self._listing.setReadOnly(True)
@@ -49,6 +54,7 @@ class AssemblyView(QWidget):
 
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(2)
         layout.addWidget(self._summary)
         layout.addWidget(splitter)
         self.setLayout(layout)

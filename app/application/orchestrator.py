@@ -195,9 +195,26 @@ class Orchestrator:
         """Translate backend errors embedded in artifacts into Diagnostics."""
         session.diagnostics = []
 
+        # Phase ids whose errors are already surfaced by a dedicated
+        # per-phase translation block below. When such a phase's artifact is
+        # present, emitting a generic PHASE_ERR would double-count the error.
+        # Hard failures (which drop the artifact) still fall through to
+        # PHASE_ERR since no specific diagnostic exists for them.
+        DEDICATED_ARTIFACT = {
+            "lex": "token_stream",
+            "parse": "parse_tree",
+            "ast": "ast",
+            "semantic": "semantic",
+            "run": "execution",
+        }
+
         for result in session.phase_results:
             if result.status == "error" and result.error:
                 phase = result.phase.id
+                if phase in DEDICATED_ARTIFACT and session.artifacts.get(
+                    DEDICATED_ARTIFACT[phase]
+                ) is not None:
+                    continue
                 session.diagnostics.append(
                     Diagnostic(
                         severity=Severity.ERROR,

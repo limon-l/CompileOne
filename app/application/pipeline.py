@@ -18,6 +18,22 @@ from app.infrastructure.paths import PHASE_ARTIFACTS
 NATIVE_SOURCE_PHASES = {"parse", "ast", "semantic", "ir", "opt", "codegen"}
 NATIVE_LANGUAGES = {"c", "c++", "java"}
 
+# Prerequisite phase ids each phase depends on. A phase whose prerequisite
+# ended in ERROR (hard exception or embedded artifact error) is skipped
+# rather than run on stale/failed input.
+BLOCKED_BY: dict[str, set[str]] = {
+    "lex": set(),
+    "parse": {"lex"},
+    "ast": {"lex"},
+    "semantic": {"lex"},
+    "ir": {"lex"},
+    "opt": {"lex"},
+    "codegen": {"lex"},
+    # The interpreter re-reads source; it is meaningless once scanning or
+    # semantic analysis has reported errors.
+    "run": {"lex", "semantic"},
+}
+
 
 @dataclass(frozen=True)
 class Phase:
@@ -163,6 +179,16 @@ class Pipeline:
                 drop_stale(phase)
                 continue
 
+            blocker = self._blocked_by(phase, results)
+            if blocker is not None:
+                result.status = PhaseStatus.SKIPPED
+                result.error = (
+                    f"skipped: phase '{blocker.phase.id}' ({blocker.phase.title}) "
+                    "did not complete successfully"
+                )
+                drop_stale(phase)
+                continue
+
             if phase.input_kind == "artifact":
                 prev = self.previous_phase(phase)
                 required_artifact = phase.input_artifact or prev.output_artifact
@@ -211,7 +237,18 @@ class Pipeline:
                 result.duration_ms = float(data.get("duration_ms", 0.0))
                 store.save(phase.output_artifact, data)
                 session_artifacts[phase.output_artifact] = data
-                result.status = PhaseStatus.OK
+                embedded_errors = self.artifact_errors(data, phase.id)
+                if embedded_errors:
+                    # Soft failure: the backend finished but reported errors
+                    # in its artifact. Attribute the failure to this phase
+                    # (keeping the artifact so downstream phases are skipped)
+                    # instead of raising, so the UI can render the partial data.
+                    result.status = PhaseStatus.ERROR
+                    result.error = embedded_errors[0]
+                    if len(embedded_errors) > 1:
+                        result.error += f" (+{len(embedded_errors) - 1} more)"
+                else:
+                    result.status = PhaseStatus.OK
             except PhaseNotImplemented as exc:
                 result.status = PhaseStatus.UNAVAILABLE
                 result.error = str(exc)
@@ -225,6 +262,67 @@ class Pipeline:
         return results
 
     # ------------------------------------------------------ helpers
+
+    def _blocked_by(self, phase: Phase, results: list[PhaseResult]) -> PhaseResult | None:
+        """Return the first prerequisite phase that failed, if any.
+
+        Used to skip phases that depend on a producer which ended in ERROR
+        or UNAVAILABLE, even when the producer still wrote an artifact
+        (backends embed errors in the artifact and exit 0)."""
+        for dep_id in BLOCKED_BY.get(phase.id, ()):
+            dep = next((r for r in results if r.phase.id == dep_id), None)
+            if dep is not None and dep.status in (
+                PhaseStatus.ERROR,
+                PhaseStatus.UNAVAILABLE,
+            ):
+                return dep
+        return None
+
+    @staticmethod
+    def artifact_errors(data: dict, phase_id: str) -> list[str]:
+        """Return human-readable errors embedded in a phase artifact.
+
+        Backends write their diagnostics into the artifact and exit 0, so a
+        phase is only attributed an error by inspecting the produced data.
+        Returns an empty list when the artifact carries no blocking errors."""
+        if not isinstance(data, dict):
+            return []
+        lines: list[str] = []
+
+        if phase_id == "semantic":
+            # Only error-severity diagnostics block; warnings do not.
+            for d in data.get("diagnostics", []):
+                if not isinstance(d, dict) or d.get("severity") != "error":
+                    continue
+                code = d.get("code", "")
+                loc = f"line {d.get('line', 1)}:{d.get('column', 1)}"
+                message = d.get("message", "")
+                lines.append(f"{loc}: {message}" + (f" [{code}]" if code else ""))
+            return lines
+
+        if phase_id == "execution":
+            if data.get("status") not in ("lex-error", "runtime-error"):
+                return []
+            for err in data.get("errors", []):
+                if isinstance(err, dict):
+                    loc = f"line {err.get('line', 1)}:{err.get('column', 1)}"
+                    lines.append(f"{loc}: {err.get('message', '')}")
+                else:
+                    lines.append(str(err))
+            return lines
+
+        for err in data.get("errors", []):
+            if isinstance(err, str):
+                lines.append(err)
+            elif isinstance(err, dict):
+                loc = ""
+                if err.get("line") is not None:
+                    loc = f"line {err['line']}"
+                    if err.get("column") is not None:
+                        loc += f":{err['column']}"
+                    loc += ": "
+                lines.append(f"{loc}{err.get('message', '')}")
+        return lines
 
     def load_artifact(self, store, artifact_id: str) -> dict:
         """Re-read a stored artifact (used for replay/breakpoint resume)."""

@@ -159,3 +159,102 @@ def test_breakpoint_halts_pipeline(fake_runner, tmp_path):
     )
     assert all(r.status == PhaseStatus.SKIPPED for r in results)
     assert fake_runner.calls == []
+
+
+def test_embedded_lex_errors_attributed_and_block_downstream(tmp_path, fake_runner):
+    """A lexer that finishes but embeds errors must be marked ERROR, and
+    every phase that depends on it must be skipped."""
+    lex_data = dict(fake_runner.token_stream_data)
+    lex_data["errors"] = [
+        {"message": "illegal character '@'", "line": 3, "column": 5},
+    ]
+
+    class LexerWithErrors(type(fake_runner)):
+        def __init__(self):
+            super().__init__()
+            self.token_stream_data = lex_data
+
+    runner = LexerWithErrors()
+    pipeline = Pipeline()
+    store = ArtifactStore(output_dir=tmp_path / "out", cache_dir=tmp_path / "cache")
+    session_artifacts = {}
+    results = pipeline.run(
+        source_path=tmp_path / "hello.mc",
+        store=store,
+        runner=runner,
+        session_artifacts=session_artifacts,
+    )
+    by_id = {r.phase.id: r for r in results}
+
+    assert by_id["lex"].status == PhaseStatus.ERROR
+    assert "illegal character" in by_id["lex"].error
+    # Every artifact-input phase derives from the token stream -> blocked.
+    for phase_id in ("parse", "ast", "semantic", "ir", "opt", "codegen", "run"):
+        assert by_id[phase_id].status == PhaseStatus.SKIPPED, phase_id
+        assert "lex" in by_id[phase_id].error
+    # The errored artifact is kept so the UI can render partial data.
+    assert "token_stream" in session_artifacts
+    assert runner.calls == ["lex"]
+
+
+def test_semantic_errors_attribute_only_to_semantic(tmp_path, fake_runner):
+    """Semantic diagnostics of error severity fail semantic; warnings do not,
+    and the interpreter (run) is skipped because semantic failed."""
+    semantic_data = {
+        "schema": "compileone/semantic/1.0",
+        "phase": "semantic",
+        "duration_ms": 0.3,
+        "diagnostics": [
+            {"severity": "warning", "code": "W001", "message": "unused var",
+             "line": 1, "column": 1},
+            {"severity": "error", "code": "E001", "message": "undefined: x",
+             "line": 2, "column": 3},
+        ],
+    }
+
+    class SemanticFailingRunner(type(fake_runner)):
+        def run_phase(self, phase, input_path, output_path, language="mini-c"):
+            if phase == "semantic":
+                return semantic_data
+            return super().run_phase(phase, input_path, output_path, language=language)
+
+    pipeline = Pipeline()
+    store = ArtifactStore(output_dir=tmp_path / "out", cache_dir=tmp_path / "cache")
+    results = pipeline.run(
+        source_path=tmp_path / "hello.mc",
+        store=store,
+        runner=SemanticFailingRunner(),
+        session_artifacts={},
+    )
+    by_id = {r.phase.id: r for r in results}
+
+    assert by_id["lex"].status == PhaseStatus.OK
+    assert by_id["parse"].status == PhaseStatus.OK
+    assert by_id["ast"].status == PhaseStatus.OK
+    assert by_id["ir"].status == PhaseStatus.OK
+    assert by_id["opt"].status == PhaseStatus.OK
+    assert by_id["codegen"].status == PhaseStatus.OK
+    assert by_id["semantic"].status == PhaseStatus.ERROR
+    assert "undefined: x" in by_id["semantic"].error
+    assert "E001" in by_id["semantic"].error
+    # run depends on semantic -> blocked.
+    assert by_id["run"].status == PhaseStatus.SKIPPED
+
+
+def test_artifact_errors_detection():
+    from app.application.pipeline import Pipeline
+
+    assert Pipeline.artifact_errors({"errors": []}, "parse") == []
+    assert Pipeline.artifact_errors({"errors": [{"message": "boom", "line": 2}]}, "parse") == \
+        ["line 2: boom"]
+    assert Pipeline.artifact_errors({"diagnostics": [{"severity": "warning"}]}, "semantic") == []
+    assert Pipeline.artifact_errors(
+        {"diagnostics": [{"severity": "error", "message": "m", "line": 4, "column": 1, "code": "X"}]},
+        "semantic",
+    ) == ["line 4:1: m [X]"]
+    assert Pipeline.artifact_errors({"status": "ok", "errors": []}, "execution") == []
+    assert Pipeline.artifact_errors(
+        {"status": "runtime-error", "errors": [{"message": "div by zero", "line": 9, "column": 1}]},
+        "execution",
+    ) == ["line 9:1: div by zero"]
+
