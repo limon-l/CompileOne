@@ -1,10 +1,10 @@
 {
   "schema": "compileone/semantic/1.0",
   "phase": "semantic",
-  "language": "c++",
+  "language": "java",
   "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (semantic analyzer)",
-  "duration_ms": 3,
+  "duration_ms": 2,
   "valid": true,
   "symbols": [],
   "diagnostics": []

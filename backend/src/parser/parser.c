@@ -806,6 +806,12 @@ static ASTNode *parse_stmt(Parser *p, CSTNode *cst_parent) {
     case TOK_SEMICOLON:
         next_token(p);
         return NULL;
+    case TOK_PREPROC:
+        /* Preprocessor directive line (e.g. #include, #define). Handled
+           by the preprocessor, not the parser — skip it like a comment
+           so it never surfaces as a spurious syntax error. */
+        next_token(p);
+        return NULL;
     case TOK_LBRACE:
         return parse_block(p, cst_parent);
     case TOK_EOF:

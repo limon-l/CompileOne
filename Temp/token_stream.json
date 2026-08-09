@@ -1,425 +1,329 @@
 {
   "schema": "compileone/token-stream/1.0",
   "phase": "lexical",
-  "language": "c++",
-  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\compileone_source.cpp",
+  "language": "java",
+  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\compileone_source.java",
   "generated_by": "compileone.exe v0.1.0 (flex)",
-  "duration_ms": 2,
+  "duration_ms": 4,
   "tokens": [
     {
       "id": 1,
       "line": 1,
       "column": 1,
-      "lexeme": "#include <iostream>",
-      "token": "PREPROC",
-      "category": "preprocessor",
+      "lexeme": "public",
+      "token": "KW_PUBLIC",
+      "category": "keyword",
       "offset": {
         "start": 0,
-        "end": 19
+        "end": 6
       }
     },
     {
       "id": 2,
-      "line": 3,
-      "column": 1,
-      "lexeme": "int",
-      "token": "KW_INT",
-      "category": "type",
+      "line": 1,
+      "column": 8,
+      "lexeme": "class",
+      "token": "KW_CLASS",
+      "category": "keyword",
       "offset": {
-        "start": 21,
-        "end": 24
+        "start": 7,
+        "end": 12
       }
     },
     {
       "id": 3,
-      "line": 3,
-      "column": 5,
-      "lexeme": "main",
+      "line": 1,
+      "column": 14,
+      "lexeme": "Demo",
       "token": "IDENTIFIER",
       "category": "identifier",
       "offset": {
-        "start": 25,
-        "end": 29
+        "start": 13,
+        "end": 17
       }
     },
     {
       "id": 4,
-      "line": 3,
-      "column": 9,
-      "lexeme": "(",
-      "token": "LPAREN",
-      "category": "delimiter",
-      "offset": {
-        "start": 29,
-        "end": 30
-      }
-    },
-    {
-      "id": 5,
-      "line": 3,
-      "column": 10,
-      "lexeme": ")",
-      "token": "RPAREN",
-      "category": "delimiter",
-      "offset": {
-        "start": 30,
-        "end": 31
-      }
-    },
-    {
-      "id": 6,
-      "line": 3,
-      "column": 12,
+      "line": 1,
+      "column": 19,
       "lexeme": "{",
       "token": "LBRACE",
       "category": "delimiter",
       "offset": {
-        "start": 32,
-        "end": 33
+        "start": 18,
+        "end": 19
+      }
+    },
+    {
+      "id": 5,
+      "line": 2,
+      "column": 5,
+      "lexeme": "public",
+      "token": "KW_PUBLIC",
+      "category": "keyword",
+      "offset": {
+        "start": 24,
+        "end": 30
+      }
+    },
+    {
+      "id": 6,
+      "line": 2,
+      "column": 12,
+      "lexeme": "static",
+      "token": "KW_STATIC",
+      "category": "keyword",
+      "offset": {
+        "start": 31,
+        "end": 37
       }
     },
     {
       "id": 7,
-      "line": 4,
-      "column": 5,
-      "lexeme": "int",
-      "token": "KW_INT",
+      "line": 2,
+      "column": 19,
+      "lexeme": "void",
+      "token": "KW_VOID",
       "category": "type",
       "offset": {
         "start": 38,
-        "end": 41
+        "end": 42
       }
     },
     {
       "id": 8,
-      "line": 4,
-      "column": 9,
-      "lexeme": "n",
+      "line": 2,
+      "column": 24,
+      "lexeme": "main",
       "token": "IDENTIFIER",
       "category": "identifier",
       "offset": {
-        "start": 42,
-        "end": 43
+        "start": 43,
+        "end": 47
       }
     },
     {
       "id": 9,
-      "line": 4,
-      "column": 11,
-      "lexeme": "=",
-      "token": "OP_ASSIGN",
-      "category": "operator",
+      "line": 2,
+      "column": 28,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
       "offset": {
-        "start": 44,
-        "end": 45
-      }
-    },
-    {
-      "id": 10,
-      "line": 4,
-      "column": 13,
-      "lexeme": "10",
-      "token": "INT_LITERAL",
-      "category": "literal",
-      "offset": {
-        "start": 46,
+        "start": 47,
         "end": 48
       }
     },
     {
-      "id": 11,
-      "line": 4,
-      "column": 15,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
+      "id": 10,
+      "line": 2,
+      "column": 29,
+      "lexeme": "String",
+      "token": "KW_STRING",
+      "category": "type",
       "offset": {
         "start": 48,
-        "end": 49
+        "end": 54
+      }
+    },
+    {
+      "id": 11,
+      "line": 2,
+      "column": 35,
+      "lexeme": "[",
+      "token": "LBRACKET",
+      "category": "delimiter",
+      "offset": {
+        "start": 54,
+        "end": 55
       }
     },
     {
       "id": 12,
-      "line": 5,
-      "column": 5,
-      "lexeme": "int",
-      "token": "KW_INT",
-      "category": "type",
+      "line": 2,
+      "column": 36,
+      "lexeme": "]",
+      "token": "RBRACKET",
+      "category": "delimiter",
       "offset": {
-        "start": 54,
-        "end": 57
+        "start": 55,
+        "end": 56
       }
     },
     {
       "id": 13,
-      "line": 5,
-      "column": 9,
-      "lexeme": "sum",
+      "line": 2,
+      "column": 38,
+      "lexeme": "args",
       "token": "IDENTIFIER",
       "category": "identifier",
       "offset": {
-        "start": 58,
+        "start": 57,
         "end": 61
       }
     },
     {
       "id": 14,
-      "line": 5,
-      "column": 13,
-      "lexeme": "=",
-      "token": "OP_ASSIGN",
-      "category": "operator",
+      "line": 2,
+      "column": 42,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
       "offset": {
-        "start": 62,
-        "end": 63
+        "start": 61,
+        "end": 62
       }
     },
     {
       "id": 15,
-      "line": 5,
-      "column": 15,
-      "lexeme": "0",
-      "token": "INT_LITERAL",
-      "category": "literal",
+      "line": 2,
+      "column": 44,
+      "lexeme": "{",
+      "token": "LBRACE",
+      "category": "delimiter",
       "offset": {
-        "start": 64,
-        "end": 65
+        "start": 63,
+        "end": 64
       }
     },
     {
       "id": 16,
-      "line": 5,
-      "column": 16,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "offset": {
-        "start": 65,
-        "end": 66
-      }
-    },
-    {
-      "id": 17,
-      "line": 7,
-      "column": 5,
-      "lexeme": "for",
-      "token": "KW_FOR",
-      "category": "keyword",
-      "offset": {
-        "start": 72,
-        "end": 75
-      }
-    },
-    {
-      "id": 18,
-      "line": 7,
+      "line": 3,
       "column": 9,
-      "lexeme": "(",
-      "token": "LPAREN",
-      "category": "delimiter",
-      "offset": {
-        "start": 76,
-        "end": 77
-      }
-    },
-    {
-      "id": 19,
-      "line": 7,
-      "column": 10,
       "lexeme": "int",
       "token": "KW_INT",
       "category": "type",
       "offset": {
+        "start": 73,
+        "end": 76
+      }
+    },
+    {
+      "id": 17,
+      "line": 3,
+      "column": 13,
+      "lexeme": "n",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
         "start": 77,
+        "end": 78
+      }
+    },
+    {
+      "id": 18,
+      "line": 3,
+      "column": 15,
+      "lexeme": "=",
+      "token": "OP_ASSIGN",
+      "category": "operator",
+      "offset": {
+        "start": 79,
         "end": 80
       }
     },
     {
-      "id": 20,
-      "line": 7,
-      "column": 14,
-      "lexeme": "i",
-      "token": "IDENTIFIER",
-      "category": "identifier",
+      "id": 19,
+      "line": 3,
+      "column": 17,
+      "lexeme": "10",
+      "token": "INT_LITERAL",
+      "category": "literal",
       "offset": {
         "start": 81,
-        "end": 82
+        "end": 83
       }
     },
     {
-      "id": 21,
-      "line": 7,
-      "column": 16,
-      "lexeme": "=",
-      "token": "OP_ASSIGN",
-      "category": "operator",
+      "id": 20,
+      "line": 3,
+      "column": 19,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
       "offset": {
         "start": 83,
         "end": 84
       }
     },
     {
-      "id": 22,
-      "line": 7,
-      "column": 18,
-      "lexeme": "1",
-      "token": "INT_LITERAL",
-      "category": "literal",
-      "offset": {
-        "start": 85,
-        "end": 86
-      }
-    },
-    {
-      "id": 23,
-      "line": 7,
-      "column": 19,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "offset": {
-        "start": 86,
-        "end": 87
-      }
-    },
-    {
-      "id": 24,
-      "line": 7,
-      "column": 21,
-      "lexeme": "i",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 88,
-        "end": 89
-      }
-    },
-    {
-      "id": 25,
-      "line": 7,
-      "column": 23,
-      "lexeme": "<=",
-      "token": "OP_LE",
-      "category": "operator",
-      "offset": {
-        "start": 90,
-        "end": 92
-      }
-    },
-    {
-      "id": 26,
-      "line": 7,
-      "column": 26,
-      "lexeme": "n",
-      "token": "IDENTIFIER",
-      "category": "identifier",
+      "id": 21,
+      "line": 4,
+      "column": 9,
+      "lexeme": "int",
+      "token": "KW_INT",
+      "category": "type",
       "offset": {
         "start": 93,
-        "end": 94
+        "end": 96
       }
     },
     {
-      "id": 27,
-      "line": 7,
-      "column": 27,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "offset": {
-        "start": 94,
-        "end": 95
-      }
-    },
-    {
-      "id": 28,
-      "line": 7,
-      "column": 29,
-      "lexeme": "i",
+      "id": 22,
+      "line": 4,
+      "column": 13,
+      "lexeme": "sum",
       "token": "IDENTIFIER",
       "category": "identifier",
       "offset": {
-        "start": 96,
-        "end": 97
-      }
-    },
-    {
-      "id": 29,
-      "line": 7,
-      "column": 30,
-      "lexeme": "++",
-      "token": "OP_INC",
-      "category": "operator",
-      "offset": {
         "start": 97,
-        "end": 99
-      }
-    },
-    {
-      "id": 30,
-      "line": 7,
-      "column": 32,
-      "lexeme": ")",
-      "token": "RPAREN",
-      "category": "delimiter",
-      "offset": {
-        "start": 99,
         "end": 100
       }
     },
     {
-      "id": 31,
-      "line": 7,
-      "column": 34,
-      "lexeme": "{",
-      "token": "LBRACE",
-      "category": "delimiter",
+      "id": 23,
+      "line": 4,
+      "column": 17,
+      "lexeme": "=",
+      "token": "OP_ASSIGN",
+      "category": "operator",
       "offset": {
         "start": 101,
         "end": 102
       }
     },
     {
-      "id": 32,
-      "line": 8,
-      "column": 9,
-      "lexeme": "sum",
-      "token": "IDENTIFIER",
-      "category": "identifier",
+      "id": 24,
+      "line": 4,
+      "column": 19,
+      "lexeme": "0",
+      "token": "INT_LITERAL",
+      "category": "literal",
       "offset": {
-        "start": 111,
-        "end": 114
+        "start": 103,
+        "end": 104
       }
     },
     {
-      "id": 33,
-      "line": 8,
-      "column": 13,
-      "lexeme": "+=",
-      "token": "OP_PLUS_EQ",
-      "category": "operator",
-      "offset": {
-        "start": 115,
-        "end": 117
-      }
-    },
-    {
-      "id": 34,
-      "line": 8,
-      "column": 16,
-      "lexeme": "i",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 118,
-        "end": 119
-      }
-    },
-    {
-      "id": 35,
-      "line": 8,
-      "column": 17,
+      "id": 25,
+      "line": 4,
+      "column": 20,
       "lexeme": ";",
       "token": "SEMICOLON",
+      "category": "delimiter",
+      "offset": {
+        "start": 104,
+        "end": 105
+      }
+    },
+    {
+      "id": 26,
+      "line": 6,
+      "column": 9,
+      "lexeme": "for",
+      "token": "KW_FOR",
+      "category": "keyword",
+      "offset": {
+        "start": 115,
+        "end": 118
+      }
+    },
+    {
+      "id": 27,
+      "line": 6,
+      "column": 13,
+      "lexeme": "(",
+      "token": "LPAREN",
       "category": "delimiter",
       "offset": {
         "start": 119,
@@ -427,203 +331,263 @@
       }
     },
     {
-      "id": 36,
-      "line": 9,
-      "column": 5,
-      "lexeme": "}",
-      "token": "RBRACE",
-      "category": "delimiter",
+      "id": 28,
+      "line": 6,
+      "column": 14,
+      "lexeme": "int",
+      "token": "KW_INT",
+      "category": "type",
       "offset": {
-        "start": 125,
-        "end": 126
+        "start": 120,
+        "end": 123
       }
     },
     {
-      "id": 37,
-      "line": 11,
-      "column": 5,
-      "lexeme": "std",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 132,
-        "end": 135
-      }
-    },
-    {
-      "id": 38,
-      "line": 11,
-      "column": 8,
-      "lexeme": "::",
-      "token": "OP_SCOPE",
-      "category": "operator",
-      "offset": {
-        "start": 135,
-        "end": 137
-      }
-    },
-    {
-      "id": 39,
-      "line": 11,
-      "column": 10,
-      "lexeme": "cout",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 137,
-        "end": 141
-      }
-    },
-    {
-      "id": 40,
-      "line": 11,
-      "column": 15,
-      "lexeme": "<<",
-      "token": "OP_SHL",
-      "category": "operator",
-      "offset": {
-        "start": 142,
-        "end": 144
-      }
-    },
-    {
-      "id": 41,
-      "line": 11,
+      "id": 29,
+      "line": 6,
       "column": 18,
-      "lexeme": "\"Sum of 1..10 = \"",
-      "token": "STRING_LITERAL",
+      "lexeme": "i",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 124,
+        "end": 125
+      }
+    },
+    {
+      "id": 30,
+      "line": 6,
+      "column": 20,
+      "lexeme": "=",
+      "token": "OP_ASSIGN",
+      "category": "operator",
+      "offset": {
+        "start": 126,
+        "end": 127
+      }
+    },
+    {
+      "id": 31,
+      "line": 6,
+      "column": 22,
+      "lexeme": "1",
+      "token": "INT_LITERAL",
       "category": "literal",
       "offset": {
-        "start": 145,
-        "end": 162
+        "start": 128,
+        "end": 129
       }
     },
     {
-      "id": 42,
-      "line": 11,
-      "column": 36,
-      "lexeme": "<<",
-      "token": "OP_SHL",
-      "category": "operator",
-      "offset": {
-        "start": 163,
-        "end": 165
-      }
-    },
-    {
-      "id": 43,
-      "line": 11,
-      "column": 39,
-      "lexeme": "sum",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 166,
-        "end": 169
-      }
-    },
-    {
-      "id": 44,
-      "line": 11,
-      "column": 43,
-      "lexeme": "<<",
-      "token": "OP_SHL",
-      "category": "operator",
-      "offset": {
-        "start": 170,
-        "end": 172
-      }
-    },
-    {
-      "id": 45,
-      "line": 11,
-      "column": 46,
-      "lexeme": "std",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 173,
-        "end": 176
-      }
-    },
-    {
-      "id": 46,
-      "line": 11,
-      "column": 49,
-      "lexeme": "::",
-      "token": "OP_SCOPE",
-      "category": "operator",
-      "offset": {
-        "start": 176,
-        "end": 178
-      }
-    },
-    {
-      "id": 47,
-      "line": 11,
-      "column": 51,
-      "lexeme": "endl",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 178,
-        "end": 182
-      }
-    },
-    {
-      "id": 48,
-      "line": 11,
-      "column": 55,
+      "id": 32,
+      "line": 6,
+      "column": 23,
       "lexeme": ";",
       "token": "SEMICOLON",
       "category": "delimiter",
       "offset": {
-        "start": 182,
-        "end": 183
+        "start": 129,
+        "end": 130
       }
     },
     {
-      "id": 49,
-      "line": 13,
-      "column": 5,
-      "lexeme": "if",
-      "token": "KW_IF",
-      "category": "keyword",
+      "id": 33,
+      "line": 6,
+      "column": 25,
+      "lexeme": "i",
+      "token": "IDENTIFIER",
+      "category": "identifier",
       "offset": {
-        "start": 189,
-        "end": 191
+        "start": 131,
+        "end": 132
       }
     },
     {
-      "id": 50,
-      "line": 13,
-      "column": 8,
-      "lexeme": "(",
-      "token": "LPAREN",
+      "id": 34,
+      "line": 6,
+      "column": 27,
+      "lexeme": "<=",
+      "token": "OP_LE",
+      "category": "operator",
+      "offset": {
+        "start": 133,
+        "end": 135
+      }
+    },
+    {
+      "id": 35,
+      "line": 6,
+      "column": 30,
+      "lexeme": "n",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 136,
+        "end": 137
+      }
+    },
+    {
+      "id": 36,
+      "line": 6,
+      "column": 31,
+      "lexeme": ";",
+      "token": "SEMICOLON",
       "category": "delimiter",
       "offset": {
-        "start": 192,
-        "end": 193
+        "start": 137,
+        "end": 138
       }
     },
     {
-      "id": 51,
-      "line": 13,
-      "column": 9,
+      "id": 37,
+      "line": 6,
+      "column": 33,
+      "lexeme": "i",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 139,
+        "end": 140
+      }
+    },
+    {
+      "id": 38,
+      "line": 6,
+      "column": 34,
+      "lexeme": "++",
+      "token": "OP_INC",
+      "category": "operator",
+      "offset": {
+        "start": 140,
+        "end": 142
+      }
+    },
+    {
+      "id": 39,
+      "line": 6,
+      "column": 36,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
+      "offset": {
+        "start": 142,
+        "end": 143
+      }
+    },
+    {
+      "id": 40,
+      "line": 6,
+      "column": 38,
+      "lexeme": "{",
+      "token": "LBRACE",
+      "category": "delimiter",
+      "offset": {
+        "start": 144,
+        "end": 145
+      }
+    },
+    {
+      "id": 41,
+      "line": 7,
+      "column": 13,
       "lexeme": "sum",
       "token": "IDENTIFIER",
       "category": "identifier",
       "offset": {
-        "start": 193,
-        "end": 196
+        "start": 158,
+        "end": 161
       }
     },
     {
-      "id": 52,
-      "line": 13,
-      "column": 13,
-      "lexeme": ">",
-      "token": "OP_GT",
+      "id": 42,
+      "line": 7,
+      "column": 17,
+      "lexeme": "+=",
+      "token": "OP_PLUS_EQ",
+      "category": "operator",
+      "offset": {
+        "start": 162,
+        "end": 164
+      }
+    },
+    {
+      "id": 43,
+      "line": 7,
+      "column": 20,
+      "lexeme": "i",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 165,
+        "end": 166
+      }
+    },
+    {
+      "id": 44,
+      "line": 7,
+      "column": 21,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "offset": {
+        "start": 166,
+        "end": 167
+      }
+    },
+    {
+      "id": 45,
+      "line": 8,
+      "column": 9,
+      "lexeme": "}",
+      "token": "RBRACE",
+      "category": "delimiter",
+      "offset": {
+        "start": 176,
+        "end": 177
+      }
+    },
+    {
+      "id": 46,
+      "line": 10,
+      "column": 9,
+      "lexeme": "System",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 187,
+        "end": 193
+      }
+    },
+    {
+      "id": 47,
+      "line": 10,
+      "column": 15,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "offset": {
+        "start": 193,
+        "end": 194
+      }
+    },
+    {
+      "id": 48,
+      "line": 10,
+      "column": 16,
+      "lexeme": "out",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 194,
+        "end": 197
+      }
+    },
+    {
+      "id": 49,
+      "line": 10,
+      "column": 19,
+      "lexeme": ".",
+      "token": "OP_DOT",
       "category": "operator",
       "offset": {
         "start": 197,
@@ -631,388 +595,472 @@
       }
     },
     {
-      "id": 53,
-      "line": 13,
-      "column": 15,
-      "lexeme": "50",
-      "token": "INT_LITERAL",
+      "id": 50,
+      "line": 10,
+      "column": 20,
+      "lexeme": "println",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 198,
+        "end": 205
+      }
+    },
+    {
+      "id": 51,
+      "line": 10,
+      "column": 27,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
+      "offset": {
+        "start": 205,
+        "end": 206
+      }
+    },
+    {
+      "id": 52,
+      "line": 10,
+      "column": 28,
+      "lexeme": "\"Sum of 1..10 = \"",
+      "token": "STRING_LITERAL",
       "category": "literal",
       "offset": {
-        "start": 199,
-        "end": 201
+        "start": 206,
+        "end": 223
       }
     },
     {
-      "id": 54,
-      "line": 13,
-      "column": 17,
-      "lexeme": ")",
-      "token": "RPAREN",
-      "category": "delimiter",
-      "offset": {
-        "start": 201,
-        "end": 202
-      }
-    },
-    {
-      "id": 55,
-      "line": 13,
-      "column": 19,
-      "lexeme": "{",
-      "token": "LBRACE",
-      "category": "delimiter",
-      "offset": {
-        "start": 203,
-        "end": 204
-      }
-    },
-    {
-      "id": 56,
-      "line": 14,
-      "column": 9,
-      "lexeme": "std",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 213,
-        "end": 216
-      }
-    },
-    {
-      "id": 57,
-      "line": 14,
-      "column": 12,
-      "lexeme": "::",
-      "token": "OP_SCOPE",
+      "id": 53,
+      "line": 10,
+      "column": 46,
+      "lexeme": "+",
+      "token": "OP_ADD",
       "category": "operator",
       "offset": {
-        "start": 216,
-        "end": 218
-      }
-    },
-    {
-      "id": 58,
-      "line": 14,
-      "column": 14,
-      "lexeme": "cout",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 218,
-        "end": 222
-      }
-    },
-    {
-      "id": 59,
-      "line": 14,
-      "column": 19,
-      "lexeme": "<<",
-      "token": "OP_SHL",
-      "category": "operator",
-      "offset": {
-        "start": 223,
+        "start": 224,
         "end": 225
       }
     },
     {
-      "id": 60,
-      "line": 14,
-      "column": 22,
-      "lexeme": "\"That is a big sum!\"",
-      "token": "STRING_LITERAL",
-      "category": "literal",
+      "id": 54,
+      "line": 10,
+      "column": 48,
+      "lexeme": "sum",
+      "token": "IDENTIFIER",
+      "category": "identifier",
       "offset": {
         "start": 226,
-        "end": 246
+        "end": 229
+      }
+    },
+    {
+      "id": 55,
+      "line": 10,
+      "column": 51,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
+      "offset": {
+        "start": 229,
+        "end": 230
+      }
+    },
+    {
+      "id": 56,
+      "line": 10,
+      "column": 52,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "offset": {
+        "start": 230,
+        "end": 231
+      }
+    },
+    {
+      "id": 57,
+      "line": 12,
+      "column": 9,
+      "lexeme": "if",
+      "token": "KW_IF",
+      "category": "keyword",
+      "offset": {
+        "start": 241,
+        "end": 243
+      }
+    },
+    {
+      "id": 58,
+      "line": 12,
+      "column": 12,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
+      "offset": {
+        "start": 244,
+        "end": 245
+      }
+    },
+    {
+      "id": 59,
+      "line": 12,
+      "column": 13,
+      "lexeme": "sum",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 245,
+        "end": 248
+      }
+    },
+    {
+      "id": 60,
+      "line": 12,
+      "column": 17,
+      "lexeme": ">",
+      "token": "OP_GT",
+      "category": "operator",
+      "offset": {
+        "start": 249,
+        "end": 250
       }
     },
     {
       "id": 61,
-      "line": 14,
-      "column": 43,
-      "lexeme": "<<",
-      "token": "OP_SHL",
-      "category": "operator",
+      "line": 12,
+      "column": 19,
+      "lexeme": "50",
+      "token": "INT_LITERAL",
+      "category": "literal",
       "offset": {
-        "start": 247,
-        "end": 249
-      }
-    },
-    {
-      "id": 62,
-      "line": 14,
-      "column": 46,
-      "lexeme": "std",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 250,
+        "start": 251,
         "end": 253
       }
     },
     {
-      "id": 63,
-      "line": 14,
-      "column": 49,
-      "lexeme": "::",
-      "token": "OP_SCOPE",
-      "category": "operator",
+      "id": 62,
+      "line": 12,
+      "column": 21,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
       "offset": {
         "start": 253,
-        "end": 255
+        "end": 254
       }
     },
     {
-      "id": 64,
-      "line": 14,
-      "column": 51,
-      "lexeme": "endl",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 255,
-        "end": 259
-      }
-    },
-    {
-      "id": 65,
-      "line": 14,
-      "column": 55,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
-      "offset": {
-        "start": 259,
-        "end": 260
-      }
-    },
-    {
-      "id": 66,
-      "line": 15,
-      "column": 5,
-      "lexeme": "}",
-      "token": "RBRACE",
-      "category": "delimiter",
-      "offset": {
-        "start": 265,
-        "end": 266
-      }
-    },
-    {
-      "id": 67,
-      "line": 15,
-      "column": 7,
-      "lexeme": "else",
-      "token": "KW_ELSE",
-      "category": "keyword",
-      "offset": {
-        "start": 267,
-        "end": 271
-      }
-    },
-    {
-      "id": 68,
-      "line": 15,
-      "column": 12,
+      "id": 63,
+      "line": 12,
+      "column": 23,
       "lexeme": "{",
       "token": "LBRACE",
       "category": "delimiter",
       "offset": {
-        "start": 272,
-        "end": 273
+        "start": 255,
+        "end": 256
       }
     },
     {
-      "id": 69,
-      "line": 16,
-      "column": 9,
-      "lexeme": "std",
+      "id": 64,
+      "line": 13,
+      "column": 13,
+      "lexeme": "System",
       "token": "IDENTIFIER",
       "category": "identifier",
       "offset": {
-        "start": 282,
-        "end": 285
+        "start": 269,
+        "end": 275
       }
     },
     {
-      "id": 70,
-      "line": 16,
-      "column": 12,
-      "lexeme": "::",
-      "token": "OP_SCOPE",
+      "id": 65,
+      "line": 13,
+      "column": 19,
+      "lexeme": ".",
+      "token": "OP_DOT",
       "category": "operator",
       "offset": {
-        "start": 285,
+        "start": 275,
+        "end": 276
+      }
+    },
+    {
+      "id": 66,
+      "line": 13,
+      "column": 20,
+      "lexeme": "out",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 276,
+        "end": 279
+      }
+    },
+    {
+      "id": 67,
+      "line": 13,
+      "column": 23,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "offset": {
+        "start": 279,
+        "end": 280
+      }
+    },
+    {
+      "id": 68,
+      "line": 13,
+      "column": 24,
+      "lexeme": "println",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 280,
         "end": 287
       }
     },
     {
-      "id": 71,
-      "line": 16,
-      "column": 14,
-      "lexeme": "cout",
-      "token": "IDENTIFIER",
-      "category": "identifier",
+      "id": 69,
+      "line": 13,
+      "column": 31,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
       "offset": {
         "start": 287,
-        "end": 291
+        "end": 288
+      }
+    },
+    {
+      "id": 70,
+      "line": 13,
+      "column": 32,
+      "lexeme": "\"That is a big sum!\"",
+      "token": "STRING_LITERAL",
+      "category": "literal",
+      "offset": {
+        "start": 288,
+        "end": 308
+      }
+    },
+    {
+      "id": 71,
+      "line": 13,
+      "column": 52,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
+      "offset": {
+        "start": 308,
+        "end": 309
       }
     },
     {
       "id": 72,
-      "line": 16,
-      "column": 19,
-      "lexeme": "<<",
-      "token": "OP_SHL",
-      "category": "operator",
-      "offset": {
-        "start": 292,
-        "end": 294
-      }
-    },
-    {
-      "id": 73,
-      "line": 16,
-      "column": 22,
-      "lexeme": "\"That is a small sum.\"",
-      "token": "STRING_LITERAL",
-      "category": "literal",
-      "offset": {
-        "start": 295,
-        "end": 317
-      }
-    },
-    {
-      "id": 74,
-      "line": 16,
-      "column": 45,
-      "lexeme": "<<",
-      "token": "OP_SHL",
-      "category": "operator",
-      "offset": {
-        "start": 318,
-        "end": 320
-      }
-    },
-    {
-      "id": 75,
-      "line": 16,
-      "column": 48,
-      "lexeme": "std",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 321,
-        "end": 324
-      }
-    },
-    {
-      "id": 76,
-      "line": 16,
-      "column": 51,
-      "lexeme": "::",
-      "token": "OP_SCOPE",
-      "category": "operator",
-      "offset": {
-        "start": 324,
-        "end": 326
-      }
-    },
-    {
-      "id": 77,
-      "line": 16,
+      "line": 13,
       "column": 53,
-      "lexeme": "endl",
-      "token": "IDENTIFIER",
-      "category": "identifier",
-      "offset": {
-        "start": 326,
-        "end": 330
-      }
-    },
-    {
-      "id": 78,
-      "line": 16,
-      "column": 57,
       "lexeme": ";",
       "token": "SEMICOLON",
       "category": "delimiter",
       "offset": {
-        "start": 330,
-        "end": 331
+        "start": 309,
+        "end": 310
       }
     },
     {
-      "id": 79,
-      "line": 17,
-      "column": 5,
+      "id": 73,
+      "line": 14,
+      "column": 9,
       "lexeme": "}",
       "token": "RBRACE",
       "category": "delimiter",
       "offset": {
-        "start": 336,
-        "end": 337
+        "start": 319,
+        "end": 320
       }
     },
     {
-      "id": 80,
-      "line": 19,
-      "column": 5,
-      "lexeme": "return",
-      "token": "KW_RETURN",
+      "id": 74,
+      "line": 14,
+      "column": 11,
+      "lexeme": "else",
+      "token": "KW_ELSE",
       "category": "keyword",
       "offset": {
-        "start": 343,
-        "end": 349
+        "start": 321,
+        "end": 325
       }
     },
     {
-      "id": 81,
-      "line": 19,
-      "column": 12,
-      "lexeme": "0",
-      "token": "INT_LITERAL",
-      "category": "literal",
+      "id": 75,
+      "line": 14,
+      "column": 16,
+      "lexeme": "{",
+      "token": "LBRACE",
+      "category": "delimiter",
+      "offset": {
+        "start": 326,
+        "end": 327
+      }
+    },
+    {
+      "id": 76,
+      "line": 15,
+      "column": 13,
+      "lexeme": "System",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 340,
+        "end": 346
+      }
+    },
+    {
+      "id": 77,
+      "line": 15,
+      "column": 19,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
+      "offset": {
+        "start": 346,
+        "end": 347
+      }
+    },
+    {
+      "id": 78,
+      "line": 15,
+      "column": 20,
+      "lexeme": "out",
+      "token": "IDENTIFIER",
+      "category": "identifier",
+      "offset": {
+        "start": 347,
+        "end": 350
+      }
+    },
+    {
+      "id": 79,
+      "line": 15,
+      "column": 23,
+      "lexeme": ".",
+      "token": "OP_DOT",
+      "category": "operator",
       "offset": {
         "start": 350,
         "end": 351
       }
     },
     {
-      "id": 82,
-      "line": 19,
-      "column": 13,
-      "lexeme": ";",
-      "token": "SEMICOLON",
-      "category": "delimiter",
+      "id": 80,
+      "line": 15,
+      "column": 24,
+      "lexeme": "println",
+      "token": "IDENTIFIER",
+      "category": "identifier",
       "offset": {
         "start": 351,
-        "end": 352
+        "end": 358
+      }
+    },
+    {
+      "id": 81,
+      "line": 15,
+      "column": 31,
+      "lexeme": "(",
+      "token": "LPAREN",
+      "category": "delimiter",
+      "offset": {
+        "start": 358,
+        "end": 359
+      }
+    },
+    {
+      "id": 82,
+      "line": 15,
+      "column": 32,
+      "lexeme": "\"That is a small sum.\"",
+      "token": "STRING_LITERAL",
+      "category": "literal",
+      "offset": {
+        "start": 359,
+        "end": 381
       }
     },
     {
       "id": 83,
-      "line": 20,
+      "line": 15,
+      "column": 54,
+      "lexeme": ")",
+      "token": "RPAREN",
+      "category": "delimiter",
+      "offset": {
+        "start": 381,
+        "end": 382
+      }
+    },
+    {
+      "id": 84,
+      "line": 15,
+      "column": 55,
+      "lexeme": ";",
+      "token": "SEMICOLON",
+      "category": "delimiter",
+      "offset": {
+        "start": 382,
+        "end": 383
+      }
+    },
+    {
+      "id": 85,
+      "line": 16,
+      "column": 9,
+      "lexeme": "}",
+      "token": "RBRACE",
+      "category": "delimiter",
+      "offset": {
+        "start": 392,
+        "end": 393
+      }
+    },
+    {
+      "id": 86,
+      "line": 17,
+      "column": 5,
+      "lexeme": "}",
+      "token": "RBRACE",
+      "category": "delimiter",
+      "offset": {
+        "start": 398,
+        "end": 399
+      }
+    },
+    {
+      "id": 87,
+      "line": 18,
       "column": 1,
       "lexeme": "}",
       "token": "RBRACE",
       "category": "delimiter",
       "offset": {
-        "start": 353,
-        "end": 354
+        "start": 400,
+        "end": 401
       }
     }
   ],
   "statistics": {
-    "total": 83,
+    "total": 87,
     "by_category": {
-      "keyword": 4,
-      "type": 4,
-      "identifier": 23,
-      "literal": 8,
-      "operator": 20,
-      "delimiter": 23,
-      "preprocessor": 1,
+      "keyword": 7,
+      "type": 5,
+      "identifier": 22,
+      "literal": 7,
+      "operator": 14,
+      "delimiter": 32,
+      "preprocessor": 0,
       "comment": 0,
       "error": 0
     }

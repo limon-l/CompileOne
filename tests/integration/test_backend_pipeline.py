@@ -126,3 +126,70 @@ def test_semantic_scope_blocks_shadow_globals(
     assert len(x_symbols) == 2
     assert {s.scope for s in x_symbols} == {"global", "block:1"}
     assert all(not s.is_const for s in x_symbols)
+
+
+def _run_frontend_lang(backend_runner, source, tmp_path, language):
+    """Same as _run_frontend but for an arbitrary backend language."""
+    tokens_path = tmp_path / f"{language}_tokens.json"
+    parse_path = tmp_path / f"{language}_parse_tree.json"
+    ast_path = tmp_path / f"{language}_ast.json"
+    semantic_path = tmp_path / f"{language}_semantic.json"
+
+    backend_runner.run_phase("lex", source, tokens_path, language)
+    backend_runner.run_phase("parse", tokens_path, parse_path, language)
+    backend_runner.run_phase("ast", tokens_path, ast_path, language)
+    backend_runner.run_phase("semantic", tokens_path, semantic_path, language)
+
+    return (load_json(parse_path), load_json(ast_path), load_json(semantic_path))
+
+
+def test_minic_tolerates_preprocessor_and_for_incdec(
+    backend_runner: BackendRunner, tmp_path: Path,
+):
+    """Preprocessor directives (#) and `i++` in a for loop are valid and
+    must not be flagged by the mini-c front end."""
+    source = tmp_path / "with_define.mc"
+    source.write_text(
+        "#define SIZE 10\n"
+        "int i;\n"
+        "int sum = 0;\n"
+        "for (i = 1; i <= 10; i++) {\n"
+        "    sum = sum + i;\n"
+        "}\n"
+        "print sum;\n",
+        encoding="utf-8",
+    )
+
+    parse_data, ast_data, semantic_data = _run_frontend_lang(
+        backend_runner, source, tmp_path, "mini-c"
+    )
+    assert parse_cst(parse_data).errors == []
+    assert parse_ast(ast_data).root is not None
+    assert parse_semantic(semantic_data).error_count == 0
+
+
+def test_native_c_for_with_declaration_init_is_not_an_error(
+    backend_runner: BackendRunner, tmp_path: Path,
+):
+    """C-style `for (int i = 1; ...)` inside native code is valid; the
+    front end must not emit a spurious 'expected ; after for-init'."""
+    source = tmp_path / "native_for.c"
+    source.write_text(
+        "#include <stdio.h>\n"
+        "\n"
+        "int main() {\n"
+        "    int sum = 0;\n"
+        "    for (int i = 1; i <= 10; i++) {\n"
+        "        sum += i;\n"
+        "    }\n"
+        "    return sum;\n"
+        "}\n",
+        encoding="utf-8",
+    )
+
+    parse_data, ast_data, semantic_data = _run_frontend_lang(
+        backend_runner, source, tmp_path, "c"
+    )
+    assert parse_cst(parse_data).errors == []
+    assert parse_ast(ast_data).root is not None
+    assert parse_semantic(semantic_data).error_count == 0

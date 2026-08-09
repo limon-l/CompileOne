@@ -1,10 +1,10 @@
 {
   "schema": "compileone/optimization/1.0",
   "phase": "optimization",
-  "language": "c++",
+  "language": "java",
   "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (optimizer)",
-  "duration_ms": 0,
+  "duration_ms": 1,
   "before_instruction_count": 34,
   "after_instruction_count": 33,
   "instruction_reduction_pct": 2.94,
@@ -25,7 +25,7 @@
       "instruction_reduction": 1,
       "removed_instructions": [
         {
-          "index": 13,
+          "index": 14,
           "op": "assign",
           "arg1": "i",
           "arg2": "",
@@ -38,11 +38,5 @@
       "after": []
     }
   ],
-  "errors": [
-    {
-      "line": 7,
-      "column": 21,
-      "message": "expected ';' after for-init"
-    }
-  ]
+  "errors": []
 }

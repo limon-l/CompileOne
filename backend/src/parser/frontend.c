@@ -1540,9 +1540,12 @@ static ASTNode *parse_for(LangParser *p, CSTNode *cst_parent) {
     ASTNode *n = ast_make("For", kw);
     expect_kind(p, TOK_LPAREN, "'(' after 'for'");
 
-    /* init clause: declaration, assignment or nothing */
+    /* init clause: declaration, assignment or nothing.
+       parse_declaration consumes the terminating ';' itself, while an
+       expression init (or an empty init) leaves the ';' for us below. */
     size_t save = p->pos;
     ASTNode *init = parse_declaration(p, cst_parent);
+    int decl_init = (init != NULL);
     if (!init) {
         p->pos = save;
         if (!peek_is(p, TOK_SEMICOLON)) {
@@ -1552,7 +1555,9 @@ static ASTNode *parse_for(LangParser *p, CSTNode *cst_parent) {
     if (init) {
         ast_add_child(n, init);
     }
-    expect_kind(p, TOK_SEMICOLON, "';' after for-init");
+    if (!decl_init) {
+        expect_kind(p, TOK_SEMICOLON, "';' after for-init");
+    }
 
     if (!peek_is(p, TOK_SEMICOLON)) {
         ast_add_child(n, parse_expr(p, cst_parent));
