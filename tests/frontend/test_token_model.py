@@ -12,9 +12,9 @@ from tests.conftest import make_token
 def _model_with_tokens():
     model = TokenTableModel()
     model.set_tokens([
-        make_token(id=1, lexeme="int", token="KEYWORD_INT", category="keyword", description="the int keyword"),
-        make_token(id=2, lexeme="main", token="IDENTIFIER", category="identifier", description="function name", column=5, length=4),
-        make_token(id=3, lexeme="42", token="LITERAL_INT", category="literal", description="integer literal", column=10, length=2, color="#b5cea8"),
+        make_token(id=1, lexeme="int", token="KEYWORD_INT", category="keyword"),
+        make_token(id=2, lexeme="main", token="IDENTIFIER", category="identifier", column=5),
+        make_token(id=3, lexeme="42", token="LITERAL_INT", category="literal", column=10),
     ])
     return model
 
@@ -22,7 +22,7 @@ def _model_with_tokens():
 def test_model_row_and_column_counts():
     model = _model_with_tokens()
     assert model.rowCount() == 3
-    assert model.columnCount() == 11
+    assert model.columnCount() == 4
 
 
 def test_model_user_role_returns_token():
@@ -35,9 +35,17 @@ def test_model_user_role_returns_token():
 
 def test_model_headers():
     model = _model_with_tokens()
-    assert model.headerData(0, Qt.Horizontal) == "ID"
-    assert model.headerData(4, Qt.Horizontal) == "Token"
-    assert model.headerData(10, Qt.Horizontal) == "Description"
+    assert model.headerData(0, Qt.Horizontal) == "Line"
+    assert model.headerData(1, Qt.Horizontal) == "Lexeme"
+    assert model.headerData(2, Qt.Horizontal) == "Token Type"
+    assert model.headerData(3, Qt.Horizontal) == "Role"
+
+
+def test_model_display_role():
+    model = _model_with_tokens()
+    assert model.data(model.index(0, 1)) == "int"
+    assert model.data(model.index(0, 2)) == "KEYWORD_INT"
+    assert model.data(model.index(0, 3)) == "keyword"
 
 
 def test_model_clear():

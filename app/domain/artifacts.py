@@ -23,12 +23,6 @@ class Token:
     lexeme: str
     token: str
     category: str
-    subtype: str
-    length: int
-    scope: str
-    scope_level: int
-    color: str
-    description: str
     offset_start: int
     offset_end: int
 

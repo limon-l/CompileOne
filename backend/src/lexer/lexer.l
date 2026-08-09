@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "lexer.h"
 #include "strbuf.h"
@@ -19,13 +20,115 @@ static int    s_token_id  = 0;
 static int    s_line      = 1;
 static int    s_column    = 1;
 static long   s_offset    = 0;
-static int    s_scope_level = 0;
-static int    s_native    = 0;   /* 1 => lexing C/C++/Java (extended set) */
+static int s_scope_level = 0;
+static int s_native    = 0;   /* 1 => lexing a native language (extended set) */
+static int s_lang      = 0;   /* 0=mini-c, 1=c, 2=c++, 3=java */
+
+/* ----------------------------------------------------------------
+   Per-language keyword tables. Each language has its own reserved-word
+   set so (for example) 'class'/'public' are keywords in Java/C++ but
+   ordinary identifiers in C, and 'String' is a Java type keyword but an
+   identifier in C/C++. Words without a dedicated token kind map to the
+   generic TOK_KEYWORD.
+   ---------------------------------------------------------------- */
+
+typedef struct KWord { const char *word; TokenKind kind; } KWord;
+
+static const KWord kMiniKw[] = {
+    {"int",TOK_INT},{"float",TOK_FLOAT},{"bool",TOK_BOOL},{"char",TOK_CHAR},
+    {"const",TOK_CONST},{"if",TOK_IF},{"else",TOK_ELSE},{"while",TOK_WHILE},
+    {"for",TOK_FOR},{"return",TOK_RETURN},{"print",TOK_PRINT},{"read",TOK_READ},
+    {"true",TOK_TRUE},{"false",TOK_FALSE},
+};
+
+static const KWord kCKw[] = {
+    {"char",TOK_CHAR},{"double",TOK_DOUBLE},{"float",TOK_FLOAT},{"int",TOK_INT},
+    {"long",TOK_LONG},{"short",TOK_SHORT},{"signed",TOK_SIGNED},{"unsigned",TOK_UNSIGNED},
+    {"void",TOK_VOID},{"_Bool",TOK_BOOL},
+    {"break",TOK_BREAK},{"case",TOK_CASE},{"continue",TOK_CONTINUE},{"default",TOK_DEFAULT},
+    {"do",TOK_DO},{"else",TOK_ELSE},{"for",TOK_FOR},{"goto",TOK_GOTO},{"if",TOK_IF},
+    {"return",TOK_RETURN},{"switch",TOK_SWITCH},{"while",TOK_WHILE},
+    {"auto",TOK_KEYWORD},{"const",TOK_CONST},{"enum",TOK_ENUM},{"extern",TOK_EXTERN},
+    {"inline",TOK_INLINE},{"register",TOK_KEYWORD},{"restrict",TOK_KEYWORD},
+    {"sizeof",TOK_SIZEOF},{"static",TOK_STATIC},{"struct",TOK_STRUCT},{"typedef",TOK_TYPEDEF},
+    {"union",TOK_UNION},{"volatile",TOK_KEYWORD},
+    {"_Alignas",TOK_KEYWORD},{"_Alignof",TOK_KEYWORD},{"_Atomic",TOK_KEYWORD},
+    {"_Generic",TOK_KEYWORD},{"_Noreturn",TOK_KEYWORD},{"_Static_assert",TOK_KEYWORD},
+    {"_Thread_local",TOK_KEYWORD},
+};
+
+static const KWord kCppKw[] = {
+    {"char",TOK_CHAR},{"double",TOK_DOUBLE},{"float",TOK_FLOAT},{"int",TOK_INT},
+    {"long",TOK_LONG},{"short",TOK_SHORT},{"signed",TOK_SIGNED},{"unsigned",TOK_UNSIGNED},
+    {"void",TOK_VOID},{"bool",TOK_BOOL},{"wchar_t",TOK_KEYWORD},
+    {"break",TOK_BREAK},{"case",TOK_CASE},{"continue",TOK_CONTINUE},{"default",TOK_DEFAULT},
+    {"do",TOK_DO},{"else",TOK_ELSE},{"for",TOK_FOR},{"goto",TOK_GOTO},{"if",TOK_IF},
+    {"return",TOK_RETURN},{"switch",TOK_SWITCH},{"while",TOK_WHILE},
+    {"auto",TOK_KEYWORD},{"const",TOK_CONST},{"enum",TOK_ENUM},{"extern",TOK_EXTERN},
+    {"inline",TOK_INLINE},{"register",TOK_KEYWORD},{"restrict",TOK_KEYWORD},
+    {"sizeof",TOK_SIZEOF},{"static",TOK_STATIC},{"struct",TOK_STRUCT},{"typedef",TOK_TYPEDEF},
+    {"union",TOK_UNION},{"volatile",TOK_KEYWORD},
+    {"class",TOK_CLASS},{"public",TOK_PUBLIC},{"private",TOK_PRIVATE},{"protected",TOK_PROTECTED},
+    {"namespace",TOK_NAMESPACE},{"using",TOK_USING},{"template",TOK_TEMPLATE},
+    {"virtual",TOK_VIRTUAL},{"friend",TOK_FRIEND},{"operator",TOK_OPERATOR},
+    {"new",TOK_NEW},{"delete",TOK_DELETE},{"this",TOK_THIS},
+    {"true",TOK_TRUE},{"false",TOK_FALSE},{"nullptr",TOK_KEYWORD},
+    {"alignas",TOK_KEYWORD},{"alignof",TOK_KEYWORD},{"constexpr",TOK_KEYWORD},
+    {"const_cast",TOK_KEYWORD},{"decltype",TOK_KEYWORD},{"dynamic_cast",TOK_KEYWORD},
+    {"explicit",TOK_KEYWORD},{"export",TOK_KEYWORD},{"import",TOK_IMPORT},
+    {"module",TOK_KEYWORD},{"mutable",TOK_KEYWORD},{"noexcept",TOK_KEYWORD},
+    {"reinterpret_cast",TOK_KEYWORD},{"static_assert",TOK_KEYWORD},{"static_cast",TOK_KEYWORD},
+    {"thread_local",TOK_KEYWORD},{"typeid",TOK_KEYWORD},{"typename",TOK_KEYWORD},
+};
+
+static const KWord kJavaKw[] = {
+    {"boolean",TOK_BOOLEAN},{"byte",TOK_BYTE},{"char",TOK_CHAR},{"double",TOK_DOUBLE},
+    {"float",TOK_FLOAT},{"int",TOK_INT},{"long",TOK_LONG},{"short",TOK_SHORT},
+    {"void",TOK_VOID},{"String",TOK_STRING},
+    {"abstract",TOK_ABSTRACT},{"assert",TOK_KEYWORD},{"break",TOK_BREAK},{"case",TOK_CASE},
+    {"catch",TOK_CATCH},{"class",TOK_CLASS},{"const",TOK_KEYWORD},{"continue",TOK_CONTINUE},
+    {"default",TOK_DEFAULT},{"do",TOK_DO},{"else",TOK_ELSE},{"enum",TOK_ENUM},
+    {"extends",TOK_EXTENDS},{"final",TOK_FINAL},{"finally",TOK_FINALLY},{"for",TOK_FOR},
+    {"goto",TOK_KEYWORD},{"if",TOK_IF},{"implements",TOK_IMPLEMENTS},{"import",TOK_IMPORT},
+    {"instanceof",TOK_INSTANCEOF},{"interface",TOK_INTERFACE},{"native",TOK_KEYWORD},
+    {"new",TOK_NEW},{"package",TOK_PACKAGE},{"private",TOK_PRIVATE},{"protected",TOK_PROTECTED},
+    {"public",TOK_PUBLIC},{"return",TOK_RETURN},{"static",TOK_STATIC},{"strictfp",TOK_KEYWORD},
+    {"super",TOK_SUPER},{"switch",TOK_SWITCH},{"synchronized",TOK_SYNCHRONIZED},
+    {"this",TOK_THIS},{"throw",TOK_THROW},{"throws",TOK_THROWS},{"transient",TOK_KEYWORD},
+    {"try",TOK_TRY},{"volatile",TOK_KEYWORD},{"while",TOK_WHILE},
+    {"true",TOK_TRUE},{"false",TOK_FALSE},{"null",TOK_NULL},
+};
+
+static TokenKind find_kw(const KWord *table, size_t n, const char *word) {
+    for (size_t i = 0; i < n; i++) {
+        if (strcmp(table[i].word, word) == 0) {
+            return table[i].kind;
+        }
+    }
+    return TOK_IDENTIFIER;
+}
+
+/* Classify the current yytext match against the active language's
+   reserved-word set. Returns TOK_IDENTIFIER when it is not a keyword. */
+static TokenKind classify_keyword(void) {
+    switch (s_lang) {
+        case 1:  return find_kw(kCKw, sizeof(kCKw)/sizeof(kCKw[0]), yytext);
+        case 2:  return find_kw(kCppKw, sizeof(kCppKw)/sizeof(kCppKw[0]), yytext);
+        case 3:  return find_kw(kJavaKw, sizeof(kJavaKw)/sizeof(kJavaKw[0]), yytext);
+        default: return find_kw(kMiniKw, sizeof(kMiniKw)/sizeof(kMiniKw[0]), yytext);
+    }
+}
 
 void lex_set_language(const char *lang) {
-    s_native = lang &&
-               (strcmp(lang, "c") == 0 || strcmp(lang, "c++") == 0 ||
-                strcmp(lang, "java") == 0);
+    s_lang = 0;
+    if (lang && strcmp(lang, "c") == 0) {
+        s_lang = 1;
+    } else if (lang && strcmp(lang, "c++") == 0) {
+        s_lang = 2;
+    } else if (lang && strcmp(lang, "java") == 0) {
+        s_lang = 3;
+    }
+    s_native = (s_lang != 0);
 }
 
 extern FILE *yyin;
@@ -108,75 +211,6 @@ NEWLINE    (\r\n|[\n\r])
 \"(\\.|[^\"\\\r\n])*\"     { record_token(TOK_STRING_LITERAL); }
 \"(\\.|[^\"\\\r\n])*       { record_error("Unterminated string literal"); }
 
-"int"       { record_token(TOK_INT); }
-"float"     { record_token(TOK_FLOAT); }
-"bool"      { record_token(TOK_BOOL); }
-"char"      { record_token(TOK_CHAR); }
-"const"     { record_token(TOK_CONST); }
-"if"        { record_token(TOK_IF); }
-"else"      { record_token(TOK_ELSE); }
-"while"     { record_token(TOK_WHILE); }
-"for"       { record_token(TOK_FOR); }
-"return"    { record_token(TOK_RETURN); }
-"print"     { record_token(TOK_PRINT); }
-"read"      { record_token(TOK_READ); }
-"true"      { record_token(TOK_TRUE); }
-"false"     { record_token(TOK_FALSE); }
-
-"void"      { if (s_native) record_token(TOK_VOID); else record_token(TOK_IDENTIFIER); }
-"double"    { if (s_native) record_token(TOK_DOUBLE); else record_token(TOK_IDENTIFIER); }
-"do"        { if (s_native) record_token(TOK_DO); else record_token(TOK_IDENTIFIER); }
-"break"     { if (s_native) record_token(TOK_BREAK); else record_token(TOK_IDENTIFIER); }
-"continue"  { if (s_native) record_token(TOK_CONTINUE); else record_token(TOK_IDENTIFIER); }
-"class"     { if (s_native) record_token(TOK_CLASS); else record_token(TOK_IDENTIFIER); }
-"public"    { if (s_native) record_token(TOK_PUBLIC); else record_token(TOK_IDENTIFIER); }
-"private"   { if (s_native) record_token(TOK_PRIVATE); else record_token(TOK_IDENTIFIER); }
-"protected" { if (s_native) record_token(TOK_PROTECTED); else record_token(TOK_IDENTIFIER); }
-"static"    { if (s_native) record_token(TOK_STATIC); else record_token(TOK_IDENTIFIER); }
-"new"       { if (s_native) record_token(TOK_NEW); else record_token(TOK_IDENTIFIER); }
-"this"      { if (s_native) record_token(TOK_THIS); else record_token(TOK_IDENTIFIER); }
-"extends"   { if (s_native) record_token(TOK_EXTENDS); else record_token(TOK_IDENTIFIER); }
-"implements" { if (s_native) record_token(TOK_IMPLEMENTS); else record_token(TOK_IDENTIFIER); }
-"interface" { if (s_native) record_token(TOK_INTERFACE); else record_token(TOK_IDENTIFIER); }
-"import"    { if (s_native) record_token(TOK_IMPORT); else record_token(TOK_IDENTIFIER); }
-"package"   { if (s_native) record_token(TOK_PACKAGE); else record_token(TOK_IDENTIFIER); }
-"namespace" { if (s_native) record_token(TOK_NAMESPACE); else record_token(TOK_IDENTIFIER); }
-"using"     { if (s_native) record_token(TOK_USING); else record_token(TOK_IDENTIFIER); }
-"super"     { if (s_native) record_token(TOK_SUPER); else record_token(TOK_IDENTIFIER); }
-"final"     { if (s_native) record_token(TOK_FINAL); else record_token(TOK_IDENTIFIER); }
-"abstract"  { if (s_native) record_token(TOK_ABSTRACT); else record_token(TOK_IDENTIFIER); }
-"boolean"   { if (s_native) record_token(TOK_BOOLEAN); else record_token(TOK_IDENTIFIER); }
-"byte"      { if (s_native) record_token(TOK_BYTE); else record_token(TOK_IDENTIFIER); }
-"short"     { if (s_native) record_token(TOK_SHORT); else record_token(TOK_IDENTIFIER); }
-"long"      { if (s_native) record_token(TOK_LONG); else record_token(TOK_IDENTIFIER); }
-"null"      { if (s_native) record_token(TOK_NULL); else record_token(TOK_IDENTIFIER); }
-"delete"    { if (s_native) record_token(TOK_DELETE); else record_token(TOK_IDENTIFIER); }
-"sizeof"    { if (s_native) record_token(TOK_SIZEOF); else record_token(TOK_IDENTIFIER); }
-"struct"    { if (s_native) record_token(TOK_STRUCT); else record_token(TOK_IDENTIFIER); }
-"typedef"   { if (s_native) record_token(TOK_TYPEDEF); else record_token(TOK_IDENTIFIER); }
-"enum"      { if (s_native) record_token(TOK_ENUM); else record_token(TOK_IDENTIFIER); }
-"union"     { if (s_native) record_token(TOK_UNION); else record_token(TOK_IDENTIFIER); }
-"switch"    { if (s_native) record_token(TOK_SWITCH); else record_token(TOK_IDENTIFIER); }
-"case"      { if (s_native) record_token(TOK_CASE); else record_token(TOK_IDENTIFIER); }
-"default"   { if (s_native) record_token(TOK_DEFAULT); else record_token(TOK_IDENTIFIER); }
-"goto"      { if (s_native) record_token(TOK_GOTO); else record_token(TOK_IDENTIFIER); }
-"extern"    { if (s_native) record_token(TOK_EXTERN); else record_token(TOK_IDENTIFIER); }
-"signed"    { if (s_native) record_token(TOK_SIGNED); else record_token(TOK_IDENTIFIER); }
-"unsigned"  { if (s_native) record_token(TOK_UNSIGNED); else record_token(TOK_IDENTIFIER); }
-"template"  { if (s_native) record_token(TOK_TEMPLATE); else record_token(TOK_IDENTIFIER); }
-"virtual"   { if (s_native) record_token(TOK_VIRTUAL); else record_token(TOK_IDENTIFIER); }
-"friend"    { if (s_native) record_token(TOK_FRIEND); else record_token(TOK_IDENTIFIER); }
-"inline"    { if (s_native) record_token(TOK_INLINE); else record_token(TOK_IDENTIFIER); }
-"try"       { if (s_native) record_token(TOK_TRY); else record_token(TOK_IDENTIFIER); }
-"catch"     { if (s_native) record_token(TOK_CATCH); else record_token(TOK_IDENTIFIER); }
-"finally"   { if (s_native) record_token(TOK_FINALLY); else record_token(TOK_IDENTIFIER); }
-"throw"     { if (s_native) record_token(TOK_THROW); else record_token(TOK_IDENTIFIER); }
-"throws"    { if (s_native) record_token(TOK_THROWS); else record_token(TOK_IDENTIFIER); }
-"instanceof" { if (s_native) record_token(TOK_INSTANCEOF); else record_token(TOK_IDENTIFIER); }
-"synchronized" { if (s_native) record_token(TOK_SYNCHRONIZED); else record_token(TOK_IDENTIFIER); }
-"operator"  { if (s_native) record_token(TOK_OPERATOR); else record_token(TOK_IDENTIFIER); }
-"String"    { if (s_native) record_token(TOK_STRING); else record_token(TOK_IDENTIFIER); }
-
 "<="    { record_token(TOK_LE); }
 ">="    { record_token(TOK_GE); }
 "=="    { record_token(TOK_EQ); }
@@ -229,7 +263,7 @@ NEWLINE    (\r\n|[\n\r])
 
 {FLOAT_LIT}     { record_token(TOK_FLOAT_LITERAL); }
 {INT_LIT}       { record_token(TOK_INT_LITERAL); }
-{ID}            { record_token(TOK_IDENTIFIER); }
+{ID}            { record_token(classify_keyword()); }
 
 .               { record_error("Unknown character"); }
 

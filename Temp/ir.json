@@ -1,246 +1,50 @@
 {
   "schema": "compileone/ir/1.0",
   "phase": "ir",
-  "language": "java",
-  "source_file": "D:\\Project\\CompileOne\\Temp\\token_stream.json",
+  "language": "mini-c",
+  "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (three-address code)",
-  "duration_ms": 2,
+  "duration_ms": 0,
   "tac": [
     {
       "index": 1,
-      "op": "func",
-      "arg1": "void",
-      "arg2": "main",
-      "result": "Demo__main"
-    },
-    {
-      "index": 2,
-      "op": "param",
-      "arg1": "char[]",
-      "arg2": "0",
-      "result": "args"
-    },
-    {
-      "index": 3,
-      "op": "declare",
-      "arg1": "int",
-      "arg2": "",
-      "result": "n"
-    },
-    {
-      "index": 4,
-      "op": "assign",
-      "arg1": "10",
-      "arg2": "",
-      "result": "n"
-    },
-    {
-      "index": 5,
-      "op": "declare",
-      "arg1": "int",
-      "arg2": "",
-      "result": "sum"
-    },
-    {
-      "index": 6,
-      "op": "assign",
-      "arg1": "0",
-      "arg2": "",
-      "result": "sum"
-    },
-    {
-      "index": 7,
-      "op": "declare",
-      "arg1": "int",
-      "arg2": "",
-      "result": "i"
-    },
-    {
-      "index": 8,
-      "op": "assign",
-      "arg1": "1",
-      "arg2": "",
-      "result": "i"
-    },
-    {
-      "index": 9,
-      "op": "goto",
-      "arg1": "",
-      "arg2": "",
-      "result": "L3"
-    },
-    {
-      "index": 10,
-      "op": "label",
-      "arg1": "",
-      "arg2": "",
-      "result": "L1"
-    },
-    {
-      "index": 11,
-      "op": "add",
-      "arg1": "sum",
-      "arg2": "i",
+      "op": "mul",
+      "arg1": "2",
+      "arg2": "3",
       "result": "t1"
     },
     {
-      "index": 12,
-      "op": "assign",
-      "arg1": "t1",
-      "arg2": "",
-      "result": "sum"
-    },
-    {
-      "index": 13,
-      "op": "label",
-      "arg1": "",
-      "arg2": "",
-      "result": "L2"
-    },
-    {
-      "index": 14,
-      "op": "assign",
-      "arg1": "i",
-      "arg2": "",
+      "index": 2,
+      "op": "add",
+      "arg1": "1",
+      "arg2": "t1",
       "result": "t2"
     },
     {
-      "index": 15,
+      "index": 3,
+      "op": "print",
+      "arg1": "t2",
+      "arg2": "",
+      "result": ""
+    },
+    {
+      "index": 4,
       "op": "add",
-      "arg1": "i",
-      "arg2": "1",
-      "result": "i"
-    },
-    {
-      "index": 16,
-      "op": "goto",
-      "arg1": "",
-      "arg2": "",
-      "result": "L3"
-    },
-    {
-      "index": 17,
-      "op": "label",
-      "arg1": "",
-      "arg2": "",
-      "result": "L3"
-    },
-    {
-      "index": 18,
-      "op": "le",
-      "arg1": "i",
-      "arg2": "n",
+      "arg1": "1",
+      "arg2": "2",
       "result": "t3"
     },
     {
-      "index": 19,
-      "op": "if_false",
+      "index": 5,
+      "op": "mul",
       "arg1": "t3",
-      "arg2": "",
-      "result": "L4"
-    },
-    {
-      "index": 20,
-      "op": "goto",
-      "arg1": "",
-      "arg2": "",
-      "result": "L1"
-    },
-    {
-      "index": 21,
-      "op": "label",
-      "arg1": "",
-      "arg2": "",
-      "result": "L4"
-    },
-    {
-      "index": 22,
-      "op": "print_str_item",
-      "arg1": "\"Sum of 1..10 = \"",
-      "arg2": "",
-      "result": ""
-    },
-    {
-      "index": 23,
-      "op": "print_item",
-      "arg1": "sum",
-      "arg2": "",
-      "result": ""
-    },
-    {
-      "index": 24,
-      "op": "println",
-      "arg1": "",
-      "arg2": "",
-      "result": ""
-    },
-    {
-      "index": 25,
-      "op": "gt",
-      "arg1": "sum",
-      "arg2": "50",
+      "arg2": "3",
       "result": "t4"
     },
     {
-      "index": 26,
-      "op": "if_false",
+      "index": 6,
+      "op": "print",
       "arg1": "t4",
-      "arg2": "",
-      "result": "L5"
-    },
-    {
-      "index": 27,
-      "op": "print_str_item",
-      "arg1": "\"That is a big sum!\"",
-      "arg2": "",
-      "result": ""
-    },
-    {
-      "index": 28,
-      "op": "println",
-      "arg1": "",
-      "arg2": "",
-      "result": ""
-    },
-    {
-      "index": 29,
-      "op": "goto",
-      "arg1": "",
-      "arg2": "",
-      "result": "L6"
-    },
-    {
-      "index": 30,
-      "op": "label",
-      "arg1": "",
-      "arg2": "",
-      "result": "L5"
-    },
-    {
-      "index": 31,
-      "op": "print_str_item",
-      "arg1": "\"That is a small sum.\"",
-      "arg2": "",
-      "result": ""
-    },
-    {
-      "index": 32,
-      "op": "println",
-      "arg1": "",
-      "arg2": "",
-      "result": ""
-    },
-    {
-      "index": 33,
-      "op": "label",
-      "arg1": "",
-      "arg2": "",
-      "result": "L6"
-    },
-    {
-      "index": 34,
-      "op": "endfunc",
-      "arg1": "",
       "arg2": "",
       "result": ""
     }
@@ -248,239 +52,43 @@
   "quadruples": [
     {
       "index": 1,
-      "op": "func",
-      "a": "void",
-      "b": "main",
-      "r": "Demo__main"
-    },
-    {
-      "index": 2,
-      "op": "param",
-      "a": "char[]",
-      "b": "0",
-      "r": "args"
-    },
-    {
-      "index": 3,
-      "op": "declare",
-      "a": "int",
-      "b": "",
-      "r": "n"
-    },
-    {
-      "index": 4,
-      "op": "assign",
-      "a": "10",
-      "b": "",
-      "r": "n"
-    },
-    {
-      "index": 5,
-      "op": "declare",
-      "a": "int",
-      "b": "",
-      "r": "sum"
-    },
-    {
-      "index": 6,
-      "op": "assign",
-      "a": "0",
-      "b": "",
-      "r": "sum"
-    },
-    {
-      "index": 7,
-      "op": "declare",
-      "a": "int",
-      "b": "",
-      "r": "i"
-    },
-    {
-      "index": 8,
-      "op": "assign",
-      "a": "1",
-      "b": "",
-      "r": "i"
-    },
-    {
-      "index": 9,
-      "op": "goto",
-      "a": "",
-      "b": "",
-      "r": "L3"
-    },
-    {
-      "index": 10,
-      "op": "label",
-      "a": "",
-      "b": "",
-      "r": "L1"
-    },
-    {
-      "index": 11,
-      "op": "add",
-      "a": "sum",
-      "b": "i",
+      "op": "mul",
+      "a": "2",
+      "b": "3",
       "r": "t1"
     },
     {
-      "index": 12,
-      "op": "assign",
-      "a": "t1",
-      "b": "",
-      "r": "sum"
-    },
-    {
-      "index": 13,
-      "op": "label",
-      "a": "",
-      "b": "",
-      "r": "L2"
-    },
-    {
-      "index": 14,
-      "op": "assign",
-      "a": "i",
-      "b": "",
+      "index": 2,
+      "op": "add",
+      "a": "1",
+      "b": "t1",
       "r": "t2"
     },
     {
-      "index": 15,
+      "index": 3,
+      "op": "print",
+      "a": "t2",
+      "b": "",
+      "r": ""
+    },
+    {
+      "index": 4,
       "op": "add",
-      "a": "i",
-      "b": "1",
-      "r": "i"
-    },
-    {
-      "index": 16,
-      "op": "goto",
-      "a": "",
-      "b": "",
-      "r": "L3"
-    },
-    {
-      "index": 17,
-      "op": "label",
-      "a": "",
-      "b": "",
-      "r": "L3"
-    },
-    {
-      "index": 18,
-      "op": "le",
-      "a": "i",
-      "b": "n",
+      "a": "1",
+      "b": "2",
       "r": "t3"
     },
     {
-      "index": 19,
-      "op": "if_false",
+      "index": 5,
+      "op": "mul",
       "a": "t3",
-      "b": "",
-      "r": "L4"
-    },
-    {
-      "index": 20,
-      "op": "goto",
-      "a": "",
-      "b": "",
-      "r": "L1"
-    },
-    {
-      "index": 21,
-      "op": "label",
-      "a": "",
-      "b": "",
-      "r": "L4"
-    },
-    {
-      "index": 22,
-      "op": "print_str_item",
-      "a": "\"Sum of 1..10 = \"",
-      "b": "",
-      "r": ""
-    },
-    {
-      "index": 23,
-      "op": "print_item",
-      "a": "sum",
-      "b": "",
-      "r": ""
-    },
-    {
-      "index": 24,
-      "op": "println",
-      "a": "",
-      "b": "",
-      "r": ""
-    },
-    {
-      "index": 25,
-      "op": "gt",
-      "a": "sum",
-      "b": "50",
+      "b": "3",
       "r": "t4"
     },
     {
-      "index": 26,
-      "op": "if_false",
+      "index": 6,
+      "op": "print",
       "a": "t4",
-      "b": "",
-      "r": "L5"
-    },
-    {
-      "index": 27,
-      "op": "print_str_item",
-      "a": "\"That is a big sum!\"",
-      "b": "",
-      "r": ""
-    },
-    {
-      "index": 28,
-      "op": "println",
-      "a": "",
-      "b": "",
-      "r": ""
-    },
-    {
-      "index": 29,
-      "op": "goto",
-      "a": "",
-      "b": "",
-      "r": "L6"
-    },
-    {
-      "index": 30,
-      "op": "label",
-      "a": "",
-      "b": "",
-      "r": "L5"
-    },
-    {
-      "index": 31,
-      "op": "print_str_item",
-      "a": "\"That is a small sum.\"",
-      "b": "",
-      "r": ""
-    },
-    {
-      "index": 32,
-      "op": "println",
-      "a": "",
-      "b": "",
-      "r": ""
-    },
-    {
-      "index": 33,
-      "op": "label",
-      "a": "",
-      "b": "",
-      "r": "L6"
-    },
-    {
-      "index": 34,
-      "op": "endfunc",
-      "a": "",
       "b": "",
       "r": ""
     }
@@ -491,25 +99,6 @@
     "t3",
     "t4"
   ],
-  "labels": [
-    "L3",
-    "L1",
-    "L2",
-    "L3",
-    "L3",
-    "L4",
-    "L1",
-    "L4",
-    "L5",
-    "L6",
-    "L5",
-    "L6"
-  ],
-  "errors": [
-    {
-      "line": 6,
-      "column": 25,
-      "message": "expected ';' after for-init"
-    }
-  ]
+  "labels": [],
+  "errors": []
 }

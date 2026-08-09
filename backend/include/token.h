@@ -129,6 +129,7 @@ typedef enum TokenKind {
     TOK_SYNCHRONIZED,/* synchronized (Java) */
     TOK_OPERATOR,    /* operator (C++) */
     TOK_STRING,      /* String (Java type specifier) */
+    TOK_KEYWORD,     /* generic reserved keyword (no dedicated kind) */
 
     /* ---- C-family literals & operators ---- */
     TOK_CHAR_LITERAL,/* 'a' */
@@ -157,6 +158,7 @@ typedef enum TokenCategory {
     CAT_LITERAL,
     CAT_OPERATOR,
     CAT_DELIMITER,
+    CAT_PREPROCESSOR,
     CAT_COMMENT,
     CAT_ERROR,
     CAT_COUNT

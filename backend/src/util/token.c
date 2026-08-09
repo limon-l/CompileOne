@@ -138,8 +138,8 @@ static const TokenInfo kTokenInfo[] = {
      "Ternary conditional operator (C/C++)"},
     {TOK_TILDE,   "OP_TILDE",   CAT_OPERATOR,  "bitwise",      "#d4d4d4",
      "Bitwise complement operator (C/C++)"},
-    {TOK_PREPROC, "PREPROC",    CAT_COMMENT,   "preprocessor", "#569cd6",
-     "Preprocessor directive (skipped by the compiler)"},
+    {TOK_PREPROC, "PREPROC",    CAT_PREPROCESSOR, "preprocessor", "#569cd6",
+     "Preprocessor directive (handled by the preprocessor, not the parser)"},
 
     /* ---- C / C++ / Java keywords ---- */
     {TOK_VOID,     "KW_VOID",   CAT_TYPE,      "type-specifier", "#4ec9b0",
@@ -248,6 +248,8 @@ static const TokenInfo kTokenInfo[] = {
      "Operator overload keyword (C++)"},
     {TOK_STRING,   "KW_STRING", CAT_TYPE,      "type-specifier", "#4ec9b0",
      "String type specifier (Java)"},
+    {TOK_KEYWORD,  "KEYWORD",    CAT_KEYWORD,   "keyword",        "#569cd6",
+     "Reserved keyword"},
 
     /* ---- C-family literals & operators ---- */
     {TOK_CHAR_LITERAL, "CHAR_LITERAL", CAT_LITERAL, "character", "#b5cea8",
@@ -326,7 +328,7 @@ const char *token_description(TokenKind kind) {
 
 static const char *const kCategoryNames[CAT_COUNT] = {
     "keyword", "type", "identifier", "literal",
-    "operator", "delimiter", "comment", "error",
+    "operator", "delimiter", "preprocessor", "comment", "error",
 };
 
 const char *token_category_name(TokenCategory cat) {

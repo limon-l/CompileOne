@@ -882,12 +882,6 @@ static void token_to_json(JsonWriter *w, const Token *t) {
     jw_key(w, "lexeme");    jw_string(w, t->lexeme);
     jw_key(w, "token");     jw_string(w, token_name(t->kind));
     jw_key(w, "category");  jw_string(w, token_category_name(t->category));
-    jw_key(w, "subtype");   jw_string(w, t->subtype);
-    jw_key(w, "length");    jw_int(w, (long long)t->length);
-    jw_key(w, "scope");     jw_string(w, t->scope_level == 0 ? "global" : "block");
-    jw_key(w, "scope_level"); jw_int(w, t->scope_level);
-    jw_key(w, "color");     jw_string(w, t->color);
-    jw_key(w, "description"); jw_string(w, t->description);
     jw_key(w, "offset");
     jw_begin_object(w);
     jw_key(w, "start");     jw_int(w, (long long)t->offset_start);

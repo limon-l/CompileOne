@@ -32,7 +32,7 @@
   "definitions": {
     "token": {
       "type": "object",
-      "required": ["id", "line", "column", "lexeme", "token", "category", "subtype", "length", "scope", "scope_level", "color", "description", "offset"],
+      "required": ["id", "line", "column", "lexeme", "token", "category", "offset"],
       "properties": {
         "id": { "type": "integer" },
         "line": { "type": "integer", "minimum": 1 },
@@ -40,12 +40,6 @@
         "lexeme": { "type": "string" },
         "token": { "type": "string" },
         "category": { "type": "string" },
-        "subtype": { "type": "string" },
-        "length": { "type": "integer" },
-        "scope": { "type": "string" },
-        "scope_level": { "type": "integer" },
-        "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
-        "description": { "type": "string" },
         "offset": {
           "type": "object",
           "required": ["start", "end"],

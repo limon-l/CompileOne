@@ -65,12 +65,6 @@ def _parse_token(raw: dict[str, Any]) -> Token:
         lexeme=str(_expect(raw, "lexeme")),
         token=str(_expect(raw, "token")),
         category=str(_expect(raw, "category")),
-        subtype=str(_expect(raw, "subtype")),
-        length=int(_expect(raw, "length")),
-        scope=str(_expect(raw, "scope")),
-        scope_level=int(_expect(raw, "scope_level")),
-        color=str(_expect(raw, "color")),
-        description=str(_expect(raw, "description")),
         offset_start=int(_expect(off, "start")),
         offset_end=int(_expect(off, "end")),
     )

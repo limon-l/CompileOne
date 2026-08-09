@@ -346,14 +346,12 @@ class Orchestrator:
 
             writer = csv.writer(fh)
             writer.writerow(
-                ["id", "line", "column", "lexeme", "token", "category",
-                 "subtype", "length", "scope", "scope_level", "color",
-                 "description", "offset_start", "offset_end"]
+                ["line", "column", "lexeme", "token", "category",
+                 "offset_start", "offset_end"]
             )
             for token in stream.tokens:
                 writer.writerow(
-                    [token.id, token.line, token.column, token.lexeme,
-                     token.token, token.category, token.subtype, token.length,
-                     token.scope, token.scope_level, token.color,
-                     token.description, token.offset_start, token.offset_end]
+                    [token.line, token.column, token.lexeme,
+                     token.token, token.category,
+                     token.offset_start, token.offset_end]
                 )

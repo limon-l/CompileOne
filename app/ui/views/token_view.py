@@ -111,7 +111,8 @@ class TokenTableView(QWidget):
         self._category_combo.clear()
         self._category_combo.addItem("All categories")
         ordered = [
-            c for c in ("keyword", "type", "identifier", "literal", "operator", "delimiter", "comment", "error")
+            c for c in ("keyword", "type", "identifier", "literal", "operator",
+                        "delimiter", "preprocessor", "comment", "error")
             if c in categories
         ]
         ordered += sorted(c for c in categories if c not in ordered)
@@ -155,9 +156,8 @@ class TokenTableView(QWidget):
             return
 
         columns = [
-            "id", "line", "column", "lexeme", "token", "category",
-            "subtype", "length", "scope", "scope_level", "color",
-            "description", "offset_start", "offset_end",
+            "line", "column", "lexeme", "token", "category",
+            "offset_start", "offset_end",
         ]
         with open(path, "w", encoding="utf-8", newline="") as fh:
             writer = csv.writer(fh)
@@ -168,10 +168,9 @@ class TokenTableView(QWidget):
                 if token is None:
                     continue
                 writer.writerow(
-                    [token.id, token.line, token.column, token.lexeme,
-                     token.token, token.category, token.subtype, token.length,
-                     token.scope, token.scope_level, token.color,
-                     token.description, token.offset_start, token.offset_end]
+                    [token.line, token.column, token.lexeme,
+                     token.token, token.category,
+                     token.offset_start, token.offset_end]
                 )
         self._count_label.setText(f"Exported {self._proxy.rowCount()} tokens")
         logger.info("exported %d tokens to %s", self._proxy.rowCount(), path)

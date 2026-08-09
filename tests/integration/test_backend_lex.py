@@ -25,8 +25,7 @@ GOLDEN_CASES = ["hello.mc", "fib.mc", "comments.mc", "invalid.mc"]
 # The specific set of fields we care about for golden file comparison.
 # This must match the fields expected by the golden files.
 _TOKEN_FIELDS = (
-    "id", "line", "column", "lexeme", "token", "category", "subtype",
-    "length", "scope", "scope_level", "color", "description",
+    "id", "line", "column", "lexeme", "token", "category",
     "offset_start", "offset_end",
 )
 

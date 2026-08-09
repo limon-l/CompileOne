@@ -141,9 +141,9 @@ def test_export_tokens_csv(tmp_path, fake_runner):
     orchestrator.export_tokens_csv(session, out)
     with open(out, encoding="utf-8", newline="") as fh:
         rows = list(csv.reader(fh))
-    assert rows[0][0] == "id"
+    assert rows[0] == ["line", "column", "lexeme", "token", "category", "offset_start", "offset_end"]
     assert len(rows) == 3  # header + 2 tokens
-    assert rows[1][4] == "KEYWORD_INT"
+    assert rows[1][3] == "KEYWORD_INT"
 
 
 class _Runner:

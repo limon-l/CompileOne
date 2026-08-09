@@ -36,7 +36,7 @@ class CSTView(QTreeWidget):
             # This is a leaf node representing a token
             token = node.token
             item = QTreeWidgetItem([f"TOKEN: {token.token}", f"'{token.lexeme}'"])
-            item.setToolTip(0, f"L{token.line}:C{token.column} | {token.description}")
+            item.setToolTip(0, f"L{token.line}:C{token.column} | {token.category}")
             item.setData(0, Qt.UserRole, token) # Store the token object
         else:
             # This is a non-terminal node representing a grammar rule

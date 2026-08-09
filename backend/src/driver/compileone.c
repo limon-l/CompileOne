@@ -41,16 +41,6 @@ static const size_t kPhaseCount = sizeof(kPhases) / sizeof(kPhases[0]);
    Phase: lex
    ------------------------------------------------------------------ */
 
-static void write_scope_string(JsonWriter *w, int level) {
-    if (level == 0) {
-        jw_string(w, "global");
-    } else {
-        char buf[24];
-        snprintf(buf, sizeof(buf), "block:%d", level);
-        jw_string(w, buf);
-    }
-}
-
 /* Serialise `w` to `output_path`. Returns 0 on success, -1 on failure. */
 static int write_artifact_file(const char *output_path, JsonWriter *w) {
     FILE *fp = fopen(output_path, "wb");
@@ -94,12 +84,6 @@ static int write_token_artifact(const char *output_path, const char *input_path,
         jw_key(&w, "lexeme");   jw_string(&w, t->lexeme);
         jw_key(&w, "token");    jw_string(&w, token_name(t->kind));
         jw_key(&w, "category"); jw_string(&w, token_category_name(t->category));
-        jw_key(&w, "subtype");  jw_string(&w, t->subtype);
-        jw_key(&w, "length");   jw_int(&w, (long long)t->length);
-        jw_key(&w, "scope");    write_scope_string(&w, t->scope_level);
-        jw_key(&w, "scope_level"); jw_int(&w, t->scope_level);
-        jw_key(&w, "color");    jw_string(&w, t->color);
-        jw_key(&w, "description"); jw_string(&w, t->description);
         jw_key(&w, "offset");
         jw_begin_object(&w);
         jw_key(&w, "start");    jw_int(&w, (long long)t->offset_start);
