@@ -3,11 +3,11 @@
   "phase": "codegen",
   "arch": "x86_64",
   "syntax": "att",
-  "language": "java",
+  "language": "mini-c",
   "source_file": "C:\\Users\\User\\OneDrive - LP Industries\\Documents\\Limon\\Projects\\CompileOne\\Temp\\token_stream.json",
   "generated_by": "compileone.exe v0.1.0 (x86-64 codegen)",
-  "duration_ms": 3,
-  "text": "    .text\n    .globl main\nmain:\n    pushq       %rbp                    # save caller frame\n    movq        %rsp, %rbp              # establish frame\n    subq        $64, %rsp               # allocate locals\n    movq        16(%rbp), %rax          # argument\n    movq        %rax, -8(%rbp)\n    movl        $10, %eax\n    movl        %eax, -12(%rbp)\n    movl        $0, %eax\n    movl        %eax, -16(%rbp)\n    movl        $1, %eax\n    movl        %eax, -20(%rbp)\n    jmp         L3\nL1:\n    movl        -16(%rbp), %eax\n    addl        -20(%rbp), %eax\n    movl        %eax, -32(%rbp)\n    movl        -32(%rbp), %eax\n    movl        %eax, -16(%rbp)\nL2:\n    movl        -20(%rbp), %eax\n    movl        %eax, -40(%rbp)\n    movl        -20(%rbp), %eax\n    addl        $1, %eax\n    movl        %eax, -20(%rbp)\n    jmp         L3\nL3:\n    movl        -20(%rbp), %eax\n    cmpl        -12(%rbp), %eax\n    setle       %al\n    movzbl      %al, %eax\n    movl        %eax, -44(%rbp)\n    movl        -44(%rbp), %eax\n    testl       %eax, %eax\n    je          L4                      # jump when false\n    jmp         L1\nL4:\n    leaq        .LC0(%rip), %rsi        # printf string arg\n    leaq        .Lfmt_str_plain(%rip), %rdi# printf format\n    call        printf\n    movl        -16(%rbp), %esi         # printf value arg\n    leaq        .Lfmt_int_plain(%rip), %rdi# printf format\n    call        printf\n    leaq        .Lfmt_newline(%rip), %rdi# println\n    call        puts\n    movl        -16(%rbp), %eax\n    cmpl        $50, %eax\n    setg        %al\n    movzbl      %al, %eax\n    movl        %eax, -52(%rbp)\n    movl        -52(%rbp), %eax\n    testl       %eax, %eax\n    je          L5                      # jump when false\n    leaq        .LC1(%rip), %rsi        # printf string arg\n    leaq        .Lfmt_str_plain(%rip), %rdi# printf format\n    call        printf\n    leaq        .Lfmt_newline(%rip), %rdi# println\n    call        puts\n    jmp         L6\nL5:\n    leaq        .LC2(%rip), %rsi        # printf string arg\n    leaq        .Lfmt_str_plain(%rip), %rdi# printf format\n    call        printf\n    leaq        .Lfmt_newline(%rip), %rdi# println\n    call        puts\nL6:\n    movl        $0, %eax                # implicit return 0\n    leave                               # tear down frame\n    ret         \n    .section .rodata\n.Lfmt_int:\n    .string \"%d\\n\"\n.Lfmt_float:\n    .string \"%g\\n\"\n.Lfmt_str:\n    .string \"%s\\n\"\n.Lfmt_int_plain:\n    .string \"%d\"\n.Lfmt_float_plain:\n    .string \"%g\"\n.Lfmt_str_plain:\n    .string \"%s\"\n.Lfmt_scan_int:\n    .string \"%d\"\n.Lfmt_scan_str:\n    .string \"%s\"\n.Lfmt_newline:\n    .string \"\\n\"\n.LC0:\n    .string \"Sum of 1..10 = \"\n.LC1:\n    .string \"That is a big sum!\"\n.LC2:\n    .string \"That is a small sum.\"\n",
+  "duration_ms": 2,
+  "text": "    .text\n    .globl main\nmain:\n    pushq       %rbp                    # save caller frame\n    movq        %rsp, %rbp              # establish frame\n    subq        $16, %rsp               # allocate locals\n    movl        $2, %eax\n    imull       $3, %eax\n    movl        %eax, -4(%rbp)\n    movl        $1, %eax\n    addl        -4(%rbp), %eax\n    movl        %eax, -8(%rbp)\n    movl        -8(%rbp), %esi          # printf value arg\n    leaq        .Lfmt_int(%rip), %rdi   # printf format\n    call        printf\n    movl        $1, %eax\n    addl        $2, %eax\n    movl        %eax, -12(%rbp)\n    movl        -12(%rbp), %eax\n    imull       $3, %eax\n    movl        %eax, -16(%rbp)\n    movl        -16(%rbp), %esi         # printf value arg\n    leaq        .Lfmt_int(%rip), %rdi   # printf format\n    call        printf\n    movl        $0, %eax                # implicit return 0\n    leave                               # tear down frame\n    ret         \n    .section .rodata\n.Lfmt_int:\n    .string \"%d\\n\"\n.Lfmt_float:\n    .string \"%g\\n\"\n.Lfmt_str:\n    .string \"%s\\n\"\n.Lfmt_int_plain:\n    .string \"%d\"\n.Lfmt_float_plain:\n    .string \"%g\"\n.Lfmt_str_plain:\n    .string \"%s\"\n.Lfmt_scan_int:\n    .string \"%d\"\n.Lfmt_scan_str:\n    .string \"%s\"\n.Lfmt_newline:\n    .string \"\\n\"\n",
   "instructions": [
     {
       "address": "0x0000",
@@ -35,7 +35,7 @@
       "label": null,
       "mnemonic": "subq",
       "operands": [
-        "$64",
+        "$16",
         "%rsp"
       ],
       "comment": "allocate locals",
@@ -44,71 +44,38 @@
     {
       "address": "0x0003",
       "label": null,
-      "mnemonic": "movq",
+      "mnemonic": "movl",
       "operands": [
-        "16(%rbp)",
-        "%rax"
+        "$2",
+        "%eax"
       ],
-      "comment": "argument",
+      "comment": null,
       "class": "data-move"
     },
     {
       "address": "0x0004",
       "label": null,
-      "mnemonic": "movq",
+      "mnemonic": "imull",
       "operands": [
-        "%rax",
-        "-8(%rbp)"
+        "$3",
+        "%eax"
       ],
       "comment": null,
-      "class": "data-move"
+      "class": "arith"
     },
     {
       "address": "0x0005",
       "label": null,
       "mnemonic": "movl",
       "operands": [
-        "$10",
-        "%eax"
+        "%eax",
+        "-4(%rbp)"
       ],
       "comment": null,
       "class": "data-move"
     },
     {
       "address": "0x0006",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "%eax",
-        "-12(%rbp)"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x0007",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "$0",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x0008",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "%eax",
-        "-16(%rbp)"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x0009",
       "label": null,
       "mnemonic": "movl",
       "operands": [
@@ -119,32 +86,65 @@
       "class": "data-move"
     },
     {
-      "address": "0x000a",
+      "address": "0x0007",
+      "label": null,
+      "mnemonic": "addl",
+      "operands": [
+        "-4(%rbp)",
+        "%eax"
+      ],
+      "comment": null,
+      "class": "arith"
+    },
+    {
+      "address": "0x0008",
       "label": null,
       "mnemonic": "movl",
       "operands": [
         "%eax",
-        "-20(%rbp)"
+        "-8(%rbp)"
       ],
       "comment": null,
       "class": "data-move"
     },
     {
+      "address": "0x0009",
+      "label": null,
+      "mnemonic": "movl",
+      "operands": [
+        "-8(%rbp)",
+        "%esi"
+      ],
+      "comment": "printf value arg",
+      "class": "data-move"
+    },
+    {
+      "address": "0x000a",
+      "label": null,
+      "mnemonic": "leaq",
+      "operands": [
+        ".Lfmt_int(%rip)",
+        "%rdi"
+      ],
+      "comment": "printf format",
+      "class": "data-move"
+    },
+    {
       "address": "0x000b",
       "label": null,
-      "mnemonic": "jmp",
+      "mnemonic": "call",
       "operands": [
-        "L3"
+        "printf"
       ],
       "comment": null,
-      "class": "control"
+      "class": "call"
     },
     {
       "address": "0x000c",
-      "label": "L1",
+      "label": null,
       "mnemonic": "movl",
       "operands": [
-        "-16(%rbp)",
+        "$1",
         "%eax"
       ],
       "comment": null,
@@ -155,7 +155,7 @@
       "label": null,
       "mnemonic": "addl",
       "operands": [
-        "-20(%rbp)",
+        "$2",
         "%eax"
       ],
       "comment": null,
@@ -167,7 +167,7 @@
       "mnemonic": "movl",
       "operands": [
         "%eax",
-        "-32(%rbp)"
+        "-12(%rbp)"
       ],
       "comment": null,
       "class": "data-move"
@@ -177,7 +177,7 @@
       "label": null,
       "mnemonic": "movl",
       "operands": [
-        "-32(%rbp)",
+        "-12(%rbp)",
         "%eax"
       ],
       "comment": null,
@@ -185,6 +185,17 @@
     },
     {
       "address": "0x0010",
+      "label": null,
+      "mnemonic": "imull",
+      "operands": [
+        "$3",
+        "%eax"
+      ],
+      "comment": null,
+      "class": "arith"
+    },
+    {
+      "address": "0x0011",
       "label": null,
       "mnemonic": "movl",
       "operands": [
@@ -195,200 +206,7 @@
       "class": "data-move"
     },
     {
-      "address": "0x0011",
-      "label": "L2",
-      "mnemonic": "movl",
-      "operands": [
-        "-20(%rbp)",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
       "address": "0x0012",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "%eax",
-        "-40(%rbp)"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x0013",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "-20(%rbp)",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x0014",
-      "label": null,
-      "mnemonic": "addl",
-      "operands": [
-        "$1",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "arith"
-    },
-    {
-      "address": "0x0015",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "%eax",
-        "-20(%rbp)"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x0016",
-      "label": null,
-      "mnemonic": "jmp",
-      "operands": [
-        "L3"
-      ],
-      "comment": null,
-      "class": "control"
-    },
-    {
-      "address": "0x0017",
-      "label": "L3",
-      "mnemonic": "movl",
-      "operands": [
-        "-20(%rbp)",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x0018",
-      "label": null,
-      "mnemonic": "cmpl",
-      "operands": [
-        "-12(%rbp)",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "compare"
-    },
-    {
-      "address": "0x0019",
-      "label": null,
-      "mnemonic": "setle",
-      "operands": [
-        "%al"
-      ],
-      "comment": null,
-      "class": "compare"
-    },
-    {
-      "address": "0x001a",
-      "label": null,
-      "mnemonic": "movzbl",
-      "operands": [
-        "%al",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x001b",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "%eax",
-        "-44(%rbp)"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x001c",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "-44(%rbp)",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x001d",
-      "label": null,
-      "mnemonic": "testl",
-      "operands": [
-        "%eax",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "compare"
-    },
-    {
-      "address": "0x001e",
-      "label": null,
-      "mnemonic": "je",
-      "operands": [
-        "L4"
-      ],
-      "comment": "jump when false",
-      "class": "control"
-    },
-    {
-      "address": "0x001f",
-      "label": null,
-      "mnemonic": "jmp",
-      "operands": [
-        "L1"
-      ],
-      "comment": null,
-      "class": "control"
-    },
-    {
-      "address": "0x0020",
-      "label": "L4",
-      "mnemonic": "leaq",
-      "operands": [
-        ".LC0(%rip)",
-        "%rsi"
-      ],
-      "comment": "printf string arg",
-      "class": "data-move"
-    },
-    {
-      "address": "0x0021",
-      "label": null,
-      "mnemonic": "leaq",
-      "operands": [
-        ".Lfmt_str_plain(%rip)",
-        "%rdi"
-      ],
-      "comment": "printf format",
-      "class": "data-move"
-    },
-    {
-      "address": "0x0022",
-      "label": null,
-      "mnemonic": "call",
-      "operands": [
-        "printf"
-      ],
-      "comment": null,
-      "class": "call"
-    },
-    {
-      "address": "0x0023",
       "label": null,
       "mnemonic": "movl",
       "operands": [
@@ -399,18 +217,18 @@
       "class": "data-move"
     },
     {
-      "address": "0x0024",
+      "address": "0x0013",
       "label": null,
       "mnemonic": "leaq",
       "operands": [
-        ".Lfmt_int_plain(%rip)",
+        ".Lfmt_int(%rip)",
         "%rdi"
       ],
       "comment": "printf format",
       "class": "data-move"
     },
     {
-      "address": "0x0025",
+      "address": "0x0014",
       "label": null,
       "mnemonic": "call",
       "operands": [
@@ -420,231 +238,8 @@
       "class": "call"
     },
     {
-      "address": "0x0026",
+      "address": "0x0015",
       "label": null,
-      "mnemonic": "leaq",
-      "operands": [
-        ".Lfmt_newline(%rip)",
-        "%rdi"
-      ],
-      "comment": "println",
-      "class": "data-move"
-    },
-    {
-      "address": "0x0027",
-      "label": null,
-      "mnemonic": "call",
-      "operands": [
-        "puts"
-      ],
-      "comment": null,
-      "class": "call"
-    },
-    {
-      "address": "0x0028",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "-16(%rbp)",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x0029",
-      "label": null,
-      "mnemonic": "cmpl",
-      "operands": [
-        "$50",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "compare"
-    },
-    {
-      "address": "0x002a",
-      "label": null,
-      "mnemonic": "setg",
-      "operands": [
-        "%al"
-      ],
-      "comment": null,
-      "class": "compare"
-    },
-    {
-      "address": "0x002b",
-      "label": null,
-      "mnemonic": "movzbl",
-      "operands": [
-        "%al",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x002c",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "%eax",
-        "-52(%rbp)"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x002d",
-      "label": null,
-      "mnemonic": "movl",
-      "operands": [
-        "-52(%rbp)",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "data-move"
-    },
-    {
-      "address": "0x002e",
-      "label": null,
-      "mnemonic": "testl",
-      "operands": [
-        "%eax",
-        "%eax"
-      ],
-      "comment": null,
-      "class": "compare"
-    },
-    {
-      "address": "0x002f",
-      "label": null,
-      "mnemonic": "je",
-      "operands": [
-        "L5"
-      ],
-      "comment": "jump when false",
-      "class": "control"
-    },
-    {
-      "address": "0x0030",
-      "label": null,
-      "mnemonic": "leaq",
-      "operands": [
-        ".LC1(%rip)",
-        "%rsi"
-      ],
-      "comment": "printf string arg",
-      "class": "data-move"
-    },
-    {
-      "address": "0x0031",
-      "label": null,
-      "mnemonic": "leaq",
-      "operands": [
-        ".Lfmt_str_plain(%rip)",
-        "%rdi"
-      ],
-      "comment": "printf format",
-      "class": "data-move"
-    },
-    {
-      "address": "0x0032",
-      "label": null,
-      "mnemonic": "call",
-      "operands": [
-        "printf"
-      ],
-      "comment": null,
-      "class": "call"
-    },
-    {
-      "address": "0x0033",
-      "label": null,
-      "mnemonic": "leaq",
-      "operands": [
-        ".Lfmt_newline(%rip)",
-        "%rdi"
-      ],
-      "comment": "println",
-      "class": "data-move"
-    },
-    {
-      "address": "0x0034",
-      "label": null,
-      "mnemonic": "call",
-      "operands": [
-        "puts"
-      ],
-      "comment": null,
-      "class": "call"
-    },
-    {
-      "address": "0x0035",
-      "label": null,
-      "mnemonic": "jmp",
-      "operands": [
-        "L6"
-      ],
-      "comment": null,
-      "class": "control"
-    },
-    {
-      "address": "0x0036",
-      "label": "L5",
-      "mnemonic": "leaq",
-      "operands": [
-        ".LC2(%rip)",
-        "%rsi"
-      ],
-      "comment": "printf string arg",
-      "class": "data-move"
-    },
-    {
-      "address": "0x0037",
-      "label": null,
-      "mnemonic": "leaq",
-      "operands": [
-        ".Lfmt_str_plain(%rip)",
-        "%rdi"
-      ],
-      "comment": "printf format",
-      "class": "data-move"
-    },
-    {
-      "address": "0x0038",
-      "label": null,
-      "mnemonic": "call",
-      "operands": [
-        "printf"
-      ],
-      "comment": null,
-      "class": "call"
-    },
-    {
-      "address": "0x0039",
-      "label": null,
-      "mnemonic": "leaq",
-      "operands": [
-        ".Lfmt_newline(%rip)",
-        "%rdi"
-      ],
-      "comment": "println",
-      "class": "data-move"
-    },
-    {
-      "address": "0x003a",
-      "label": null,
-      "mnemonic": "call",
-      "operands": [
-        "puts"
-      ],
-      "comment": null,
-      "class": "call"
-    },
-    {
-      "address": "0x003b",
-      "label": "L6",
       "mnemonic": "movl",
       "operands": [
         "$0",
@@ -654,7 +249,7 @@
       "class": "data-move"
     },
     {
-      "address": "0x003c",
+      "address": "0x0016",
       "label": null,
       "mnemonic": "leave",
       "operands": [],
@@ -662,7 +257,7 @@
       "class": "stack"
     },
     {
-      "address": "0x003d",
+      "address": "0x0017",
       "label": null,
       "mnemonic": "ret",
       "operands": [],
@@ -673,7 +268,7 @@
   "prologue": [
     "pushq %rbp",
     "movq %rsp, %rbp",
-    "subq $64, %rsp"
+    "subq $16, %rsp"
   ],
   "epilogue": [
     "movl $0, %eax",
@@ -682,76 +277,26 @@
   ],
   "stack_layout": {
     "base_pointer": "%rbp",
-    "total_size": 64,
+    "total_size": 16,
     "slots": [
       {
-        "name": "args",
-        "offset": -8,
-        "size": 8
-      },
-      {
-        "name": "n",
-        "offset": -12,
-        "size": 4
-      },
-      {
-        "name": "sum",
-        "offset": -16,
-        "size": 4
-      },
-      {
-        "name": "i",
-        "offset": -20,
-        "size": 4
-      },
-      {
-        "name": "L3",
-        "offset": -24,
-        "size": 4
-      },
-      {
-        "name": "L1",
-        "offset": -28,
-        "size": 4
-      },
-      {
         "name": "t1",
-        "offset": -32,
-        "size": 4
-      },
-      {
-        "name": "L2",
-        "offset": -36,
+        "offset": -4,
         "size": 4
       },
       {
         "name": "t2",
-        "offset": -40,
+        "offset": -8,
         "size": 4
       },
       {
         "name": "t3",
-        "offset": -44,
-        "size": 4
-      },
-      {
-        "name": "L4",
-        "offset": -48,
+        "offset": -12,
         "size": 4
       },
       {
         "name": "t4",
-        "offset": -52,
-        "size": 4
-      },
-      {
-        "name": "L5",
-        "offset": -56,
-        "size": 4
-      },
-      {
-        "name": "L6",
-        "offset": -60,
+        "offset": -16,
         "size": 4
       }
     ]

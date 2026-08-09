@@ -38,3 +38,8 @@ htmlcov/
 Thumbs.db
 
 .ruff_cache/
+
+# --- Internal guides (not for distribution) ------------------------
+PROJECT_INTERNAL_GUIDE_BN.md
+
+docs/
